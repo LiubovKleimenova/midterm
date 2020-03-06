@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS favourites CASCADE;
+CREATE TABLE favourites (
+  user_id INTEGER REFERENCES users(id) NOT NULL,
+  cat_id INTEGER REFERENCES cats(id) NOT NULL
+);
