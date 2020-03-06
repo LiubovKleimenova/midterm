@@ -8,18 +8,43 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
+
+module.exports = (databaseHelperFunctions) => {
+  // All cats are displayed when the user arrives on main page
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    console.log('IT WORKS');
+    databaseHelperFunctions.getAllCats()
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err))
   });
+
+    // Only users favourite cats are displayed when user requests favourites
+    // router.get("/userId", (req, res) => {
+    //   console.log('IT WORKS');
+    //   db.query(`
+    //   SELECT *
+    //   FROM favourites
+    //   WHERE user_id = $1;
+    //   `, [${}])
+    //     .then(data => {
+    //       const cats = data.rows[0];
+    //       res.json({ cats });
+    //     })
+    //     .catch(err => {
+    //       res
+    //         .status(500)
+    //         .json({ error: err.message });
+    //     });
+    // });
+
+
+  router.get("/", (req, res) => {
+    console.log('IT WORKS');
+    databaseHelperFunctions.getAllUsers()
+      .then(data => res.json(data))
+      .catch(err => res.status(500).send(err))
+  });
+
+
   return router;
 };
