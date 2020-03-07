@@ -1,6 +1,8 @@
 
 module.exports = (db) => {
 
+// *********** HELPER FUNCTIONS FOR USER ROUTES ************
+
   const getAllCats = function () {
     return db.query(`SELECT * FROM cats;`)
     .then(res => res.rows)
@@ -17,7 +19,7 @@ module.exports = (db) => {
     return db.query(`
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
-    WHERE owner_id = 2;`)
+    WHERE favourites.user_id = 2;`)
     .then(res => res.rows )
   }
 
@@ -63,5 +65,22 @@ module.exports = (db) => {
     .then(res => res.rows);
   }
 
-  return {getAllCats, getAllUsers, getFavourites, filterBySearch};
+
+// *********** HELPER FUNCTIONS FOR ADMIN ROUTES ************
+
+  const getMyCats = function () {
+    return db.query(`
+    SELECT * FROM cats
+    WHERE owner_id = 2;`)
+    .then(res => res.rows )
+}
+
+const getMessages = function () {
+  return db.query(`
+  SELECT * FROM cats
+  WHERE owner_id = 2;`)
+  .then(res => res.rows )
+}
+
+  return {getAllCats, getAllUsers, getFavourites, filterBySearch, getMyCats};
 };
