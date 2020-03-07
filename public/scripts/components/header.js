@@ -12,13 +12,13 @@ $(() => {
       userNav = `
       <nav class="user-nav">
       <ul class="user-links">
-        <li class="user-link">
+        <li class="user-link home-button">
           Home page
         </li>
-        <li class="user-link">
+        <li class="user-link search-button">
           Search
         </li>
-        <li class="user-link">
+        <li class="user-link favourites-button">
           Favourites
         </li>
       </ul>
@@ -35,13 +35,16 @@ $(() => {
       userNav = `
       <nav class="user-nav">
       <ul class="user-links">
-        <li class="user-link">
+        <li class="user-link home-button">
           Home page
         </li>
-        <li class="user-link">
+        <li class="user-link search-button">
           Search
         </li>
-        <li class="user-link">
+        <li class="user-link favourites-button">
+          Favourites
+        </li>
+        <li class="user-link owner-button">
           My cats
         </li>
       </ul>
@@ -69,14 +72,12 @@ $(() => {
   updateHeader(user1);
 
 
-
-
   // getMyDetails().then(function(json) {
   //   updateHeader(json.user);
   // });
 
-  // $("header").on("click", ".my_reservations_button", function() {
-  //   propertyListings.clearListings();
+   $("header").on("click", ".favourites-button", function() {
+     catListings.clearCats();
   //   getAllReservations()
   //     .then(function(json) {
   //       propertyListings.addProperties(json.reservations, true);
@@ -118,5 +119,5 @@ $(() => {
 
   // $("header").on("click", ".create_listing_button", function() {
   //   views_manager.show("newProperty");
-  // });
+  });
 });
