@@ -26,6 +26,15 @@ module.exports = (databaseHelperFunctions) => {
     .catch(err => res.status(500).send(err))
   });
 
+  // Only filtered cats are displayed
+  router.get('/filteredCats', (req, res) => {
+    databaseHelperFunctions.filterBySearch(req.query)
+    .then(cats => res.send({cats}))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
+  });
 
   return router;
 };
