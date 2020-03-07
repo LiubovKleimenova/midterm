@@ -1,4 +1,4 @@
-
+const nodemailer = require('nodemailer');
 module.exports = (db) => {
 
 // *********** HELPER FUNCTIONS FOR USER ROUTES ************
@@ -81,6 +81,34 @@ const getMessages = function () {
   WHERE owner_id = 2;`)
   .then(res => res.rows )
 }
+// email sending function
+// async..await is not allowed in global scope, must use a wrapper
+async function sendEmail() {
+  // Generate test SMTP service account from ethereal.email
+  // create reusable transporter object for host configuration
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: 'stevencschoi87@gmail.com', // generated ethereal user
+      pass: '' // generated ethereal password
+    }
+  });
 
-  return {getAllCats, getAllUsers, getFavourites, filterBySearch, getMyCats};
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Meowzza 👻" <stevencschoi87@gmail.com>', // sender address
+    to: "stevenspamlol@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<p>This is a test!</p>" // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Preview only available when sending through an Ethereal account
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+}
+
+  return {getAllCats, getAllUsers, getFavourites, filterBySearch, getMessages, getMyCats, sendEmail};
 };

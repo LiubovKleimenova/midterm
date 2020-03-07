@@ -11,6 +11,35 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+// email functionality
+// const nodemailer = require('nodemailer');
+// async function sendEmail() {
+//   // Generate test SMTP service account from ethereal.email
+//   // create reusable transporter object for host configuration
+//   let transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 587,
+//     secure: false, // true for 465, false for other ports
+//     auth: {
+//       user: 'stevencschoi87@gmail.com', // generated ethereal user
+//       pass: '' // generated ethereal password
+//     }
+//   });
+
+//   // send mail with defined transport object
+//   let info = await transporter.sendMail({
+//     from: '"Meowzza 👻" <stevencschoi87@gmail.com>', // sender address
+//     to: "stevenspamlol@gmail.com", // list of receivers
+//     subject: "Hello ✔", // Subject line
+//     text: "Hello world?", // plain text body
+//     html: "<p>This is a test!</p>" // html body
+//   });
+
+//   console.log("Message sent: %s", info.messageId);
+//   // Preview only available when sending through an Ethereal account
+//   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+// }
+// main().catch(console.error);
 
 // PG database client/connection setup
 const { Pool } = require('pg');
