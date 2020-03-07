@@ -4,7 +4,7 @@ $(() => {
   let currentUser = null;
   function addNewCatForm(user) {
     currentUser = user;
-     let newCatForm = `<form action="/" method="post" id="new-cat-form" class="new-cat-form">
+     let $newCatForm = `<form action="/" method="post" id="new-cat-form" class="new-cat-form">
       <p>Create new</p>
       <fieldset class="new-cat-form__field-wrapper">
         <label for="new-name-form__name">Name</label>
@@ -18,7 +18,7 @@ $(() => {
 
       <fieldset class="new-cat-form__field-wrapper">
         <label for="new-cat-form__description">Description</label>
-        <textarea placeholder="Add your description here" name="description" id="cat-form__description" cols="30" rows="10"></textarea>
+        <textarea placeholder="Add your description here" name="description" id="cat-form__description" cols="50" rows="10"></textarea>
       </fieldset>
 
       <div class="new-cat-form__field-wrapper">
@@ -68,7 +68,7 @@ $(() => {
 
     </form>`;
     if(user.isAdmin) {
-      $pageHeader.append(newCatForm);
+      $pageHeader.append($newCatForm);
     }
 
   }
@@ -76,7 +76,7 @@ $(() => {
 
   //window.header.addNewCatForm = addNewCatForm;
   let user1 = {
-    isAdmin: true,
+    isAdmin: false,
     name: "Luba"
   };
 

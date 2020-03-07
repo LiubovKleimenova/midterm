@@ -27,6 +27,6 @@ $(() => {
   // }
   // window.propertyListings.addProperties = addProperties;
 
-  const $pageMain = $("main");
+  const $main = $("main");
   $pageMain.append($catListings);
 });

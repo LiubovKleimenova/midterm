@@ -15,9 +15,7 @@ $(() => {
         <li class="user-link home-button">
           Home page
         </li>
-        <li class="user-link search-button">
-          Search
-        </li>
+
         <li class="user-link favourites-button">
           Favourites
         </li>
@@ -38,9 +36,7 @@ $(() => {
         <li class="user-link home-button">
           Home page
         </li>
-        <li class="user-link search-button">
-          Search
-        </li>
+
         <li class="user-link favourites-button">
           Favourites
         </li>
@@ -78,6 +74,8 @@ $(() => {
 
    $("header").on("click", ".favourites-button", function() {
      catListings.clearCats();
+
+
   //   getAllReservations()
   //     .then(function(json) {
   //       propertyListings.addProperties(json.reservations, true);
