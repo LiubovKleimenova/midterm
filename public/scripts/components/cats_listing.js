@@ -1,32 +1,32 @@
 $(() => {
-  const $catListings = $(`
+          const $catListings = $(`
     <section class="cats-container">
     <p>TEST</p>
     </section>
   `);
 
-  window.$catListings = $catListings;
-  window.catListings = {};
+          window.$catListings = $catListings;
+          window.catListings = {};
 
-  function addCat(newCat) {
-    $catListings.append(newCat);
-  }
+          function addCat(newCat) {
+            $catListings.append(newCat);
+          }
 
-  function clearCats() {
-    $catListings.empty();
-  }
-  window.catListings.clearCats = clearCats;
+          function clearCats() {
+            $catListings.empty();
+          }
+          window.catListings.clearCats = clearCats;
 
-  // function addProperties(properties, isReservation = false) {
-  //   clearListings();
-  //   for (const propertyId in properties) {
-  //     const property = properties[propertyId];
-  //     const listing = propertyListing.createListing(property, isReservation);
-  //     addListing(listing);
-  //   }
-  // }
-  // window.propertyListings.addProperties = addProperties;
+          // function addCats(cats) {
+          //   clearCats();
+          //   for (const catId in cats) {
+          //     const cat = cats[catId];
+          //     const listing = catListing.createListing(property, isReservation);
+          //     addListing(listing);
+          //   }
+          // }
+          // window.propertyListings.addProperties = addProperties;
 
-  const $main = $("main");
-  $pageMain.append($catListings);
-});
+          const $main = $("main");
+          $main.append($catListings);
+        });
