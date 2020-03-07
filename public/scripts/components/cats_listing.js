@@ -17,15 +17,15 @@ $(() => {
           }
           window.catListings.clearCats = clearCats;
 
-          // function addCats(cats) {
-          //   clearCats();
-          //   for (const catId in cats) {
-          //     const cat = cats[catId];
-          //     const listing = catListing.createListing(property, isReservation);
-          //     addListing(listing);
-          //   }
-          // }
-          // window.propertyListings.addProperties = addProperties;
+          function addCats(cats) {
+            clearCats();
+            for (const catId in cats) {
+              const cat = cats[catId];
+              const listing = catListing.createListing(property, isReservation);
+              addListing(listing);
+            }
+          }
+          window.catListings.addCats = addCats;
 
           const $main = $("main");
           $main.append($catListings);

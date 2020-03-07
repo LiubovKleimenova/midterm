@@ -28,10 +28,16 @@ $(() => {
           <li>Size: ${cat.size}</li>
           <li>Description: ${cat.description}</li>
         </ul>
-        <footer class="cat-listing__footer">
+        <div class="cat-listing__availability">
           <div class="cat-listing__price">$${cat.fee}</div>
           <div class="cat-listing__availability">${cat.isAvailable}</div>
-        </footer>
+        </div>
+        <div>
+        <form>
+          <textarea class="message"></textarea>
+          <input type="email" class="users-mail">
+          <button type="submit">Send message</button>
+        </form>
       </section>
     </article>
     `;
