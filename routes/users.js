@@ -18,33 +18,23 @@ module.exports = (databaseHelperFunctions) => {
     .catch(err => res.status(500).send(err))
   });
 
-    // Only users favourite cats are displayed when user requests favourites
-    // router.get("/userId", (req, res) => {
-    //   console.log('IT WORKS');
-    //   db.query(`
-    //   SELECT *
-    //   FROM favourites
-    //   WHERE user_id = $1;
-    //   `, [${}])
-    //     .then(data => {
-    //       const cats = data.rows[0];
-    //       res.json({ cats });
-    //     })
-    //     .catch(err => {
-    //       res
-    //         .status(500)
-    //         .json({ error: err.message });
-    //     });
-    // });
-
-
-  router.get("/", (req, res) => {
+  // Only favourite cats are displayed when the 'show favourites' button is clicked
+  router.get("/favourites", (req, res) => {
     console.log('IT WORKS');
-    databaseHelperFunctions.getAllUsers()
-      .then(data => res.json(data))
-      .catch(err => res.status(500).send(err))
+    databaseHelperFunctions.getFavourites()
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err))
   });
 
+  // Only filtered cats are displayed
+  router.get('/filteredCats', (req, res) => {
+    databaseHelperFunctions.filterBySearch(req.query)
+    .then(cats => res.send({cats}))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
+  });
 
   return router;
 };
