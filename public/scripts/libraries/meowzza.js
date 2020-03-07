@@ -17,18 +17,27 @@ const loadCats = function() {
 
 
 const renderCats = function (cats) {
+  console.log(cats)
+
   // const catListings = cats.map(cat => Meowza.createListing(cat))
   console.log('rendercats invoked');
+
   const $catListings = $(`
     <section class="cats-container">
       <h1>hello</h1>
 
     </section>
+
+
   `);
+  console.log()
 
-  // cats.forEach(cat => {
+  cats.forEach(cat => {
+    console.log(`I'm a cat`)
+    console.log(cat)
 
-  // });
+    $catListings.append(Meowza.createListing(cat));
+  });
 
   $("main").append($catListings);
 

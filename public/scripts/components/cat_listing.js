@@ -1,4 +1,5 @@
 window.Meowza.createListing = (cat) => {
+  console.log(`createListing invoked`)
   return `
   <article class="cats-listing">
     <div class="cat_listing__interaction">
