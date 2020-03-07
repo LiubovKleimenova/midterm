@@ -13,5 +13,14 @@ module.exports = (db) => {
     // .catch(err => console.error('query error', err.stack));
   }
 
-  return {getAllCats, getAllUsers};
+  const getFavourites = function () {
+    return db.query(`
+    SELECT * FROM cats
+    JOIN favourites ON cats.id = cat_id
+    WHERE owner_id = 2;`)
+    .then(res => res.rows )
+  }
+
+
+  return {getAllCats, getAllUsers, getFavourites};
 };
