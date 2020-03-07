@@ -9,19 +9,45 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+
+  // All cats are displayed when the user arrives on main page
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    console.log('IT WORKS');
+    databaseHelperFunctions.getAllCats()
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err))
   });
+
+  // Only favourite cats are displayed when the 'show favourites' button is clicked
+  router.get("/favourites", (req, res) => {
+    console.log('IT WORKS');
+    databaseHelperFunctions.getFavourites()
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err))
+  });
+
+  // Only filtered cats are displayed
+  router.get('/filteredCats', (req, res) => {
+    databaseHelperFunctions.filterBySearch(req.query)
+    .then(cats => res.send({cats}))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
+  });
+
+  // Only renders Admin's own cats
+
+  router.get('/mycats', (req, res) => {
+    databaseHelperFunctions.getMyCats(req.query)
+    .then(cats => res.send({cats}))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
+  });
+
+
+
   return router;
 };
