@@ -86,11 +86,22 @@
       </fieldset>
       <button type="submit">Filter</button>
     </form>
-    <!-- <section class="cats-container">
+    <section class="cats-container">
     <article class="cats-listing">
-      <section class="cats-listing__preview-image">
+      <div class="cat_listing__interaction">
+        <button type="button" class="cat_listing__interaction-button add-to-favourites">
+          add to favourites
+          <img src="" alt="add to favourites" width="20" height="20">
+        </button>
+        <button type="button" class="cat_listing__interaction-button contact-button>
+          contact the seller
+          <img src="" alt="add to favourites" width="20" height="20">
+        </button>
+      </div>
+      <div class="cats-listing__preview-image">
         <img src="${cat.thumbnail_photo_url}" alt="cat's photo">
-      </section>
+      </div>
+
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
         <ul class="cat-listing__details">
@@ -107,7 +118,7 @@
         </footer>
       </section>
     </article>
-  </section> -->
+  </section>
   </main>
   <footer>
     <h3>Meowzza</h3>
