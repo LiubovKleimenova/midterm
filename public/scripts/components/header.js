@@ -13,6 +13,7 @@ $(() => {
       <nav class="user-nav">
       <ul class="user-links">
         <li class="user-link home-button">
+
           Home page
         </li>
 
@@ -73,7 +74,8 @@ $(() => {
   // });
 
    $("header").on("click", ".favourites-button", function() {
-     catListings.clearCats();
+     window.Meowza.catListings.empty();
+     loadFavouriteCats();
 
 
   //   getAllReservations()

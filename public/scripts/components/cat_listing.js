@@ -16,7 +16,7 @@ window.Meowza.createListing = (cat) => {
       </button>
     </div>
     <div class="cats-listing__preview-image">
-      <img src="${cat.thumbnail_photo_url}" alt="cat's photo">
+      <img src="${cat.main_photo_url}" alt="cat's photo" width="100" height="100">
     </div>
 
     <section class="cat-listing__details">
