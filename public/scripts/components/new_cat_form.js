@@ -21,13 +21,6 @@ $(() => {
         <textarea placeholder="Add your description here" name="description" id="cat-form__description" cols="50" rows="10"></textarea>
       </fieldset>
 
-      <div class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__gender">Gender</label>
-        <select id="new-cat-form__gender" name="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
 
       <div class="new-cat-form__field-wrapper">
         <label for="new-cat-form__birth-date">Date of birth</label>
@@ -37,11 +30,15 @@ $(() => {
         <input placeholder="Puma" type="text" name="species" id="new-cat-form__species">
 
         <label for="new-cat-form__size">Size</label>
-        <input placeholder="" type="text" name="size" id="new-cat-form__size">
+        <select id="new-cat-form__size" name="size">
+          <option name="size" value="s">S</option>
+          <option name="size" value="m">M</option>
+          <option name="size" value="l">L</option>
+        </select>
       </div>
 
       <div class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__region">Gender</label>
+        <label for="new-cat-form__region">Region</label>
         <select id="new-cat-form__region" name="region">
           <option name="region" value="asia">Asia</option>
           <option name="region" value="europe">Europe</option>
@@ -76,7 +73,7 @@ $(() => {
 
   //window.header.addNewCatForm = addNewCatForm;
   let user1 = {
-    isAdmin: false,
+    isAdmin: true,
     name: "Luba"
   };
 

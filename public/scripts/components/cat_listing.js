@@ -1,5 +1,8 @@
 window.Meowza.createListing = (cat) => {
-  console.log(`createListing invoked`)
+  let avalMessage = ''
+  if (!cat.is_available) {
+    avalMessage = 'SOLD';
+  }
   return `
   <article class="cats-listing">
     <div class="cat_listing__interaction">
@@ -19,8 +22,7 @@ window.Meowza.createListing = (cat) => {
     <section class="cat-listing__details">
       <h3 class="cat-listing__name">${cat.name}</h3>
       <ul class="cat-listing__details">
-        <li>Age: ${cat.age}</li>
-        <li>Gender: ${cat.gender}</li>
+        <li>Age: ${date - Number(cat.birthdate.slice(0, 4))} years</li>
         <li>Region: ${cat.region}</li>
         <li>Species: ${cat.species}</li>
         <li>Size: ${cat.size}</li>
