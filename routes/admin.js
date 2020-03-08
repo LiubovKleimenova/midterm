@@ -47,7 +47,16 @@ module.exports = (db) => {
     });
   });
 
+  // route to handle email posts
+  router.post('/send', (req, res) => {
+    if (!req.body.text) {
+      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      return;
+    }
 
+    const { to, subject, text } = req.body;
+    databaseHelperFunctions.sendEmail(to, subject, text);
+  });
 
   return router;
 };
