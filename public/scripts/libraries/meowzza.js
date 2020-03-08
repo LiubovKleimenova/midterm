@@ -14,24 +14,18 @@ const loadCats = function() {
   });
 };
 
-
-
+let today = new Date();
+let date = today.getFullYear();
 const renderCats = function (cats) {
-  // const catListings = cats.map(cat => Meowza.createListing(cat))
-  console.log('rendercats invoked');
-  const $catListings = $(`
+    const $catListings = $(`
     <section class="cats-container">
-      <h1>hello</h1>
-
     </section>
   `);
-
-  // cats.forEach(cat => {
-
-  // });
-
+  cats.forEach(cat => {
+    console.log(cat)
+    $catListings.append(Meowza.createListing(cat));
+  });
   $("main").append($catListings);
-
 };
 
 
