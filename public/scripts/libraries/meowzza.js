@@ -1,11 +1,16 @@
+window.Meowza = {};
+
+window.Meowza.user1 = {
+  isAdmin: true,
+  name: "Luba"
+};
+
 $(document).ready(() => {
+  Meowza.update(Meowza.user1);
   loadCats();
-  // $('.favourites-button').on("click", function(event) {
-  //   window.Meowza.catListings.empty();
-  //   loadFavouriteCats();
-  // })
+  Meowza.addNewCatForm(Meowza.user1);
+
 });
-window.Meowza = {}
 console.log({ meowza: window.Meowza })
 
 const loadCats = function() {
@@ -32,6 +37,18 @@ const loadFavouriteCats = function() {
   });
 };
 
+const loadMyCats = function() {
+  console.log("loadcats invoked");
+  $.ajax({
+    url: `/admin/mycats`,
+    type: "GET",
+    dataType: "JSON",
+    success: response => {
+      renderCats(response);
+    }
+  });
+};
+
 let today = new Date();
 let date = today.getFullYear();
 
@@ -40,7 +57,9 @@ const renderCats = function (cats) {
     <section class="cats-container">
     </section>
   `);
+
   window.Meowza.catListings = $catListings;
+
   cats.forEach(cat => {
     console.log(cat)
     $catListings.append(Meowza.createListing(cat));

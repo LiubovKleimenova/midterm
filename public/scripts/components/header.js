@@ -1,4 +1,4 @@
-$(() => {
+
   window.header = {};
 
   const $pageHeader = $(".page-header");
@@ -59,14 +59,9 @@ $(() => {
     $pageHeader.append(userNav);
   }
 
-  window.header.update = updateHeader;
+  window.Meowza.update = updateHeader;
 
-  let user1 = {
-    isAdmin: true,
-    name: "Luba"
-  };
-
-  updateHeader(user1);
+  //updateHeader(user1);
 
 
   // getMyDetails().then(function(json) {
@@ -76,6 +71,19 @@ $(() => {
    $("header").on("click", ".favourites-button", function() {
      window.Meowza.catListings.empty();
      loadFavouriteCats();
+   })
+
+   $("header").on("click", ".home-button", function() {
+     window.Meowza.catListings.empty();
+     loadCats();
+   });
+
+   $("header").on("click", ".owner-button", function() {
+     window.Meowza.catListings.empty();
+     loadMyCats();
+   });
+
+
 
 
   //   getAllReservations()
@@ -119,5 +127,5 @@ $(() => {
 
   // $("header").on("click", ".create_listing_button", function() {
   //   views_manager.show("newProperty");
-  });
-});
+  // });
+
