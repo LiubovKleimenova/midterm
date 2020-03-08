@@ -1,4 +1,10 @@
-$(document).ready(() => loadCats());
+$(document).ready(() => {
+  loadCats();
+  // $('.favourites-button').on("click", function(event) {
+  //   window.Meowza.catListings.empty();
+  //   loadFavouriteCats();
+  // })
+});
 window.Meowza = {}
 console.log({ meowza: window.Meowza })
 
@@ -14,13 +20,27 @@ const loadCats = function() {
   });
 };
 
+const loadFavouriteCats = function() {
+  console.log("loadcats invoked");
+  $.ajax({
+    url: `/users/favourites`,
+    type: "GET",
+    dataType: "JSON",
+    success: response => {
+      renderCats(response);
+    }
+  });
+};
+
 let today = new Date();
 let date = today.getFullYear();
+
 const renderCats = function (cats) {
     const $catListings = $(`
     <section class="cats-container">
     </section>
   `);
+  window.Meowza.catListings = $catListings;
   cats.forEach(cat => {
     console.log(cat)
     $catListings.append(Meowza.createListing(cat));
