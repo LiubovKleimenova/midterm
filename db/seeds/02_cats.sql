@@ -6,7 +6,7 @@ VALUES
   ),
   (2, 'Chester & Rusty', 'brothers - must be donated together!', '../../public/assets/cheetah_cubs.jpg', 568000, 'Africa', '2019-04-20', 'l', 'cheetah', TRUE
   ),
-  (2, 'Ronaldo', 'Enjoys the company of crocodiles', '../../public/assets/jaguar_cub.jpg', 368000, 'South America', '2019-06-15', 'l', 'jaguar', TRUE
+  (2, 'Princess', 'Enjoys the company of crocodiles', '../../public/assets/jaguar_cub.jpg', 368000, 'South America', '2019-06-15', 'l', 'jaguar', TRUE
   ),
   (3, 'Furious George', 'Loves to cuddle', '../../public/assets/tiger2.png', 500, 'Asia', '2008-11-09', 'l', 'tiger', TRUE
   ),
