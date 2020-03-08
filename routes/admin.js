@@ -21,7 +21,7 @@ module.exports = (db) => {
   // Only favourite cats are displayed when the 'show favourites' button is clicked
   router.get("/favourites", (req, res) => {
     console.log('IT WORKS');
-    databaseHelperFunctions.getFavourites()
+    databaseHelperFunctions.getFavouritesAdmin()
     .then(data => res.json(data))
     .catch(err => res.status(500).send(err))
   });
@@ -29,22 +29,16 @@ module.exports = (db) => {
   // Only filtered cats are displayed
   router.get('/filteredCats', (req, res) => {
     databaseHelperFunctions.filterBySearch(req.query)
-    .then(cats => res.send({cats}))
-    .catch(e => {
-      console.error(e);
-      res.send(e)
-    });
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err))
   });
 
   // Only renders Admin's own cats
 
   router.get('/mycats', (req, res) => {
     databaseHelperFunctions.getMyCats(req.query)
-    .then(cats => res.send({cats}))
-    .catch(e => {
-      console.error(e);
-      res.send(e)
-    });
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err))
   });
 
   // route to handle email posts
@@ -60,3 +54,13 @@ module.exports = (db) => {
 
   return router;
 };
+
+ // Only renders Admin's message history, in this case it is hard coded to search the database for messages pertaining to cat_id= 3, and admin is defined as sender/reciever ID 1
+
+router.get('/myMessages', (req, res) => {
+  databaseHelperFunctions.getMessages(req.query)
+  .then(data => res.json(data))
+  .catch(err => res.status(500).send(err))
+});
+
+

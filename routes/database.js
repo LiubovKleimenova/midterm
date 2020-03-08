@@ -11,7 +11,7 @@ module.exports = (db) => {
     .then(res => res.rows[0] )
     // .catch(err => console.error('query error', err.stack));
   }
-  const getFavourites = function () {
+  const getFavouritesUser = function () {
     return db.query(`
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
@@ -53,20 +53,40 @@ module.exports = (db) => {
     return db.query(queryString, queryParams)
     .then(res => res.rows);
   }
+
+  const createMsgPost = function (message) {
+    return db.query(`
+    INSERT INTO messages (receiver_id, cat_id, sender_id, message)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+    `, [message.receiver_id, message.cat_id, message.message])
+    .then(res => res.rows )
+  }
+
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ************
   const getMyCats = function () {
     return db.query(`
     SELECT * FROM cats
-    WHERE owner_id = 2;`)
+    WHERE owner_id = 1;`)
     .then(res => res.rows )
 }
 const getMessages = function () {
   return db.query(`
-  SELECT * FROM cats
-  WHERE owner_id = 2;`)
+  SELECT * FROM messages
+  WHERE cat_id = 3
+  AND receiver_id =1 OR sender_id= 1;`)
   .then(res => res.rows )
 }
-// email sending function
+const getFavouritesAdmin = function () {
+  return db.query(`
+  SELECT * FROM cats
+  JOIN favourites ON cats.id = cat_id
+  WHERE favourites.user_id = 1;`)
+  .then(res => res.rows )
+}
+
+// *********** HELPER FUNCTIONS FOR SENDING EMAILS ************
+
 // async..await is not allowed in global scope, must use a wrapper
 async function sendEmail(to, subject, text) {
   // create reusable transporter object for host configuration
@@ -89,6 +109,6 @@ async function sendEmail(to, subject, text) {
   });
   console.log("Message sent: %s", info.messageId);
 }
-  return {getAllCats, getAllUsers, getFavourites, filterBySearch, getMessages, getMyCats, sendEmail};
+  return {getAllCats, getAllUsers, getFavouritesAdmin, filterBySearch, getMessages, getMyCats, sendEmail, getFavouritesUser, createMsgPost};
 };
 
