@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Cats</title>
+  <title>Meowzza!</title>
 
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -25,29 +25,31 @@
 
 <body>
   <header class="page-header">
-    <h1 class="visually-hidden">Exotic cats</h1>
+    <h1 class="visually-hidden">Meowzza!</h1>
     <img class="app-logo" src="" alt="" width="" height="">
     <section class="new-listing"></section>
-
-    </section>
   </header>
   <main>
 <!-- test button -->
-<button class="mdc-button">
+<!-- <button class="mdc-button">
   <div class="mdc-button__ripple"></div>
   <span class="mdc-button__label">Button</span>
-</button>
+</button> -->
 
-    <form action="/users/filteredCats" method="GET" class="filters-form">
+    <form action="/users/filteredCats" method="get" class="filters-form">
       <h2>Filter</h2>
       <fieldset>
         <legend>Adoption fee</legend>
+        <div class="mdc-form-field">
+          <input type="number" name="minimum_fee" id="minimum_fee">
+        </div>
         <label for="minimum_fee">from</label>
-        <input type="number" name="minimum_fee" id="minimum_fee">
+        <div class="mdc-form-field">
+          <input type="number" name="maximum_fee" id="maximum_fee">
+        </div>
         <label for="maximum_fee">to</label>
-        <input type="number" name="maximum_fee" id="maximum_fee">
       </fieldset>
-      <!-- <fieldset>
+      <fieldset>
         <label for="region">Region</label>
         <select name="region" id="region">
           <option value="Asia" name="region">Asia</option>
@@ -56,8 +58,11 @@
           <option value="NorthAmerica" name="region">North America</option>
           <option value="SouthAmerica" name="region">South America</option>
         </select>
-      </fieldset> -->
-      <button type="submit">Filter</button>
+      </fieldset>
+      <button type="submit" class="mdc-button">
+        <div class="mdc-button__ripple"></div>
+        Filter
+      </button>
     </form>
 
 
@@ -66,7 +71,7 @@
     </section>
   </main>
   <footer>
-    <h3>Meowzza</h3>
+    <h3>&copy; Meowzza</h3>
     <p>2020</p>
     <div class="copyright">Ata, Steven, Luba</div>
   </footer>
@@ -75,7 +80,7 @@
   <script src="scripts/components/cat_listing.js"></script>
   <script src="scripts/components/header.js"></script>
   <script src="scripts/components/new_cat_form.js"></script>
-  <!-- <script src="scripts/components/cats_listing.js"></script> -->
+  <script src="scripts/components/cats_listing.js"></script>
 </body>
 
 </html>

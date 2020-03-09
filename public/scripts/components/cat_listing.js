@@ -6,17 +6,17 @@ window.Meowza.createListing = (cat) => {
   return `
   <article class="cats-listing">
     <div class="cat_listing__interaction">
-      <button type="button" class="cat_listing__interaction-button add-to-favourites">
-
-        <img src="" alt="add to favourites" width="20" height="20">
+      <button type="button" class="mdc-button cat_listing__interaction-button add-to-favourites">
+        <div class="mdc-button__ripple"></div>
+        Add to Favourites
       </button>
-      <button type="button" class="cat_listing__interaction-button contact-button">
-
-        <img src="" alt="contact the seller" width="20" height="20">
+      <button type="button" class="mdc-button cat_listing__interaction-button contact-button">
+      <div class="mdc-button__ripple"></div>
+        Contact Seller
       </button>
     </div>
     <div class="cats-listing__preview-image">
-      <img src="${cat.main_photo_url}" alt="cat's photo" width="100" height="100">
+      <img src="${cat.main_photo_url}" alt="cat's photo" width="150" height="150">
     </div>
 
     <section class="cat-listing__details">
@@ -36,7 +36,10 @@ window.Meowza.createListing = (cat) => {
       <form>
         <textarea class="message"></textarea>
         <input type="email" class="users-mail">
-        <button type="submit">Send message</button>
+        <button type="submit" class="mdc-button">
+          <div class="mdc-button__ripple"></div>
+          Send message
+        </button>
       </form>
     </section>
   </article>

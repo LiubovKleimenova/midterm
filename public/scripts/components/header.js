@@ -1,9 +1,9 @@
 
+
 window.header = {};
 
 const $pageHeader = $("header");
 const $newListing = $(".new-listing");
-
 
 
 function updateHeader(user) {
