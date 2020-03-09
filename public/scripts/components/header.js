@@ -34,7 +34,7 @@ function updateHeader(user) {
         </form>
         </li>`;
     } else {
-      if (!user.isAdmin) {
+      if (!user.is_admin) {
         usersLinks = `
           <li>Hi, ${user.name}</li>
           <li>Log out</li>
@@ -54,8 +54,10 @@ function updateHeader(user) {
     }
     //console.log(usersLinks)
     $(".user-links").append(usersLinks);
+    //Meowza.addNewCatForm(user);
   }
   updateUserLinks(user);
+
 }
 
   window.Meowza.update = updateHeader;

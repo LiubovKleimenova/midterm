@@ -14,33 +14,30 @@ const getUser = () => {
     type: "POST",
     data: $(".login-form").serialize(),
     success: response => {
-      console.log(response);
+      //console.log(response);
       window.Meowza.user = response;
       console.log(window.Meowza.user);
       Meowza.update(Meowza.user);
+      Meowza.addNewCatForm(Meowza.user);
     }
   });
 }
 
 
 $(document).ready(() => {
-  console.log("ready")
   Meowza.update(Meowza.user);
   loadCats();
-  //Meowza.addNewCatForm(Meowza.user);
-  console.log($(".login-form"));
   $(document).on("submit", ".login-form", e => {
-    console.log("test");
     console.log(e);
-    console.log($("#login").serialize());
     e.preventDefault();
     getUser();
+
   });
 });
-console.log({ meowza: window.Meowza })
+//console.log({ meowza: window.Meowza })
 
 const loadCats = () => {
-  console.log('loadcats invoked');
+  //console.log('loadcats invoked');
   $.ajax({
     url: `/users/`,
     type: "GET",

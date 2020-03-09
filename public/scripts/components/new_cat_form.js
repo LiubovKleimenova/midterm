@@ -61,7 +61,7 @@ function addNewCatForm(user) {
       </div>
 
     </form>`;
-  if (user.isAdmin) {
+  if (user.is_admin) {
     $pageHeader.append($newCatForm);
   }
 }
