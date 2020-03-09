@@ -1,7 +1,33 @@
 header {
-  position: relative;
+  // display: flex;
   background-color: #D8D8D8;
   background-image: url('/assets/wildlife-photographer-year-2018-3.jpg');
-  background-size: 100vw;
+  width: 100%;
   background-position: cover;
+  background-repeat: no-repeat;
+  color: #ffffff;
+
+  h1 {
+    color: #94d4e6;
+    margin: 0;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    li {
+      margin-left: 2em;
+    }
+  }
+
+  .user-links {
+    align-items: right;
+  }
 }

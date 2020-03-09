@@ -12,22 +12,28 @@
     if (!user.isAdmin) {
       userNav = `
       <nav class="user-nav">
-      <ul class="user-links">
-        <li class="user-link home-button">
-
-          Home page
-        </li>
-        <li class="user-link favourites-button">
-          Favourites
-        </li>
-      </ul>
-      <ul class="auth-links">
-        <li>Hi, ${user.name}</li>
-        <li>Log out</li>
-      </ul>
       <div>
-        <img class="user-avatar" src="" alt="" width="" height="">
+        <ul class="user-links">
+          <li class="user-link home-button">
+            <a href="#">Home page</a>
+          </li>
+          <li class="user-link favourites-button">
+          <a>Favourites</a>
+          </li>
+        </ul>
       </div>
+      <div>
+        <ul class="auth-links">
+          <li>Hi, ${user.name}</li>
+          <button class="mdc-button">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Log Out</span>
+          </button>
+        </ul>
+        <div>
+          <img class="user-avatar" src="" alt="" width="" height="">
+        </div>
+      <div>
     </nav>
       `;
     } else {
