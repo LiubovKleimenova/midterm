@@ -68,13 +68,14 @@ const renderCats = cats => {
 
 const loadFilteredCats = () => {
   console.log("loadFilteredCats invoked");
+  console.log($(".filters-form").serialize());
   $.ajax({
     url: `/users/filteredCats`,
     type: "GET",
     //dataType: "JSON",
     data: $(".filters-form").serialize(),
     success: response => {
-      renderCats(response);
+      renderCats(response.cats);
     }
   });
 };
@@ -82,7 +83,7 @@ const loadFilteredCats = () => {
 
 $(".filters-form").submit((e) => {
   console.log(e);
-  //e.preventDefault();
+  e.preventDefault();
   console.log("filtered");
   window.Meowza.catListings.empty();
   loadFilteredCats();
