@@ -22,7 +22,8 @@ module.exports = (databaseHelperFunctions) => {
   // Only favourite cats are displayed when the 'show favourites' button is clicked
   router.get("/favourites", (req, res) => {
     console.log('IT WORKS');
-    databaseHelperFunctions.getFavouritesUser()
+    userid =  req.session.userId
+    databaseHelperFunctions.getFavourites(userid)
     .then(data => res.json(data))
     .catch(err => res.status(500).send(err))
   });
