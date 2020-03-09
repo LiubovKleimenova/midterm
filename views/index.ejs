@@ -59,11 +59,10 @@
   </header>
   <main>
 <!-- test button -->
-<button class="mdc-button">
+<!-- <button class="mdc-button">
   <div class="mdc-button__ripple"></div>
   <span class="mdc-button__label">Button</span>
-</button>
-
+</button> -->
     <form action="" method="get" class="filters-form">
       <h2>Filter</h2>
       <fieldset>
@@ -75,18 +74,21 @@
       </fieldset>
       <fieldset>
         <legend>Origin</legend>
-        <input type="checkbox" id="Asia" name="Asia" value="Asia" checked>
+        <input type="checkbox" class="mdc-checkbox__native-control" id="Asia" name="Asia" value="Asia" checked>
         <label for="name">Asia</label>
-        <input type="checkbox" id="Europe" name="Europe" value="Europe" checked>
+        <input type="checkbox" class="mdc-checkbox__native-control" id="Europe" name="Europe" value="Europe" checked>
         <label for="name">Europe</label>
-        <input type="checkbox" id="Africa" name="Africa" value="Africa" checked>
+        <input type="checkbox" class="mdc-checkbox__native-control" id="Africa" name="Africa" value="Africa" checked>
         <label for="name">Africa</label>
-        <input type="checkbox" id="SouthAmerica" name="SouthAmerica" value="SouthAmerica" checked>
+        <input type="checkbox" class="mdc-checkbox__native-control" id="SouthAmerica" name="SouthAmerica" value="SouthAmerica" checked>
         <label for="name">South America</label>
-        <input type="checkbox" id="NorthAmerica" name="NorthAmerica" value="NorthAmerica" checked>
+        <input type="checkbox" class="mdc-checkbox__native-control" id="NorthAmerica" name="NorthAmerica" value="NorthAmerica" checked>
         <label for="name">North America</label>
       </fieldset>
-      <button type="submit" class="mdc-button mdc-button__ripple">Filter</button>
+      <button type="submit" class="mdc-button">
+        <div class="mdc-button__ripple"></div>
+        Filter
+      </button>
     </form>
     <section class="cats-container">
     <!-- <article class="cats-listing">
