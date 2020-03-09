@@ -5,7 +5,7 @@ function addNewCatForm(user) {
       <p>Create new</p>
       <fieldset class="new-cat-form__field-wrapper">
         <label for="new-name-form__name">Name</label>
-        <input type="text" name="name" placeholder="Fluffy" id="new-cat-form__name">
+        <input type="text" name="cat_name" placeholder="Fluffy" id="new-cat-form__name">
       </fieldset>
 
       <fieldset>
