@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
+module.exports = (databaseHelperFunctions) => {
 
   // All cats are displayed when the user arrives on main page
   router.get("/", (req, res) => {
