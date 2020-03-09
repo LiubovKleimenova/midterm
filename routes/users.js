@@ -29,30 +29,12 @@ module.exports = (databaseHelperFunctions) => {
 
   // Only filtered cats are displayed
   router.get('/filteredCats', (req, res) => {
-    console.log('filter by ');
     console.log(req.query);
     databaseHelperFunctions.filterBySearch(req.query)
-    .then(data => res.json(data))
+    .then(cats => res.send({cats}))
     .catch(err => res.status(500).send(err))
   });
 
-  // Allows users to login and Logout
-
-  router.post('/login', (req, res) => {
-    const {userId} = req.body;
-    databaseHelperFunctions.login(userId)
-      .then(user => {
-        console.log(user[0].id)
-        req.session.userId = user[0].id;
-        res.json(user)
-      })
-      .catch(e => res.send(e));
-  });
-
-  router.post('/logout', (req, res) => {
-    req.session.userId = null;
-    res.send({});
-  });
 
   // Allows user to post messages
 

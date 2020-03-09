@@ -8,21 +8,7 @@ window.Meowza.user1 = {
 $(document).ready(() => {
   Meowza.update(Meowza.user1);
   loadCats();
-
   Meowza.addNewCatForm(Meowza.user1);
-
-  $(".filters-form").submit(() => {
-    console.log("filtered");
-    $.ajax({
-      url: `/users/filteredCats`,
-      type: "GET",
-      //dataType: "JSON",
-      success: response => {
-        renderCats(response);
-      }
-    });
-  });
-
 });
 console.log({ meowza: window.Meowza })
 
@@ -66,11 +52,11 @@ let today = new Date();
 let date = today.getFullYear();
 
 const renderCats = cats => {
-    const $catListings = $(`
-    <section class="cats-container">
-    </section>
+  const $catListings = $(`
+  <section class="cats-container">
+  </section>
   `);
-
+  console.log(cats);
   window.Meowza.catListings = $catListings;
 
   cats.forEach(cat => {
@@ -80,6 +66,26 @@ const renderCats = cats => {
   $("main").append($catListings);
 };
 
+const loadFilteredCats = () => {
+  console.log("loadFilteredCats invoked");
+  $.ajax({
+    url: `/users/filteredCats`,
+    type: "GET",
+    //dataType: "JSON",
+    data: $(".filters-form").serialize(),
+    success: response => {
+      renderCats(response);
+    }
+  });
+};
 
+
+$(".filters-form").submit((e) => {
+  console.log(e);
+  //e.preventDefault();
+  console.log("filtered");
+  window.Meowza.catListings.empty();
+  loadFilteredCats();
+});
 
 

@@ -28,7 +28,7 @@
   <main>
 
 
-    <form action="users/filteredCats" method="GET" class="filters-form">
+    <form action="/users/filteredCats" method="GET" class="filters-form">
       <h2>Filter</h2>
       <fieldset>
         <legend>Adoption fee</legend>
@@ -37,19 +37,16 @@
         <label for="maximum_fee">to</label>
         <input type="number" name="maximum_fee" id="maximum_fee">
       </fieldset>
-      <fieldset>
-        <legend>Origin</legend>
-        <input type="checkbox" id="Asia" name="Asia" value="Asia" >
-        <label for="Asia">Asia</label>
-        <input type="checkbox" id="Europe" name="Europe" value="Europe" >
-        <label for="Europe">Europe</label>
-        <input type="checkbox" id="Africa" name="Africa" value="Africa" >
-        <label for="Africa">Africa</label>
-        <input type="checkbox" id="SouthAmerica" name="SouthAmerica" value="SouthAmerica" >
-        <label for="SouthAmerica">South America</label>
-        <input type="checkbox" id="NorthAmerica" name="NorthAmerica" value="NorthAmerica" >
-        <label for="NorthAmerica">North America</label>
-      </fieldset>
+      <!-- <fieldset>
+        <label for="region">Region</label>
+        <select name="region" id="region">
+          <option value="Asia" name="region">Asia</option>
+          <option value="Europe" name="region">Europe</option>
+          <option value="Africa" name="region">Africa</option>
+          <option value="NorthAmerica" name="region">North America</option>
+          <option value="SouthAmerica" name="region">South America</option>
+        </select>
+      </fieldset> -->
       <button type="submit">Filter</button>
     </form>
 
