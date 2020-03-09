@@ -11,13 +11,15 @@ module.exports = (db) => {
     .then(res => res.rows[0] )
     // .catch(err => console.error('query error', err.stack));
   }
-  const getFavouritesUser = function () {
+  const getFavourites = function (userId) {
     return db.query(`
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
-    WHERE favourites.user_id = 2;`)
+    WHERE favourites.user_id = $1
+    `, [userId])
     .then(res => res.rows )
   }
+
   const filterBySearch = function(options) {
     const queryParams = [];
     const whereClauses = [];
@@ -27,8 +29,14 @@ module.exports = (db) => {
     `;
   if (options.minimum_fee && options.maximum_fee) {
     queryParams.push(`${options.minimum_fee}`);
-    queryParams.push(`${options.options.maximum_fee}`);
+    queryParams.push(`${options.maximum_fee}`);
     whereClauses.push(`fee >= $${queryParams.length - 1} AND fee <= $${queryParams.length} `);
+  } else if (options.minimum_fee) {
+    queryParams.push(`${options.minimum_fee}`);
+    whereClauses.push(`fee >= $${queryParams.length}`);
+  } else if (options.maximum_fee) {
+    queryParams.push(`${options.maximum_fee}`);
+    whereClauses.push(`fee <= $${queryParams.length} `);
   }
   if (options.region) {
     queryParams.push(`%${options.region}%`);
@@ -38,10 +46,11 @@ module.exports = (db) => {
     queryParams.push(options.size);
     whereClauses.push(`size = $${queryParams.length} `);
   }
-  if (options.species) {
-    queryParams.push(`${options.species}`);
-    whereClauses.push(`species >= $${queryParams.length}`);
-  }
+  // **** Uncomment if we want to filter by species ****
+  // if (options.species) {
+  //   queryParams.push(`${options.species}`);
+  //   whereClauses.push(`species = $${queryParams.length}`);
+  // }
   if (whereClauses.length) {
     queryString += `WHERE ${whereClauses.join(' AND ')}`;
   }
@@ -63,11 +72,19 @@ module.exports = (db) => {
     .then(res => res.rows )
   }
 
+  const login =  function(userId) {
+    return db.query(`
+    SELECT * FROM users
+    WHERE id = $1
+    `, [userId])
+    .then(res => res.rows )
+  }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ************
-  const getMyCats = function () {
+  const getMyCats = function (userId) {
     return db.query(`
     SELECT * FROM cats
-    WHERE owner_id = 1;`)
+    WHERE id = $1
+    `, [userId])
     .then(res => res.rows )
 }
 const getMessages = function () {
@@ -75,13 +92,6 @@ const getMessages = function () {
   SELECT * FROM messages
   WHERE cat_id = 3
   AND receiver_id =1 OR sender_id= 1;`)
-  .then(res => res.rows )
-}
-const getFavouritesAdmin = function () {
-  return db.query(`
-  SELECT * FROM cats
-  JOIN favourites ON cats.id = cat_id
-  WHERE favourites.user_id = 1;`)
   .then(res => res.rows )
 }
 
@@ -109,6 +119,6 @@ async function sendEmail(to, subject, text) {
   });
   console.log("Message sent: %s", info.messageId);
 }
-  return {getAllCats, getAllUsers, getFavouritesAdmin, filterBySearch, getMessages, getMyCats, sendEmail, getFavouritesUser, createMsgPost};
+  return {getAllCats, getAllUsers, filterBySearch, getMessages, getMyCats, sendEmail, getFavourites, createMsgPost, login};
 };
 

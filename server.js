@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const cookieSession = require('cookie-session');
 // email functionality
 // const nodemailer = require('nodemailer');
 // async function sendEmail() {
@@ -49,6 +50,13 @@ db.connect();
 
 const databaseHelperFunctions = require('./routes/database')(db);
 
+// Using cookies to maintain logged in state
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -71,7 +79,7 @@ const adminRoutes = require("./routes/admin");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(databaseHelperFunctions));
-app.use("/admin", adminRoutes(db));
+app.use("/admin", adminRoutes(databaseHelperFunctions));
 // Note: mount other resources here, using the same pattern above
 
 

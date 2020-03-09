@@ -1,7 +1,8 @@
-$(() => {
+
   window.header = {};
 
   const $pageHeader = $(".page-header");
+  const $newListing = $(".new-listing");
   let currentUser = null;
   function updateHeader(user) {
     currentUser = user;
@@ -16,7 +17,6 @@ $(() => {
 
           Home page
         </li>
-
         <li class="user-link favourites-button">
           Favourites
         </li>
@@ -37,12 +37,14 @@ $(() => {
         <li class="user-link home-button">
           Home page
         </li>
-
         <li class="user-link favourites-button">
           Favourites
         </li>
         <li class="user-link owner-button">
           My cats
+        </li>
+        <li class="user-link create-button">
+          Create new
         </li>
       </ul>
       <ul class="auth-links">
@@ -59,14 +61,9 @@ $(() => {
     $pageHeader.append(userNav);
   }
 
-  window.header.update = updateHeader;
+  window.Meowza.update = updateHeader;
 
-  let user1 = {
-    isAdmin: true,
-    name: "Luba"
-  };
-
-  updateHeader(user1);
+  //updateHeader(user1);
 
 
   // getMyDetails().then(function(json) {
@@ -76,6 +73,24 @@ $(() => {
    $("header").on("click", ".favourites-button", function() {
      window.Meowza.catListings.empty();
      loadFavouriteCats();
+   })
+
+   $("header").on("click", ".home-button", function() {
+     window.Meowza.catListings.empty();
+     loadCats();
+   });
+
+   $("header").on("click", ".owner-button", function() {
+     window.Meowza.catListings.empty();
+     loadMyCats();
+   });
+
+   $("header").on("click", ".create-button", function() {
+     $(".new-cat-form").toggle();
+    //  $("header").on("click", ".create-button", function() {
+    //    $(".new-cat-form").hide();
+    //  });
+   });
 
 
   //   getAllReservations()
@@ -119,5 +134,5 @@ $(() => {
 
   // $("header").on("click", ".create_listing_button", function() {
   //   views_manager.show("newProperty");
-  });
-});
+  // });
+

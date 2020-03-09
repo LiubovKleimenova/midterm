@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
+module.exports = (databaseHelperFunctions) => {
 
   // All cats are displayed when the user arrives on main page
   router.get("/", (req, res) => {
@@ -21,7 +21,8 @@ module.exports = (db) => {
   // Only favourite cats are displayed when the 'show favourites' button is clicked
   router.get("/favourites", (req, res) => {
     console.log('IT WORKS');
-    databaseHelperFunctions.getFavouritesAdmin()
+    userid =  req.session.userId
+    databaseHelperFunctions.getFavourites(userid)
     .then(data => res.json(data))
     .catch(err => res.status(500).send(err))
   });
@@ -36,7 +37,8 @@ module.exports = (db) => {
   // Only renders Admin's own cats
 
   router.get('/mycats', (req, res) => {
-    databaseHelperFunctions.getMyCats(req.query)
+    userid =  req.session.userId
+    databaseHelperFunctions.getMyCats(userid)
     .then(data => res.json(data))
     .catch(err => res.status(500).send(err))
   });
