@@ -8,12 +8,25 @@ window.Meowza.user1 = {
 $(document).ready(() => {
   Meowza.update(Meowza.user1);
   loadCats();
+
   Meowza.addNewCatForm(Meowza.user1);
+
+  $(".filters-form").submit(() => {
+    console.log("filtered");
+    $.ajax({
+      url: `/users/filteredCats`,
+      type: "GET",
+      //dataType: "JSON",
+      success: response => {
+        renderCats(response);
+      }
+    });
+  });
 
 });
 console.log({ meowza: window.Meowza })
 
-const loadCats = function() {
+const loadCats = () => {
   console.log('loadcats invoked');
   $.ajax({
     url: `/users/`,
@@ -25,7 +38,7 @@ const loadCats = function() {
   });
 };
 
-const loadFavouriteCats = function() {
+const loadFavouriteCats = () => {
   console.log("loadcats invoked");
   $.ajax({
     url: `/users/favourites`,
@@ -37,7 +50,7 @@ const loadFavouriteCats = function() {
   });
 };
 
-const loadMyCats = function() {
+const loadMyCats = () => {
   console.log("loadcats invoked");
   $.ajax({
     url: `/admin/mycats`,
@@ -52,7 +65,7 @@ const loadMyCats = function() {
 let today = new Date();
 let date = today.getFullYear();
 
-const renderCats = function (cats) {
+const renderCats = cats => {
     const $catListings = $(`
     <section class="cats-container">
     </section>
@@ -70,24 +83,3 @@ const renderCats = function (cats) {
 
 
 
-// window.$catListings = $catListings;
-// window.catListings = {};
-
-// function addCat(newCat) {
-//   $catListings.append(newCat);
-// }
-
-// function clearCats() {
-//   $catListings.empty();
-// }
-// window.catListings.clearCats = clearCats;
-
-// function addCats(cats) {
-//   clearCats();
-//   for (const catId in cats) {
-//     const cat = cats[catId];
-//     const listing = catListing.createListing(cat);
-//     addListing(listing);
-//   }
-// }
-// window.catListings.addCats = addCats;

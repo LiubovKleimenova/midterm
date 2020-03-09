@@ -21,96 +21,42 @@
   <h1 class="visually-hidden">Exotic cats</h1>
   <header class="page-header">
     <img class="app-logo" src="" alt="" width="" height="">
+    <section class="new-listing"></section>
 
-    <!-- <nav class="user-nav">
-      <ul class="user-links">
-        <li class="user-link">
-          Home page
-        </li>
-        <li class="user-link">
-          Search
-        </li>
-        <li class="user-link">
-          Favourites
-        </li>
-        <li class="user-link">
-          My cats
-        </li>
-      </ul>
-      <ul class="auth-links">
-        <li>
-          Sign in
-        </li>
-        <li>
-          Log in
-        </li>
-        <li>Log out</li>
-      </ul>
-      <div>
-        <img class="user-avatar" src="" alt="" width="" height="">
-      </div>
-    </nav> -->
+    </section>
   </header>
   <main>
 
 
-    <form action="" method="get" class="filters-form">
+    <form action="users/filteredCats" method="GET" class="filters-form">
       <h2>Filter</h2>
       <fieldset>
         <legend>Adoption fee</legend>
-        <label for="min-fee">from</label>
-        <input type="number" name="min-fee" id="min-fee">
-        <label for="max-fee">to</label>
-        <input type="number" name="max-fee" id="max-fee">
+        <label for="minimum_fee">from</label>
+        <input type="number" name="minimum_fee" id="minimum_fee">
+        <label for="maximum_fee">to</label>
+        <input type="number" name="maximum_fee" id="maximum_fee">
       </fieldset>
       <fieldset>
         <legend>Origin</legend>
-        <input type="checkbox" id="Asia" name="Asia" value="Asia" checked>
-        <label for="name">Asia</label>
-        <input type="checkbox" id="Europe" name="Europe" value="Europe" checked>
-        <label for="name">Europe</label>
-        <input type="checkbox" id="Africa" name="Africa" value="Africa" checked>
-        <label for="name">Africa</label>
-        <input type="checkbox" id="SouthAmerica" name="SouthAmerica" value="SouthAmerica" checked>
-        <label for="name">South America</label>
-        <input type="checkbox" id="NorthAmerica" name="NorthAmerica" value="NorthAmerica" checked>
-        <label for="name">North America</label>
+        <input type="checkbox" id="Asia" name="Asia" value="Asia" >
+        <label for="Asia">Asia</label>
+        <input type="checkbox" id="Europe" name="Europe" value="Europe" >
+        <label for="Europe">Europe</label>
+        <input type="checkbox" id="Africa" name="Africa" value="Africa" >
+        <label for="Africa">Africa</label>
+        <input type="checkbox" id="SouthAmerica" name="SouthAmerica" value="SouthAmerica" >
+        <label for="SouthAmerica">South America</label>
+        <input type="checkbox" id="NorthAmerica" name="NorthAmerica" value="NorthAmerica" >
+        <label for="NorthAmerica">North America</label>
       </fieldset>
       <button type="submit">Filter</button>
     </form>
+
+
     <section class="cats-container">
-    <!-- <article class="cats-listing">
-      <div class="cat_listing__interaction">
-        <button type="button" class="cat_listing__interaction-button add-to-favourites">
 
-          <img src="" alt="add to favourites" width="20" height="20">
-        </button>
-        <button type="button" class="cat_listing__interaction-button contact-button">
-
-          <img src="" alt="contact the seller" width="20" height="20">
-        </button>
-      </div>
-      <div class="cats-listing__preview-image">
-        <img src="${cat.thumbnail_photo_url}" alt="cat's photo">
-      </div>
-
-      <section class="cat-listing__details">
-        <h3 class="cat-listing__name">${cat.name}</h3>
-        <ul class="cat-listing__details">
-          <li>Age: ${cat.age}</li>
-          <li>Gender: ${cat.gender}</li>
-          <li>Region: ${cat.region}</li>
-          <li>Species: ${cat.species}</li>
-          <li>Size: ${cat.size}</li>
-          <li>Description: ${cat.description}</li>
-        </ul>
-        <footer class="cat-listing__footer">
-          <div class="cat-listing__price">$${cat.fee}</div>
-          <div class="cat-listing__availability">${cat.isAvailable}</div>
-        </footer>
-      </section>
-    </article> -->
-  </section>
+    </section>
   </main>
   <footer>
     <h3>Meowzza</h3>

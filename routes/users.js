@@ -29,6 +29,8 @@ module.exports = (databaseHelperFunctions) => {
 
   // Only filtered cats are displayed
   router.get('/filteredCats', (req, res) => {
+    console.log('filter by ');
+    console.log(req.query);
     databaseHelperFunctions.filterBySearch(req.query)
     .then(data => res.json(data))
     .catch(err => res.status(500).send(err))

@@ -1,5 +1,6 @@
 function addNewCatForm(user) {
   const $pageHeader = $(".page-header");
+  const $newListing = $(".new-listing");
   let $newCatForm = `<form action="/" method="post" id="new-cat-form" class="new-cat-form">
       <p>Create new</p>
       <fieldset class="new-cat-form__field-wrapper">

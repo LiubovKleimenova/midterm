@@ -2,6 +2,7 @@
   window.header = {};
 
   const $pageHeader = $(".page-header");
+  const $newListing = $(".new-listing");
   let currentUser = null;
   function updateHeader(user) {
     currentUser = user;
@@ -16,7 +17,6 @@
 
           Home page
         </li>
-
         <li class="user-link favourites-button">
           Favourites
         </li>
@@ -37,12 +37,14 @@
         <li class="user-link home-button">
           Home page
         </li>
-
         <li class="user-link favourites-button">
           Favourites
         </li>
         <li class="user-link owner-button">
           My cats
+        </li>
+        <li class="user-link create-button">
+          Create new
         </li>
       </ul>
       <ul class="auth-links">
@@ -83,7 +85,12 @@
      loadMyCats();
    });
 
-
+   $("header").on("click", ".create-button", function() {
+     $(".new-cat-form").toggle();
+    //  $("header").on("click", ".create-button", function() {
+    //    $(".new-cat-form").hide();
+    //  });
+   });
 
 
   //   getAllReservations()
