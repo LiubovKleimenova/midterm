@@ -2,7 +2,7 @@ INSERT INTO cats (owner_id, name, description, main_photo_url, fee, region, birt
 VALUES
   (2, 'Haha Klinton Dix', 'Omg saO cute', '/assets/haha_klinton_dix.jpg', 297000, 'North America', '2016-05-01', 's', 'tiger', FALSE
   ),
-  (3, 'Butters', 'Ruthless killer', '/assets/butters.JPG', 88800, 'Asia', '2011-03-18', 's', 'lion', FALSE
+  (3, 'Butters', 'Ruthless killer', '/assets/butters2.JPG', 88800, 'Asia', '2011-03-18', 's', 'lion', FALSE
   ),
   (2, 'Chester & Rusty', 'brothers - must be donated together!', '/assets/cheetah_cubs.jpg', 568000, 'Africa', '2019-04-20', 'l', 'cheetah', TRUE
   ),
