@@ -1,14 +1,18 @@
+window.Meowza = {};
+
+window.Meowza.user1 = {
+  isAdmin: true,
+  name: "Luba"
+};
+
 $(document).ready(() => {
+  Meowza.update(Meowza.user1);
   loadCats();
-  // $('.favourites-button').on("click", function(event) {
-  //   window.Meowza.catListings.empty();
-  //   loadFavouriteCats();
-  // })
+  Meowza.addNewCatForm(Meowza.user1);
 });
-window.Meowza = {}
 console.log({ meowza: window.Meowza })
 
-const loadCats = function() {
+const loadCats = () => {
   console.log('loadcats invoked');
   $.ajax({
     url: `/users/`,
@@ -20,7 +24,7 @@ const loadCats = function() {
   });
 };
 
-const loadFavouriteCats = function() {
+const loadFavouriteCats = () => {
   console.log("loadcats invoked");
   $.ajax({
     url: `/users/favourites`,
@@ -32,15 +36,29 @@ const loadFavouriteCats = function() {
   });
 };
 
+const loadMyCats = () => {
+  console.log("loadcats invoked");
+  $.ajax({
+    url: `/admin/mycats`,
+    type: "GET",
+    dataType: "JSON",
+    success: response => {
+      renderCats(response);
+    }
+  });
+};
+
 let today = new Date();
 let date = today.getFullYear();
 
-const renderCats = function (cats) {
-    const $catListings = $(`
-    <section class="cats-container">
-    </section>
+const renderCats = cats => {
+  const $catListings = $(`
+  <section class="cats-container">
+  </section>
   `);
+  console.log(cats);
   window.Meowza.catListings = $catListings;
+
   cats.forEach(cat => {
     console.log(cat)
     $catListings.append(Meowza.createListing(cat));
@@ -48,27 +66,27 @@ const renderCats = function (cats) {
   $("main").append($catListings);
 };
 
+const loadFilteredCats = () => {
+  console.log("loadFilteredCats invoked");
+  console.log($(".filters-form").serialize());
+  $.ajax({
+    url: `/users/filteredCats`,
+    type: "GET",
+    //dataType: "JSON",
+    data: $(".filters-form").serialize(),
+    success: response => {
+      renderCats(response.cats);
+    }
+  });
+};
 
 
+$(".filters-form").submit((e) => {
+  console.log(e);
+  e.preventDefault();
+  console.log("filtered");
+  window.Meowza.catListings.empty();
+  loadFilteredCats();
+});
 
-// window.$catListings = $catListings;
-// window.catListings = {};
 
-// function addCat(newCat) {
-//   $catListings.append(newCat);
-// }
-
-// function clearCats() {
-//   $catListings.empty();
-// }
-// window.catListings.clearCats = clearCats;
-
-// function addCats(cats) {
-//   clearCats();
-//   for (const catId in cats) {
-//     const cat = cats[catId];
-//     const listing = catListing.createListing(cat);
-//     addListing(listing);
-//   }
-// }
-// window.catListings.addCats = addCats;

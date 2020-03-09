@@ -1,10 +1,7 @@
-$(() => {
-  // window.header = {};
+function addNewCatForm(user) {
   const $pageHeader = $(".page-header");
-  let currentUser = null;
-  function addNewCatForm(user) {
-    currentUser = user;
-     let $newCatForm = `<form action="/" method="post" id="new-cat-form" class="new-cat-form">
+  const $newListing = $(".new-listing");
+  let $newCatForm = `<form action="/" method="post" id="new-cat-form" class="new-cat-form">
       <p>Create new</p>
       <fieldset class="new-cat-form__field-wrapper">
         <label for="new-name-form__name">Name</label>
@@ -64,52 +61,43 @@ $(() => {
       </div>
 
     </form>`;
-    if(user.isAdmin) {
-      $pageHeader.append($newCatForm);
-    }
-
+  if (user.isAdmin) {
+    $pageHeader.append($newCatForm);
   }
+}
 
+window.Meowza.addNewCatForm = addNewCatForm;
 
-  //window.header.addNewCatForm = addNewCatForm;
-  let user1 = {
-    isAdmin: true,
-    name: "Luba"
-  };
+//addNewCatForm(user1);
 
-  addNewCatForm(user1);
+// $newcatForm.addressfield({
+//   json: "javascript/libraries/addressfield/addressfield.min.json",
+//   fields: {
+//     country: "#new-cat-form__country",
+//     locality: "#new-cat-form__locality-fields",
+//     localityname: "#new-cat-form__city",
+//     administrativearea: "#new-cat-form__state",
+//     postalcode: "#new-cat-form__zip"
+//   }
+// });
 
+// $newcatForm.on("submit", function(event) {
+//   event.preventDefault();
 
+//   views_manager.show("none");
 
-  // $newcatForm.addressfield({
-  //   json: "javascript/libraries/addressfield/addressfield.min.json",
-  //   fields: {
-  //     country: "#new-cat-form__country",
-  //     locality: "#new-cat-form__locality-fields",
-  //     localityname: "#new-cat-form__city",
-  //     administrativearea: "#new-cat-form__state",
-  //     postalcode: "#new-cat-form__zip"
-  //   }
-  // });
+//   const data = $(this).serialize();
+//   submitcat(data)
+//     .then(() => {
+//       views_manager.show("listings");
+//     })
+//     .catch(error => {
+//       console.error(error);
+//       views_manager.show("listings");
+//     });
+// });
 
-  // $newcatForm.on("submit", function(event) {
-  //   event.preventDefault();
-
-  //   views_manager.show("none");
-
-  //   const data = $(this).serialize();
-  //   submitcat(data)
-  //     .then(() => {
-  //       views_manager.show("listings");
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //       views_manager.show("listings");
-  //     });
-  // });
-
-  // $("body").on("click", "#cat-form__cancel", function() {
-  //   views_manager.show("listings");
-  //   return false;
-  // });
-});
+// $("body").on("click", "#cat-form__cancel", function() {
+//   views_manager.show("listings");
+//   return false;
+// });
