@@ -12,14 +12,20 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- material design requirement -->
+  <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+  <!-- material design icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- material design requirement -->
+  <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
 </head>
 
 <body>
-  <h1 class="visually-hidden">Exotic cats</h1>
   <header class="page-header">
+    <h1 class="visually-hidden">Exotic cats</h1>
     <img class="app-logo" src="" alt="" width="" height="">
 
     <!-- <nav class="user-nav">
@@ -52,7 +58,11 @@
     </nav> -->
   </header>
   <main>
-
+<!-- test button -->
+<button class="mdc-button">
+  <div class="mdc-button__ripple"></div>
+  <span class="mdc-button__label">Button</span>
+</button>
 
     <form action="" method="get" class="filters-form">
       <h2>Filter</h2>
@@ -76,7 +86,7 @@
         <input type="checkbox" id="NorthAmerica" name="NorthAmerica" value="NorthAmerica" checked>
         <label for="name">North America</label>
       </fieldset>
-      <button type="submit">Filter</button>
+      <button type="submit" class="mdc-button mdc-button__ripple">Filter</button>
     </form>
     <section class="cats-container">
     <!-- <article class="cats-listing">
