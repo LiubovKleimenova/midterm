@@ -28,6 +28,16 @@ module.exports = (databaseHelperFunctions) => {
     .catch(err => res.status(500).send(err))
   });
 
+  //create new cat
+  router.get("/newcat", (req, res) => {
+    console.log("IT WORKS");
+    userid = req.session.userId;
+    databaseHelperFunctions
+      .createNewCat(newcat, userid)
+      .then(data => res.json(data))
+      .catch(err => res.status(500).send(err));
+  });
+
   // Only filtered cats are displayed
   router.get('/filteredCats', (req, res) => {
     console.log(req.query);
@@ -58,12 +68,12 @@ router.post('/login', (req, res) => {
   databaseHelperFunctions.login(userId)
   .then(user => {console.log(user[0].id)
   req.session.userId = user[0].id;
-  res.json(user)
+  res.json(user[0])
   })
   .catch(e => res.send(e));
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   req.session.userId = null;
   res.send({});
 });

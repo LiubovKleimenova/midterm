@@ -1,19 +1,43 @@
 window.Meowza = {};
 
-window.Meowza.user1 = {
-  isAdmin: true,
-  name: "Luba"
-};
+// window.Meowza.user1 = {
+//   isAdmin: true,
+//   name: "Luba"
+// };
+
+const getUser = () => {
+  console.log("getUser invoked");
+  console.log($(".login-form").serialize());
+  //e.preventDefault();
+  $.ajax({
+    url: `/users/login`,
+    type: "POST",
+    data: $(".login-form").serialize(),
+    success: response => {
+      //console.log(response);
+      window.Meowza.user = response;
+      console.log(window.Meowza.user);
+      Meowza.update(Meowza.user);
+      Meowza.addNewCatForm(Meowza.user);
+    }
+  });
+}
+
 
 $(document).ready(() => {
-  Meowza.update(Meowza.user1);
+  Meowza.update(Meowza.user);
   loadCats();
-  Meowza.addNewCatForm(Meowza.user1);
+  $(document).on("submit", ".login-form", e => {
+    console.log(e);
+    e.preventDefault();
+    getUser();
+
+  });
 });
-console.log({ meowza: window.Meowza })
+//console.log({ meowza: window.Meowza })
 
 const loadCats = () => {
-  console.log('loadcats invoked');
+  //console.log('loadcats invoked');
   $.ajax({
     url: `/users/`,
     type: "GET",
@@ -56,7 +80,7 @@ const renderCats = cats => {
   <section class="cats-container">
   </section>
   `);
-  console.log(cats);
+  //console.log(cats);
   window.Meowza.catListings = $catListings;
 
   cats.forEach(cat => {
@@ -82,9 +106,9 @@ const loadFilteredCats = () => {
 
 
 $(".filters-form").submit((e) => {
-  console.log(e);
+  //console.log(e);
   e.preventDefault();
-  console.log("filtered");
+  //console.log("filtered");
   window.Meowza.catListings.empty();
   loadFilteredCats();
 });
