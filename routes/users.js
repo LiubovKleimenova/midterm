@@ -58,12 +58,12 @@ router.post('/login', (req, res) => {
   databaseHelperFunctions.login(userId)
   .then(user => {console.log(user[0].id)
   req.session.userId = user[0].id;
-  res.json(user)
+  res.json(user[0])
   })
   .catch(e => res.send(e));
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   req.session.userId = null;
   res.send({});
 });

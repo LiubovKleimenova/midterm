@@ -77,7 +77,7 @@ module.exports = (db) => {
     SELECT * FROM users
     WHERE id = $1
     `, [userId])
-    .then(res => res.rows )
+    .then(res => res.rows)
   }
 
   const getMessages = function (userId) {
