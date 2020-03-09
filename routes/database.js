@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 module.exports = (db) => {
-// *********** HELPER FUNCTIONS FOR USER ROUTES ************
+// *********** HELPER FUNCTIONS FOR USER ROUTES & ADMIN ROUTES ************
   const getAllCats = function () {
     return db.query(`SELECT * FROM cats;`)
     .then(res => res.rows)
@@ -79,20 +79,22 @@ module.exports = (db) => {
     `, [userId])
     .then(res => res.rows )
   }
-// *********** HELPER FUNCTIONS FOR ADMIN ROUTES ************
+
+  const getMessages = function (userId) {
+    return db.query(`
+    SELECT * FROM messages
+    WHERE receiver_id = $1 OR sender_id = $1
+    ORDER BY cat_id, id
+    `, [userId])
+    .then(res => res.rows )
+  }
+// *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {
     return db.query(`
     SELECT * FROM cats
     WHERE id = $1
     `, [userId])
     .then(res => res.rows )
-}
-const getMessages = function () {
-  return db.query(`
-  SELECT * FROM messages
-  WHERE cat_id = 3
-  AND receiver_id =1 OR sender_id= 1;`)
-  .then(res => res.rows )
 }
 
 // *********** HELPER FUNCTIONS FOR SENDING EMAILS ************
