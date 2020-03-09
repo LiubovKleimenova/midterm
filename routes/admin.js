@@ -57,12 +57,18 @@ module.exports = (databaseHelperFunctions) => {
   return router;
 };
 
- // Only renders Admin's message history, in this case it is hard coded to search the database for messages pertaining to cat_id= 3, and admin is defined as sender/reciever ID 1
+ // Renders Admin's message history
 
 router.get('/myMessages', (req, res) => {
-  databaseHelperFunctions.getMessages(req.query)
+  userid =  req.session.userId
+  databaseHelperFunctions.getMessages(userid)
   .then(data => res.json(data))
   .catch(err => res.status(500).send(err))
 });
 
+  // Allows Admin to post messages
+
+  router.post('/sendMessage', (req, res) => {
+    databaseHelperFunctions.createMsgPost(req.body)
+  });
 

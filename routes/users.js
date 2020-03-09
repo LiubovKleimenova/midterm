@@ -39,10 +39,17 @@ module.exports = (databaseHelperFunctions) => {
 
   // Allows user to post messages
 
-  // If we want to show the result of a user posting a msg (by viewing the msg on the admin side), the msg that the user sends must be sent pertaining to cat_id= 3, and reciever ID must be one 1. This is because the getMessages function is hard coded for this particular admin and cat ID.
   router.post('/sendMessage', (req, res) => {
     databaseHelperFunctions.createMsgPost(req.body)
   });
+ // Displays the user's messages
+
+ router.get('/myMessages', (req, res) => {
+  userid =  req.session.userId
+  databaseHelperFunctions.getMessages(userid)
+  .then(data => res.json(data))
+  .catch(err => res.status(500).send(err))
+});
 
 
   //
