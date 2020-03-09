@@ -3,6 +3,14 @@ form {
 }
 
 .cats-listing {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   outline: 2px solid green;
+}
+
+.cat_listing__interaction {
+  button {
+    white-space: nowrap;
+  }
 }
