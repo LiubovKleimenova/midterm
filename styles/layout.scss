@@ -8,12 +8,17 @@ body {
   // font reset 62.5% - equivalent to 10px for simplified relative font sizing
   font-size: 62.5%;
 
+  img {
+    max-width:100%;
+  }
+
   ul {
     list-style-type: none;
   }
 
   h1 {
     color: #244751;
+    margin:0;
   }
 }
 

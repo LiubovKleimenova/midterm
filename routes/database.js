@@ -4,7 +4,7 @@ module.exports = (db) => {
   const getAllCats = function () {
     return db.query(`SELECT * FROM cats;`)
     .then(res => res.rows)
-    // .catch(err => console.error('query error', err.stack));
+    .catch(err => console.error('query error', err.stack));
   }
   const getAllUsers = function () {
     return db.query(`SELECT * FROM users;`)
