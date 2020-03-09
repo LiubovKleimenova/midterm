@@ -79,7 +79,7 @@ const adminRoutes = require("./routes/admin");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(databaseHelperFunctions));
-app.use("/admin", adminRoutes(db));
+app.use("/admin", adminRoutes(databaseHelperFunctions));
 // Note: mount other resources here, using the same pattern above
 
 

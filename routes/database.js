@@ -4,20 +4,22 @@ module.exports = (db) => {
   const getAllCats = function () {
     return db.query(`SELECT * FROM cats;`)
     .then(res => res.rows)
-    // .catch(err => console.error('query error', err.stack));
+    .catch(err => console.error('query error', err.stack));
   }
   const getAllUsers = function () {
     return db.query(`SELECT * FROM users;`)
     .then(res => res.rows[0] )
     // .catch(err => console.error('query error', err.stack));
   }
-  const getFavouritesUser = function () {
+  const getFavourites = function (userId) {
     return db.query(`
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
-    WHERE favourites.user_id = 2;`)
+    WHERE favourites.user_id = $1
+    `, [userId])
     .then(res => res.rows )
   }
+
   const filterBySearch = function(options) {
     const queryParams = [];
     const whereClauses = [];
@@ -31,12 +33,11 @@ module.exports = (db) => {
     whereClauses.push(`fee >= $${queryParams.length - 1} AND fee <= $${queryParams.length} `);
   } else if (options.minimum_fee) {
     queryParams.push(`${options.minimum_fee}`);
-    whereClauses.push(`fee >= $${queryParams.length} AND fee <= $${queryParams.length} `);
+    whereClauses.push(`fee >= $${queryParams.length}`);
   } else if (options.maximum_fee) {
     queryParams.push(`${options.maximum_fee}`);
-    whereClauses.push(`fee >= $${queryParams.length} AND fee <= $${queryParams.length} `);
+    whereClauses.push(`fee <= $${queryParams.length} `);
   }
-
   if (options.region) {
     queryParams.push(`%${options.region}%`);
     whereClauses.push(`region = $${queryParams.length} `);
@@ -79,10 +80,11 @@ module.exports = (db) => {
     .then(res => res.rows )
   }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ************
-  const getMyCats = function () {
+  const getMyCats = function (userId) {
     return db.query(`
     SELECT * FROM cats
-    WHERE owner_id = 1;`)
+    WHERE id = $1
+    `, [userId])
     .then(res => res.rows )
 }
 const getMessages = function () {
@@ -90,13 +92,6 @@ const getMessages = function () {
   SELECT * FROM messages
   WHERE cat_id = 3
   AND receiver_id =1 OR sender_id= 1;`)
-  .then(res => res.rows )
-}
-const getFavouritesAdmin = function () {
-  return db.query(`
-  SELECT * FROM cats
-  JOIN favourites ON cats.id = cat_id
-  WHERE favourites.user_id = 1;`)
   .then(res => res.rows )
 }
 
@@ -124,6 +119,6 @@ async function sendEmail(to, subject, text) {
   });
   console.log("Message sent: %s", info.messageId);
 }
-  return {getAllCats, getAllUsers, getFavouritesAdmin, filterBySearch, getMessages, getMyCats, sendEmail, getFavouritesUser, createMsgPost, login};
+  return {getAllCats, getAllUsers, filterBySearch, getMessages, getMyCats, sendEmail, getFavourites, createMsgPost, login};
 };
 
