@@ -27,9 +27,16 @@ module.exports = (db) => {
     `;
   if (options.minimum_fee && options.maximum_fee) {
     queryParams.push(`${options.minimum_fee}`);
-    queryParams.push(`${options.options.maximum_fee}`);
+    queryParams.push(`${options.maximum_fee}`);
     whereClauses.push(`fee >= $${queryParams.length - 1} AND fee <= $${queryParams.length} `);
+  } else if (options.minimum_fee) {
+    queryParams.push(`${options.minimum_fee}`);
+    whereClauses.push(`fee >= $${queryParams.length} AND fee <= $${queryParams.length} `);
+  } else if (options.maximum_fee) {
+    queryParams.push(`${options.maximum_fee}`);
+    whereClauses.push(`fee >= $${queryParams.length} AND fee <= $${queryParams.length} `);
   }
+
   if (options.region) {
     queryParams.push(`%${options.region}%`);
     whereClauses.push(`region = $${queryParams.length} `);
@@ -38,10 +45,11 @@ module.exports = (db) => {
     queryParams.push(options.size);
     whereClauses.push(`size = $${queryParams.length} `);
   }
-  if (options.species) {
-    queryParams.push(`${options.species}`);
-    whereClauses.push(`species >= $${queryParams.length}`);
-  }
+  // **** Uncomment if we want to filter by species ****
+  // if (options.species) {
+  //   queryParams.push(`${options.species}`);
+  //   whereClauses.push(`species = $${queryParams.length}`);
+  // }
   if (whereClauses.length) {
     queryString += `WHERE ${whereClauses.join(' AND ')}`;
   }
@@ -63,6 +71,13 @@ module.exports = (db) => {
     .then(res => res.rows )
   }
 
+  const login =  function(userId) {
+    return db.query(`
+    SELECT * FROM users
+    WHERE id = $1
+    `, [userId])
+    .then(res => res.rows )
+  }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ************
   const getMyCats = function () {
     return db.query(`
@@ -109,6 +124,6 @@ async function sendEmail(to, subject, text) {
   });
   console.log("Message sent: %s", info.messageId);
 }
-  return {getAllCats, getAllUsers, getFavouritesAdmin, filterBySearch, getMessages, getMyCats, sendEmail, getFavouritesUser, createMsgPost};
+  return {getAllCats, getAllUsers, getFavouritesAdmin, filterBySearch, getMessages, getMyCats, sendEmail, getFavouritesUser, createMsgPost, login};
 };
 
