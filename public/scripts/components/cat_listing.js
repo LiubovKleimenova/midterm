@@ -6,7 +6,7 @@ window.Meowza.createListing = (cat) => {
   return `
   <article class="cats-listing">
     <div class="cat_listing__interaction">
-      <button type="button" class="mdc-button cat_listing__interaction-button add-to-favourites">
+      <button name="catId" data-catId="${cat.id}" type="button" class="mdc-button cat_listing__interaction-button add-to-favourites">
         <div class="mdc-button__ripple"></div>
         Add to Favourites
       </button>
