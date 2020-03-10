@@ -68,7 +68,7 @@ window.Meowza.createListing = (cat) => {
           <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
           <button type="submit" class="mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
-            Send message
+            Message
           </button>
         </div>
       </form>

@@ -15,7 +15,6 @@ h2 {
 }
 
 article {
-  // width:45%;
   background: linear-gradient(to bottom, #ffffff, $accent-color);
   color: $background-color;
   box-shadow: 0.5em 0.5em 1em #000000;
@@ -54,13 +53,10 @@ article {
   form {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
 
     textarea {
       font-family: inherit;
       font-size: $text-size;
-      // font-size: 1.6em;
       width: 30em;
       height: 7.7em;
       margin-bottom: 1em;
@@ -69,12 +65,10 @@ article {
 
     label {
       font-size: $text-size;
-      // font-size: 1.6em;
     }
 
     .users-mail {
       font-size: $text-size;
-      // font-size: 1.6em;
       width: 65%;
       margin: 1em 1.5em 1em 0;
     }
@@ -99,10 +93,7 @@ article {
 
 .cats-listing {
   display: flex;
-  // flex-direction: column;
   justify-content: center;
-  // align-items: center;
-  // outline: 2px solid green;
 }
 
 .cat_listing__interaction {
