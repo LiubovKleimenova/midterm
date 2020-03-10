@@ -1,5 +1,24 @@
 window.Meowza = {};
 
+$(document).ready(() => {
+  Meowza.update(Meowza.user);
+  loadCats();
+  $(document).on("submit", ".login-form", e => {
+    //console.log(e);
+    e.preventDefault();
+    getUser();
+  });
+
+
+  $(document).on("click", ".add-to-favourites",
+    addToFavourites
+  )
+
+  $(document).on("submit", "#new-cat-form", e=> {
+    e.preventDefault();
+    createNewCat})
+});
+
 const getUser = () => {
   //console.log("getUser invoked");
   //console.log($(".login-form").serialize());
@@ -17,46 +36,6 @@ const getUser = () => {
     }
   });
 }
-
-
-$(document).ready(() => {
-  Meowza.update(Meowza.user);
-  loadCats();
-  $(document).on("submit", ".login-form", e => {
-    //console.log(e);
-    e.preventDefault();
-    getUser();
-  });
-
-  // ---------CREATE NEW CAT---------
-  $(".create-cat").submit(e => {
-    console.log("create cat foem submitted");
-    $.ajax({
-      url: `/admin/newcat`,
-      type: "POST",
-      data: $(".new-cat-from").serialize(),
-      success: () => {
-        console.log("data submitted to db succ");
-        $.ajax({
-          url: `/users/`,
-          type: "GET",
-          dataType: "JSON",
-          success: data => {
-            console.log("data recieved from server")
-            $(".cats-container").empty();
-            renderCats(data);
-          }
-        });
-      }
-    });
-  });
-
-
-  $(document).on("click", ".add-to-favourites",
-    addToFavourites
-  )
-});
-//console.log({ meowza: window.Meowza })
 
 const loadCats = () => {
   //console.log('loadcats invoked');
@@ -155,7 +134,25 @@ const addToFavourites = function ()  {
   });
 }
 
-// $(".add-to-favourites").click(() => {
-//   console.log("add-btn was cliked");
-//   addToFavourites();
-// });
+// ---------CREATE NEW CAT---------
+const createNewCat = function() {
+  console.log("create cat foem submitted");
+  $.ajax({
+    url: `/admin/newcat`,
+    type: "POST",
+    data: $(".new-cat-from").serialize(),
+    success: () => {
+      //console.log("data submitted to db succ");
+      $.ajax({
+        url: `/users/`,
+        type: "GET",
+        dataType: "JSON",
+        success: data => {
+          //console.log("data recieved from server");
+          $(".cats-container").empty();
+          renderCats(data);
+        }
+      });
+    }
+  });
+};

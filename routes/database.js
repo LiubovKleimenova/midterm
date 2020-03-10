@@ -80,7 +80,7 @@ module.exports = (db) => {
     return db
       .query(
         `
-    INSERT INTO cats (owner_id, name, description, main_photo_url, fee, birthdate, region, size, species, is_avaliable)
+    INSERT INTO cats (owner_id, name, description, main_photo_url, fee, birthdate, region, size, species, is_available)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     RETURNING *;
     `,
@@ -97,7 +97,8 @@ module.exports = (db) => {
           true
         ]
       )
-      .then(res => res.rows[0]);
+      .then(res => res.rows[0])
+      .catch(err => console.log(err));
   };
 
   const login =  function(userId) {
