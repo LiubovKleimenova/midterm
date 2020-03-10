@@ -31,8 +31,10 @@ $(document).ready(() => {
     console.log(e);
     e.preventDefault();
     getUser();
-
   });
+  $(document).on("click", ".add-to-favourites",
+    addToFavourites
+  )
 });
 //console.log({ meowza: window.Meowza })
 
@@ -90,6 +92,8 @@ const renderCats = cats => {
   $("main").append($catListings);
 };
 
+
+// --------------FILTER CATS --------------
 const loadFilteredCats = () => {
   console.log("loadFilteredCats invoked");
   console.log($(".filters-form").serialize());
@@ -115,3 +119,23 @@ $(".filters-form").submit((e) => {
 });
 
 
+// --------------ADD TO FAVOURITES --------------
+const addToFavourites = function ()  {
+  console.log("addToFAvs invoked");
+  console.log(this);
+  const catId= $(this).data("catid");
+  console.log(catId);
+  $.ajax({
+    url: `/users/addToFavourites`,
+    type: "POST",
+    data: `catId=${catId}`,
+    success: response => {
+      console.log(response);
+    }
+  });
+}
+
+// $(".add-to-favourites").click(() => {
+//   console.log("add-btn was cliked");
+//   addToFavourites();
+// });

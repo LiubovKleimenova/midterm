@@ -105,6 +105,7 @@ module.exports = (db) => {
   }
 
   const addToFavourites = function (userId, catId) {
+    console.log(`userId ${userId}, catId  ${catId}`);
     return db
       .query(
         `
@@ -114,7 +115,9 @@ module.exports = (db) => {
     `,
         [userId, catId]
       )
-      .then(res => res.rows);
+      .then(res => {
+        console.log(res.rows);
+        res.rows});
   }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {

@@ -49,9 +49,15 @@ module.exports = (databaseHelperFunctions) => {
 
    // Add cat to favourite cats
   router.post('/addToFavourites', (req, res) => {
+    console.log('addToFavs invoked(server)')
+    //console.log(req.query);
     console.log(req.body);
+    let catId = req.body.catId;
+    let userId= req.session.userId;
+
+    console.log('userId, users.js' + req.session.userId);
     databaseHelperFunctions
-      .addToFavourites(req.query)
+      .addToFavourites(userId, catId)
       .then(data => res.json(data))
       .catch(err => res.status(500).send(err));
   });
