@@ -1,16 +1,11 @@
 function addNewCatForm(user) {
   const $pageHeader = $(".page-header");
   const $newListing = $(".new-listing");
-  let $newCatForm = `<form action="/" method="post" id="new-cat-form" class="new-cat-form">
+  let $newCatForm = `<form action="/admin/newcat" method="POST" id="new-cat-form" class="new-cat-form">
       <p>Create new</p>
       <fieldset class="new-cat-form__field-wrapper">
         <label for="new-name-form__name">Name</label>
         <input type="text" name="cat_name" placeholder="Fluffy" id="new-cat-form__name">
-      </fieldset>
-
-      <fieldset>
-        <label for="new-cat-form__photo">Name</label>
-        <input type="file" name="cat_photo" id="new-cat-form__photo">
       </fieldset>
 
       <fieldset class="new-cat-form__field-wrapper">

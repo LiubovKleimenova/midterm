@@ -1,13 +1,27 @@
 window.Meowza = {};
 
-// window.Meowza.user1 = {
-//   isAdmin: true,
-//   name: "Luba"
-// };
+$(document).ready(() => {
+  Meowza.update(Meowza.user);
+  loadCats();
+  $(document).on("submit", ".login-form", e => {
+    //console.log(e);
+    e.preventDefault();
+    getUser();
+  });
+
+
+  $(document).on("click", ".add-to-favourites",
+    addToFavourites
+  )
+
+  $(document).on("submit", "#new-cat-form", e=> {
+    e.preventDefault();
+    createNewCat})
+});
 
 const getUser = () => {
-  console.log("getUser invoked");
-  console.log($(".login-form").serialize());
+  //console.log("getUser invoked");
+  //console.log($(".login-form").serialize());
   //e.preventDefault();
   $.ajax({
     url: `/users/login`,
@@ -16,27 +30,12 @@ const getUser = () => {
     success: response => {
       //console.log(response);
       window.Meowza.user = response;
-      console.log(window.Meowza.user);
+      //console.log(window.Meowza.user);
       Meowza.update(Meowza.user);
       Meowza.addNewCatForm(Meowza.user);
     }
   });
 }
-
-
-$(document).ready(() => {
-  Meowza.update(Meowza.user);
-  loadCats();
-  $(document).on("submit", ".login-form", e => {
-    console.log(e);
-    e.preventDefault();
-    getUser();
-  });
-  $(document).on("click", ".add-to-favourites",
-    addToFavourites
-  )
-});
-//console.log({ meowza: window.Meowza })
 
 const loadCats = () => {
   //console.log('loadcats invoked');
@@ -86,7 +85,7 @@ const renderCats = cats => {
   window.Meowza.catListings = $catListings;
 
   cats.forEach(cat => {
-    console.log(cat)
+    //console.log(cat)
     $catListings.append(Meowza.createListing(cat));
   });
   $("main").append($catListings);
@@ -135,7 +134,25 @@ const addToFavourites = function ()  {
   });
 }
 
-// $(".add-to-favourites").click(() => {
-//   console.log("add-btn was cliked");
-//   addToFavourites();
-// });
+// ---------CREATE NEW CAT---------
+const createNewCat = function() {
+  console.log("create cat foem submitted");
+  $.ajax({
+    url: `/admin/newcat`,
+    type: "POST",
+    data: $(".new-cat-from").serialize(),
+    success: () => {
+      //console.log("data submitted to db succ");
+      $.ajax({
+        url: `/users/`,
+        type: "GET",
+        dataType: "JSON",
+        success: data => {
+          //console.log("data recieved from server");
+          $(".cats-container").empty();
+          renderCats(data);
+        }
+      });
+    }
+  });
+};
