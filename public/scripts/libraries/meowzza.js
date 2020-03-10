@@ -1,13 +1,8 @@
 window.Meowza = {};
 
-// window.Meowza.user1 = {
-//   isAdmin: true,
-//   name: "Luba"
-// };
-
 const getUser = () => {
-  console.log("getUser invoked");
-  console.log($(".login-form").serialize());
+  //console.log("getUser invoked");
+  //console.log($(".login-form").serialize());
   //e.preventDefault();
   $.ajax({
     url: `/users/login`,
@@ -16,7 +11,7 @@ const getUser = () => {
     success: response => {
       //console.log(response);
       window.Meowza.user = response;
-      console.log(window.Meowza.user);
+      //console.log(window.Meowza.user);
       Meowza.update(Meowza.user);
       Meowza.addNewCatForm(Meowza.user);
     }
