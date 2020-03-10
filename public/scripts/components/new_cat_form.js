@@ -21,7 +21,7 @@ function addNewCatForm(user) {
 
       <div class="new-cat-form__field-wrapper">
         <label for="new-cat-form__birth-date">Date of birth</label>
-        <input placeholder="2018-12-31" type="number" name="birth-date" id="new-cat-form__birth-date">
+        <input placeholder="2018-12-31" type="date" name="birth-date" id="new-cat-form__birth-date">
 
         <label for="new-cat-form__species">Species</label>
         <input placeholder="Puma" type="text" name="species" id="new-cat-form__species">
