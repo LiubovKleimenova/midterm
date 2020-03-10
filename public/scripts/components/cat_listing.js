@@ -1,47 +1,83 @@
 window.Meowza.createListing = (cat) => {
   let avalMessage = ''
   if (!cat.is_available) {
-    avalMessage = 'SOLD';
+    avalMessage = 'ADOPTED';
   }
   return `
-  <article class="cats-listing">
-    <div class="cat_listing__interaction">
-      <button name="catId" data-catId="${cat.id}" type="button" class="mdc-button cat_listing__interaction-button add-to-favourites">
-        <div class="mdc-button__ripple"></div>
-        Add to Favourites
-      </button>
-      <button type="button" class="mdc-button cat_listing__interaction-button contact-button">
-      <div class="mdc-button__ripple"></div>
-        Contact Seller
-      </button>
-    </div>
-    <div class="cats-listing__preview-image">
-      <img src="${cat.main_photo_url}" alt="cat's photo" width="150" height="150">
-    </div>
-
-    <section class="cat-listing__details">
-      <h3 class="cat-listing__name">${cat.name}</h3>
+  <article class="cats-listing mdc-card--outline">
+    <div class="cat-details-container">
+      <div class="cats-listing__preview-image">
+        <img src="${cat.main_photo_url}" alt="cat's photo">
+      </div>
+      <div class="cat_listing__interaction">
+        <div class="mdc-card__actions">
+          <button data-catId="${cat.id} "class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon cat_listing__interaction-button add-to-favourites"
+            aria-pressed="false"
+            aria-label="Add to favorites"
+            title="Add to favorites">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+            <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+            <div class="mdc-button__touch"></div>
+          </button>
+          <button class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon
+            aria-pressed="false"
+            aria-label="Share to Facebook"
+            title="Share to Facebook">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+            <i class="fab fa-facebook material-icons mdc-icon-button__icon"></i>
+            <div class="mdc-button__touch"></div>
+          </button>
+          <button class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon
+            aria-pressed="false"
+            aria-label="Share to Instagram"
+            title="Share to Instagram">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+            <i class="fab fa-instagram material-icons mdc-icon-button__icon"></i>
+            <div class="mdc-button__touch"></div>
+          </button>
+          <button class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon
+            aria-pressed="false"
+            aria-label="Share to Twitter"
+            title="Share to Twitter">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+            <i class="fab fa-twitter material-icons mdc-icon-button__icon"></i>
+            <div class="mdc-button__touch"></div>
+          </button>
+        </div>
+      </div>
       <ul class="cat-listing__details">
         <li>Age: ${date - Number(cat.birthdate.slice(0, 4))} years</li>
         <li>Region: ${cat.region}</li>
         <li>Species: ${cat.species}</li>
         <li>Size: ${cat.size}</li>
-        <li>Description: ${cat.description}</li>
+        <li class="cat-listing__price">Adoption fee: $${cat.fee}</li>
       </ul>
-      <div class="cat-listing__availability">
-        <div class="cat-listing__price">$${cat.fee}</div>
-        <div class="cat-listing__availability">${cat.isAvailable}</div>
-      </div>
-      <div>
+    </div>
+
+    <section class="cat-listing__details">
+      <h3 class="cat-listing__name">${cat.name}</h3>
+      <p>${cat.description}</p>
       <form>
-        <textarea class="message"></textarea>
-        <input type="email" class="users-mail">
-        <button type="submit" class="mdc-button">
-          <div class="mdc-button__ripple"></div>
-          Send message
-        </button>
+        <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
+        <label for="users-mail">Or get contacted by email:</label>
+        <div class="email-button-container">
+          <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
+          <button type="submit" class="mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Send message
+          </button>
+        </div>
       </form>
     </section>
   </article>
   `;
+  // removed as we will not need to display is available
+  // <div class="cat-listing__availability">
+  //   <div class="cat-listing__availability">${cat.isAvailable}
+  //   </div>
+  // </div>
 }

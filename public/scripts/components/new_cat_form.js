@@ -51,8 +51,14 @@ function addNewCatForm(user) {
       </div>
 
       <div class="new-cat-form__field-wrapper">
-        <button type="submit">Create</button>
-        <button id=".create-cat" type="reset">Reset</button>
+        <button class="mdc-button mdc-button--raised" type="submit">
+          <div class="mdc-button__ripple"></div>
+          Create
+        </button>
+        <button class="mdc-button mdc-button--raised" type="reset">
+          <div class="mdc-button__ripple"></div>
+          Reset
+        </button>
       </div>
 
     </form>`;

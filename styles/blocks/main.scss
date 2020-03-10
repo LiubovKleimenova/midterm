@@ -1,12 +1,107 @@
-form {
-  width:40%;
+.wrapper {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+article {
+  // width:45%;
+  background: linear-gradient(to bottom, #ffffff, $accent-color);
+  color: $background-color;
+  box-shadow: 0.5em 0.5em 1em #000000;
+  margin: 2em;
+  padding: 2em;
+
+  .cat-details-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2em;
+
+    .cats-listing__preview-image {
+      width: 22em;
+      height:22em;
+      img {
+        display: block;
+        object-fit:cover;
+        height: 100%;
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+    li {
+      font-size: 1.8em;
+    }
+  }
+
+  h3 {
+    color: #283044;
+    font-size:3em;
+    margin: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+
+    textarea {
+      font-family: inherit;
+      font-size: $text-size;
+      // font-size: 1.6em;
+      width: 30em;
+      height: 6em;
+      margin-bottom: 1em;
+      padding: 0.5em;
+    }
+
+    label {
+      font-size: $text-size;
+      // font-size: 1.6em;
+    }
+
+    .users-mail {
+      font-size: $text-size;
+      // font-size: 1.6em;
+      width: 45%;
+      margin: 1em 1.5em 1em 0;
+    }
+
+    .email-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  section .cat-listing__details {
+
+    padding: 0 0 0 3em;
+
+  }
 }
 
 .cats-listing {
   display: flex;
+  // flex-direction: column;
   justify-content: center;
-  align-items: center;
-  outline: 2px solid green;
+  // align-items: center;
+  // outline: 2px solid green;
+}
+
+.cat_listing__interaction {
+  display: flex;
+  justify-content:center;
+  .no-padding {
+    padding: none;
+  }
+}
+
+.cats-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cat_listing__interaction {

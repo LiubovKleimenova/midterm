@@ -7,7 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <title>Meowzza!</title>
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -21,23 +24,20 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
   <!-- material design requirement -->
   <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/86ffe6f375.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header class="page-header">
-    <h1 class="visually-hidden">Meowzza!</h1>
+    <h1 class="visually-hidden"><i class="fas fa-paw"></i>Meowzza!</h1>
     <img class="app-logo" src="" alt="" width="" height="">
     <section class="new-listing"></section>
   </header>
-  <main>
-<!-- test button -->
-<!-- <button class="mdc-button">
-  <div class="mdc-button__ripple"></div>
-  <span class="mdc-button__label">Button</span>
-</button> -->
+  <main class="wrapper">
 
     <form action="/users/filteredCats" method="get" class="filters-form">
-      <h2>Filter</h2>
+      <h2>Filter Options</h2>
       <fieldset>
         <legend>Adoption fee</legend>
         <div class="mdc-form-field">
@@ -69,21 +69,19 @@
           <option value="l" name="size">L</option>
         </select>
       </fieldset>
-      <button type="submit" class="mdc-button">
+      <button type="submit" class="mdc-button mdc-button--raised">
         <div class="mdc-button__ripple"></div>
         Filter
       </button>
     </form>
 
-
     <section class="cats-container">
 
     </section>
   </main>
+
   <footer>
-    <h3>&copy; Meowzza</h3>
-    <p>2020</p>
-    <div class="copyright">Ata, Steven, Luba</div>
+    <h3>Copyright &copy; 2020 <i class="fas fa-paw"></i> Meowzza. By Ata, Luba & Steven. All rights reserved.</h3>
   </footer>
   <script src="scripts/libraries/meowzza.js"></script>
   <script src="scripts/views_manager.js"></script>
