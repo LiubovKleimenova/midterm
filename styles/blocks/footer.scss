@@ -1,8 +1,14 @@
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: center;
   color: #a89b9d;
   font-size: $text-size;
   height: 20vh;
+  padding: 2em;
+}
+
+.red {
+  color: red;
 }

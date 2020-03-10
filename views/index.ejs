@@ -13,6 +13,8 @@
   <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
   <!-- material design icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Flickity carousel -->
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -24,8 +26,7 @@
 
 <body>
   <header class="page-header">
-    <h1 class="visually-hidden"><i class="fas fa-paw"></i>Meowzza!</h1>
-    <img class="app-logo" src="" alt="" width="" height="">
+    <h1><i class="fas fa-paw"></i>Meowzza!</h1>
     <section class="new-listing"></section>
   </header>
   <main class="wrapper">
@@ -75,13 +76,48 @@
   </main>
 
   <footer>
-    <h3>Copyright &copy; 2020 <i class="fas fa-paw"></i> Meowzza. By Ata, Luba & Steven. All rights reserved.</h3>
+    <div>
+      <h3>Copyright &copy; 2020 <i class="fas fa-paw"></i> Meowzza. By Ata, Luba & Steven. All rights reserved.</h3>
+    </div>
+    <div class="mdc-card__actions">
+      <button class="red mdc-icon-button mdc-button--touch
+        mdc-card__action mdc-card__action--icon
+        aria-pressed="false"
+        aria-label="Share to Facebook"
+        title="Share to Facebook">
+        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+        <i class="fab fa-facebook material-icons mdc-icon-button__icon"></i>
+        <div class="mdc-button__touch"></div>
+      </button>
+      <button class="red mdc-icon-button mdc-button--touch
+        mdc-card__action mdc-card__action--icon
+        aria-pressed="false"
+        aria-label="Share to Instagram"
+        title="Share to Instagram">
+        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+        <i class="fab fa-instagram material-icons mdc-icon-button__icon"></i>
+        <div class="mdc-button__touch"></div>
+      </button>
+      <button class="mdc-icon-button mdc-button--touch
+        mdc-card__action mdc-card__action--icon
+        aria-pressed="false"
+        aria-label="Share to Twitter"
+        title="Share to Twitter">
+        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+        <i class="fab fa-twitter material-icons mdc-icon-button__icon"></i>
+        <div class="mdc-button__touch"></div>
+      </button>
+    </div>
   </footer>
+  <script src="scripts/app.js"></script>
   <script src="scripts/libraries/meowzza.js"></script>
   <!-- <script src="scripts/views_manager.js"></script> -->
   <script src="scripts/components/cat_listing.js"></script>
   <script src="scripts/components/header.js"></script>
   <script src="scripts/components/new_cat_form.js"></script>
+  <script src="scripts/components/cats_listing.js"></script>
+  <!-- flickity package -->
+  <script src="/path/to/flickity.pkgd.min.js"></script>
   <!-- <script src="scripts/components/cats_listing.js"></script> -->
 </body>
 
