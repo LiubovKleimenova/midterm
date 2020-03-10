@@ -1,6 +1,6 @@
 $(() => {
   const $catListings = $(`
-    <section class="cats-container">
+    <section class="cats-container carousel">
     </section>
   `);
 
@@ -28,10 +28,4 @@ $(() => {
 
   const $main = $("main");
   $main.append($catListings);
-
-  $(".cats-container").flickity({
-    // options
-    cellAlign: 'left',
-    contain: true
-  });
 });

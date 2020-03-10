@@ -5,6 +5,7 @@
 
 h2 {
   font-size: 2.8em;
+  text-align: center;
 }
 
 .filters-form {
@@ -12,6 +13,26 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.carousel {
+  height: 35vh;
+  margin-bottom: 3em;
+  .carousel-cell {
+    width: 35vh;
+    height: 35vh; /* height of carousel */
+    margin-right: 2em;
+  }
+}
+
+.lion-cub {
+  display: block;
+  object-fit:cover;
+  height: 100%;
+}
+
+.flickity-page-dots {
+  bottom: 0px;
 }
 
 article {
@@ -28,7 +49,7 @@ article {
 
     .cats-listing__preview-image {
       width: 22em;
-      height:22em;
+      height: 22em;
       img {
         display: block;
         object-fit:cover;
