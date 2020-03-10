@@ -18,53 +18,60 @@
             <a href="#">Home page</a>
           </li>
           <li class="user-link favourites-button">
-          <a>Favourites</a>
+            <a>Favourites</a>
           </li>
         </ul>
       </div>
       <div>
         <ul class="auth-links">
-          <li>Hi, ${user.name}</li>
-          <button class="mdc-button">
+          <li>Hi, ${user.name}!</li>
+          <button class="mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
             <span class="mdc-button__label">Log Out</span>
           </button>
+          <div>
+            <img class="user-avatar" src="" alt="" width="" height="">
+          </div>
         </ul>
-        <div>
-          <img class="user-avatar" src="" alt="" width="" height="">
-        </div>
-      <div>
+      </div>
     </nav>
       `;
     } else {
       userNav = `
       <nav class="user-nav">
-      <ul class="user-links">
-        <li class="user-link home-button">
-          Home page
-        </li>
-        <li class="user-link favourites-button">
-          Favourites
-        </li>
-        <li class="user-link owner-button">
-          My cats
-        </li>
-        <li class="user-link create-button">
-          Create new
-        </li>
-      </ul>
-      <ul class="auth-links">
-        <li>Hi, ${user.name}</li>
-        <li>Log out</li>
-      </ul>
       <div>
-        <img class="user-avatar" src="" alt="" width="" height="">
+        <ul class="user-links">
+          <li class="user-link home-button">
+            <a href="#">Home page</a>
+          </li>
+          <li class="user-link favourites-button">
+            <a>Favourites</a>
+          </li>
+          <li class="user-link owner-button">
+            <a>My cats</a>
+          </li>
+          <li class="user-link create-button">
+            <a>Add new cat</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class="auth-links">
+          <li>Hi, ${user.name}!</li>
+          <button class="mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Log Out</span>
+          </button>
+          <div>
+            <img class="user-avatar" src="" alt="" width="" height="">
+          </div>
+        </ul>
       </div>
     </nav>
       `;
     }
 
-    $pageHeader.append(userNav);
+    $pageHeader.prepend(userNav);
   }
 
   window.Meowza.update = updateHeader;

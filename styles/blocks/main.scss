@@ -17,8 +17,8 @@ article {
     margin-right: 2em;
 
     .cats-listing__preview-image {
-      width: 20em;
-      height:20em;
+      width: 22em;
+      height:22em;
       img {
         display: block;
         object-fit:cover;
@@ -48,8 +48,8 @@ article {
 
     textarea {
       font-family: inherit;
-      // font-size: $text-size;
-      font-size: 1.6em;
+      font-size: $text-size;
+      // font-size: 1.6em;
       width: 30em;
       height: 6em;
       margin-bottom: 1em;
@@ -57,13 +57,13 @@ article {
     }
 
     label {
-      // font-size: $text-size;
-      font-size: 1.6em;
+      font-size: $text-size;
+      // font-size: 1.6em;
     }
 
     .users-mail {
-      // font-size: $text-size;
-      font-size: 1.6em;
+      font-size: $text-size;
+      // font-size: 1.6em;
       width: 45%;
       margin: 1em 1.5em 1em 0;
     }
@@ -93,9 +93,9 @@ article {
 .cat_listing__interaction {
   display: flex;
   justify-content:center;
-  // button {
-  //   white-space: nowrap;
-  // }
+  .no-padding {
+    padding: none;
+  }
 }
 
 .cats-container {

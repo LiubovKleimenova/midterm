@@ -11,13 +11,41 @@ window.Meowza.createListing = (cat) => {
       </div>
       <div class="cat_listing__interaction">
         <div class="mdc-card__actions">
-          <button class="mdc-icon-button
+          <button class="mdc-icon-button mdc-button--touch
             mdc-card__action mdc-card__action--icon cat_listing__interaction-button add-to-favourites"
             aria-pressed="false"
             aria-label="Add to favorites"
             title="Add to favorites">
             <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
             <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+            <div class="mdc-button__touch"></div>
+          </button>
+          <button class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon
+            aria-pressed="false"
+            aria-label="Share to Facebook"
+            title="Share to Facebook">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+            <i class="fab fa-facebook material-icons mdc-icon-button__icon"></i>
+            <div class="mdc-button__touch"></div>
+          </button>
+          <button class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon
+            aria-pressed="false"
+            aria-label="Share to Instagram"
+            title="Share to Instagram">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+            <i class="fab fa-instagram material-icons mdc-icon-button__icon"></i>
+            <div class="mdc-button__touch"></div>
+          </button>
+          <button class="mdc-icon-button mdc-button--touch
+            mdc-card__action mdc-card__action--icon
+            aria-pressed="false"
+            aria-label="Share to Twitter"
+            title="Share to Twitter">
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+            <i class="fab fa-twitter material-icons mdc-icon-button__icon"></i>
+            <div class="mdc-button__touch"></div>
           </button>
         </div>
       </div>

@@ -8,7 +8,6 @@
 
   <title>Meowzza!</title>
 
-
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -21,20 +20,17 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
   <!-- material design requirement -->
   <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/86ffe6f375.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header class="page-header">
-    <h1 class="visually-hidden">Meowzza!</h1>
+    <h1 class="visually-hidden"><i class="fas fa-paw"></i>Meowzza!</h1>
     <img class="app-logo" src="" alt="" width="" height="">
     <section class="new-listing"></section>
   </header>
   <main class="wrapper">
-<!-- test button -->
-<!-- <button class="mdc-button">
-  <div class="mdc-button__ripple"></div>
-  <span class="mdc-button__label">Button</span>
-</button> -->
 
     <form action="/users/filteredCats" method="get" class="filters-form">
       <h2>Filter Options</h2>
@@ -65,47 +61,13 @@
       </button>
     </form>
 
-    <!-- <label class="mdc-text-field mdc-text-field--textarea">
-      <textarea class="message mdc-text-field__input" placeholder="Interested? Leave a message directly for the owner!" aria-labelledby="my-label-id" rows="4" cols="20"></textarea>
-      <div class="mdc-notched-outline">
-        <div class="mdc-notched-outline__leading"></div>
-        <div class="mdc-notched-outline__notch">
-        </div>
-        <div class="mdc-notched-outline__trailing"></div>
-      </div>
-    </label> -->
-
-    <div class="mdc-select">
-      <div class="mdc-select__anchor">
-        <i class="mdc-select__dropdown-icon"></i>
-        <div id="demo-selected-text" class="mdc-select__selected-text" role="button" aria-haspopup="listbox" aria-labelledby="demo-label demo-selected-text">Vegetables</div>
-        <span id="demo-label" class="mdc-floating-label mdc-floating-label--float-above">Pick a Food Group</span>
-        <div class="mdc-line-ripple"></div>
-      </div>
-
-      <div class="mdc-select__menu mdc-menu mdc-menu-surface" role="listbox">
-        <ul class="mdc-list">
-          <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option"></li>
-          <li class="mdc-list-item" data-value="grains" role="option">
-            Bread, Cereal, Rice, and Pasta
-          </li>
-          <li class="mdc-list-item mdc-list-item--disabled" data-value="vegetables" aria-disabled="true" role="option">
-            Vegetables
-          </li>
-          <li class="mdc-list-item" data-value="fruit" role="option">
-            Fruit
-          </li>
-        </ul>
-      </div>
-    </div>
-
     <section class="cats-container">
 
     </section>
   </main>
 
   <footer>
-    <h3>Copyright &copy; 2020 Meowzza. By Ata, Luba & Steven. All rights reserved.</h3>
+    <h3>Copyright &copy; 2020 <i class="fas fa-paw"></i> Meowzza. By Ata, Luba & Steven. All rights reserved.</h3>
   </footer>
   <script src="scripts/libraries/meowzza.js"></script>
   <script src="scripts/views_manager.js"></script>
