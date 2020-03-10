@@ -28,10 +28,33 @@ $(document).ready(() => {
   Meowza.update(Meowza.user);
   loadCats();
   $(document).on("submit", ".login-form", e => {
-    console.log(e);
+    //console.log(e);
     e.preventDefault();
     getUser();
 
+  });
+
+  // ---------CREATE NEW CAT---------
+  $(".create-cat").submit(e => {
+    console.log("create cat foem submitted");
+    $.ajax({
+      url: `/admin/newcat`,
+      type: "POST",
+      data: $(".new-cat-from").serialize(),
+      success: () => {
+        console.log("data submitted to db succ");
+        $.ajax({
+          url: `/users/`,
+          type: "GET",
+          dataType: "JSON",
+          success: data => {
+            console.log("data recieved from server")
+            $(".cats-container").empty();
+            renderCats(data);
+          }
+        });
+      }
+    });
   });
 });
 //console.log({ meowza: window.Meowza })
@@ -84,7 +107,7 @@ const renderCats = cats => {
   window.Meowza.catListings = $catListings;
 
   cats.forEach(cat => {
-    console.log(cat)
+    //console.log(cat)
     $catListings.append(Meowza.createListing(cat));
   });
   $("main").append($catListings);
@@ -112,5 +135,7 @@ $(".filters-form").submit((e) => {
   window.Meowza.catListings.empty();
   loadFilteredCats();
 });
+
+
 
 

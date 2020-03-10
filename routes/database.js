@@ -73,16 +73,29 @@ module.exports = (db) => {
   }
 
   const createNewCat = function(newcat, userId) {
+    console.log(newcat);
+    console.log(`${userId} id`);
     return db
       .query(
         `
     INSERT INTO cats (owner_id, name, description, main_photo_url, fee, birthdate, region, size, species, is_avaliable)
-    VALUES ($1, $2, $3, )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     RETURNING *;
     `,
-        [newCat.receiver_id, newCat.cat_id, newCat.message]
+        [
+          userId,
+          newcat.cat_name,
+          newcat.description,
+          newcat.cover_photo_url,
+          Number(newcat.adoption_fee),
+          newcat.birthdate,
+          newcat.region,
+          newcat.size,
+          newcat.species,
+          true
+        ]
       )
-      .then(res => res.rows);
+      .then(res => res.rows[0]);
   };
 
   const login =  function(userId) {
@@ -134,6 +147,17 @@ async function sendEmail(to, subject, text) {
   });
   console.log("Message sent: %s", info.messageId);
 }
-  return {getAllCats, getAllUsers, filterBySearch, getMessages, getMyCats, sendEmail, getFavourites, createMsgPost, login};
+  return {
+    getAllCats,
+    getAllUsers,
+    filterBySearch,
+    getMessages,
+    getMyCats,
+    sendEmail,
+    getFavourites,
+    createMsgPost,
+    createNewCat,
+    login
+  };
 };
 
