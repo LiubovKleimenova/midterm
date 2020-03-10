@@ -1,4 +1,5 @@
 header {
+  position: relative;
   background-color: #D8D8D8;
   background-image: url('/assets/wildlife-photographer-year-2018-3.jpg');
   width: 100%;
@@ -12,21 +13,27 @@ header {
     color: #ffffff;
     font-size:6em;
     font-style: italic;
-    margin: 0;
-    padding-left: 0.5em;
+    margin-top: 0.5em;
   }
 
   nav {
+    background-color: rgba(0,0,0,0.75);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-transform: uppercase;
+    height:10vh;
     margin: 0;
+    // position: absolute;
+    // top:0;
+    // left:0;
+    // right:0;
 
     ul {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-right: 2em;
+      // margin-right: 2em;
       padding: 0;
     }
 
@@ -34,7 +41,7 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 2em;
+      padding-right: 1em;
       height: 100%;
       font-size: $text-size;
       a {
@@ -43,9 +50,14 @@ header {
       }
     }
 
-    .auth-links {
+    .user-links {
+
+      input {
+        margin-right: 0.5em;
+      }
+
       li {
-        margin-right: 1em;
+        margin-right: 0.5em;
       }
     }
 

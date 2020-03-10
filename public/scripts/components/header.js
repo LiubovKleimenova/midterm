@@ -1,55 +1,64 @@
-
-
 window.header = {};
 
 const $pageHeader = $("header");
 const $newListing = $(".new-listing");
-
 
 function updateHeader(user) {
   $pageHeader.find(".user-nav").remove();
   let userNav;
   userNav = `
   <nav class="user-nav">
-  <ul class="user-links">
-  <li class="user-link home-button">
-  Home page
-  </li>
-  <li class="user-link favourites-button">
-  Favourites
-  </li>
-  </ul>
+    <ul>
+      <li class="user-link home-button">
+        <a href="#">Home page</a>
+      </li>
+      <li class="user-link favourites-button">
+        <a href="#">Favourites</a>
+      </li>
+    </ul>
+    <ul class="user-links">
+    </ul>
   </nav>`;
-  $pageHeader.append(userNav);
+  $pageHeader.prepend(userNav);
 
   function updateUserLinks(user) {
     //console.log("test");
 
     let usersLinks;
     if (!user) {
-      usersLinks = `<li>
-      <form class="login-form" action="/users/login" method="POST">
-          <input name="userId" id="login" type="text" placeholder="userId"></input>
-          <button type="submit" id="login-btn">Log in</button>
-        </form>
+      usersLinks = `
+        <li>
+          <form class="login-form" action="/users/login" method="POST">
+            <input name="userId" id="login" type="text" placeholder="Enter your account"></input>
+            <button class="mdc-button mdc-button--raised" type="submit" id="login-btn">
+              <div class="mdc-button__ripple"></div>
+              Log in
+            </button>
+          </form>
         </li>`;
     } else {
       if (!user.is_admin) {
         usersLinks = `
-          <li>Hi, ${user.name}</li>
-          <li>Log out</li>
-          `;
+          <li>Hi, ${user.name}!</li>
+          <button class="logout-button mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Log out
+          </button>
+        `;
       } else {
         usersLinks = `
           <li class="user-link owner-button">
-          My cats
+            <a>My cats</a>
           </li>
-          <li class="user-link create-button">
-          Create new
-          </li>
-          <li>Hi, ${user.name}</li>
-          <li>Log out</li>
-          `;
+          <button class="user-link create-button mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Add cat
+          </button>
+          <li>Hi, ${user.name}!</li>
+          <button class="logout-button mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Log out
+          </button>`;
       }
     }
     //console.log(usersLinks)
