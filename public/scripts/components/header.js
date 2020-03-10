@@ -9,10 +9,10 @@ function updateHeader(user) {
   userNav = `
   <nav class="user-nav">
     <ul>
-      <li class="user-link home-button">
+      <li class="hover user-link home-button">
         <a href="#">Home page</a>
       </li>
-      <li class="user-link favourites-button">
+      <li class="hover user-link favourites-button">
         <a href="#">Favourites</a>
       </li>
     </ul>
@@ -27,19 +27,17 @@ function updateHeader(user) {
     let usersLinks;
     if (!user) {
       usersLinks = `
-        <li>
-          <form class="login-form" action="/users/login" method="POST">
-            <input name="userId" id="login" type="text" placeholder="Enter your account"></input>
-            <button class="mdc-button mdc-button--raised" type="submit" id="login-btn">
-              <div class="mdc-button__ripple"></div>
-              Log in
-            </button>
-          </form>
-        </li>`;
+        <form class="login-form" action="/users/login" method="POST">
+          <input class="margin-right" name="userId" id="login" type="text" placeholder="Enter your account"></input>
+          <button class="padding-left mdc-button mdc-button--raised" type="submit" id="login-btn">
+            <div class="mdc-button__ripple"></div>
+            Log in
+          </button>
+        </form>`;
     } else {
       if (!user.is_admin) {
         usersLinks = `
-          <li>Hi, ${user.name}!</li>
+          <li class="padding-left padding-right">Hi, ${user.name}!</li>
           <button class="logout-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
             Log out
@@ -47,14 +45,14 @@ function updateHeader(user) {
         `;
       } else {
         usersLinks = `
-          <li class="user-link owner-button">
+          <li class="hover user-link owner-button">
             <a>My cats</a>
           </li>
           <button class="user-link create-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
             Add cat
           </button>
-          <li>Hi, ${user.name}!</li>
+          <li class="padding-left padding-right">Hi, ${user.name}!</li>
           <button class="logout-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
             Log out
