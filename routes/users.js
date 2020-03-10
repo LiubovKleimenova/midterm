@@ -67,22 +67,5 @@ module.exports = (databaseHelperFunctions) => {
   .catch(err => res.status(500).send(err))
 });
 
-// Allows users to login and Logout
-
-router.post('/login', (req, res) => {
-  const {userId} = req.body;
-  databaseHelperFunctions.login(userId)
-  .then(user => {console.log(user[0].id)
-  req.session.userId = user[0].id;
-  res.json(user[0])
-  })
-  .catch(e => res.send(e));
-});
-
-router.get('/logout', (req, res) => {
-  req.session.userId = null;
-  res.send({});
-});
-
   return router;
 };

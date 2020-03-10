@@ -90,6 +90,26 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+
+// Allows users to login and Logout
+
+app.post('/logout', (req, res) => {
+  console.log('hitting logout route');
+  req.session= null;
+  res.send({});
+});
+
+app.post('/login', (req, res) => {
+  const {userId} = req.body;
+  databaseHelperFunctions.login(userId)
+  .then(user => {console.log(user[0].id)
+  req.session.userId = user[0].id;
+  res.json(user[0])
+  })
+  .catch(e => res.send(e));
+});
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
