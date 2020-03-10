@@ -103,3 +103,9 @@ article {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.cat_listing__interaction {
+  button {
+    white-space: nowrap;
+  }
+}

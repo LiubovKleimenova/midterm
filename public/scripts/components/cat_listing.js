@@ -11,7 +11,7 @@ window.Meowza.createListing = (cat) => {
       </div>
       <div class="cat_listing__interaction">
         <div class="mdc-card__actions">
-          <button class="mdc-icon-button mdc-button--touch
+          <button data-catId="${cat.id} "class="mdc-icon-button mdc-button--touch
             mdc-card__action mdc-card__action--icon cat_listing__interaction-button add-to-favourites"
             aria-pressed="false"
             aria-label="Add to favorites"

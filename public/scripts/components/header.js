@@ -1,80 +1,67 @@
 
-  window.header = {};
 
-  const $pageHeader = $(".page-header");
-  const $newListing = $(".new-listing");
-  let currentUser = null;
-  function updateHeader(user) {
-    currentUser = user;
-    $pageHeader.find(".user-nav").remove();
-    let userNav;
+window.header = {};
 
-    if (!user.isAdmin) {
-      userNav = `
-      <nav class="user-nav">
-      <div>
-        <ul class="user-links">
-          <li class="user-link home-button">
-            <a href="#">Home page</a>
-          </li>
-          <li class="user-link favourites-button">
-            <a>Favourites</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul class="auth-links">
-          <li>Hi, ${user.name}!</li>
-          <button class="mdc-button mdc-button--raised">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Log Out</span>
-          </button>
-          <div>
-            <img class="user-avatar" src="" alt="" width="" height="">
-          </div>
-        </ul>
-      </div>
-    </nav>
-      `;
+const $pageHeader = $("header");
+const $newListing = $(".new-listing");
+
+
+function updateHeader(user) {
+  $pageHeader.find(".user-nav").remove();
+  let userNav;
+  userNav = `
+  <nav class="user-nav">
+  <ul class="user-links">
+  <li class="user-link home-button">
+  Home page
+  </li>
+  <li class="user-link favourites-button">
+  Favourites
+  </li>
+  </ul>
+  </nav>`;
+  $pageHeader.append(userNav);
+
+  function updateUserLinks(user) {
+    //console.log("test");
+
+    let usersLinks;
+    if (!user) {
+      usersLinks = `<li>
+      <form class="login-form" action="/users/login" method="POST">
+          <input name="userId" id="login" type="text" placeholder="userId"></input>
+          <button type="submit" id="login-btn">Log in</button>
+        </form>
+        </li>`;
     } else {
-      userNav = `
-      <nav class="user-nav">
-      <div>
-        <ul class="user-links">
-          <li class="user-link home-button">
-            <a href="#">Home page</a>
-          </li>
-          <li class="user-link favourites-button">
-            <a>Favourites</a>
-          </li>
+      if (!user.is_admin) {
+        usersLinks = `
+          <li>Hi, ${user.name}</li>
+          <li>Log out</li>
+          `;
+      } else {
+        usersLinks = `
           <li class="user-link owner-button">
-            <a>My cats</a>
+          My cats
           </li>
           <li class="user-link create-button">
-            <a>Add new cat</a>
+          Create new
           </li>
-        </ul>
-      </div>
-      <div>
-        <ul class="auth-links">
-          <li>Hi, ${user.name}!</li>
-          <button class="mdc-button mdc-button--raised">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Log Out</span>
-          </button>
-          <div>
-            <img class="user-avatar" src="" alt="" width="" height="">
-          </div>
-        </ul>
-      </div>
-    </nav>
-      `;
+          <li>Hi, ${user.name}</li>
+          <li>Log out</li>
+          `;
+      }
     }
-
-    $pageHeader.prepend(userNav);
+    //console.log(usersLinks)
+    $(".user-links").append(usersLinks);
+    //Meowza.addNewCatForm(user);
   }
+  updateUserLinks(user);
+
+}
 
   window.Meowza.update = updateHeader;
+  //window.Meowza.updateLinks = updateUserLinks;
 
   //updateHeader(user1);
 

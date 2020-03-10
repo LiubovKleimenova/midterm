@@ -39,12 +39,12 @@ module.exports = (db) => {
     whereClauses.push(`fee <= $${queryParams.length} `);
   }
   if (options.region) {
-    queryParams.push(`%${options.region}%`);
-    whereClauses.push(`region = $${queryParams.length} `);
+    queryParams.push(`${options.region}`);
+    whereClauses.push(`region IN ($${queryParams.length}) `);
   }
   if (options.size) {
     queryParams.push(options.size);
-    whereClauses.push(`size = $${queryParams.length} `);
+    whereClauses.push(`size IN ($${queryParams.length}) `);
   }
   // **** Uncomment if we want to filter by species ****
   // if (options.species) {
@@ -59,6 +59,8 @@ module.exports = (db) => {
     LIMIT 10;
     `;
     // 6
+    console.log(queryString);
+    console.log(queryParams);
     return db.query(queryString, queryParams)
     .then(res => res.rows);
   }
@@ -72,12 +74,25 @@ module.exports = (db) => {
     .then(res => res.rows )
   }
 
+  const createNewCat = function(newcat, userId) {
+    return db
+      .query(
+        `
+    INSERT INTO cats (owner_id, name, description, main_photo_url, fee, birthdate, region, size, species, is_avaliable)
+    VALUES ($1, $2, $3, )
+    RETURNING *;
+    `,
+        [newCat.receiver_id, newCat.cat_id, newCat.message]
+      )
+      .then(res => res.rows);
+  };
+
   const login =  function(userId) {
     return db.query(`
     SELECT * FROM users
     WHERE id = $1
     `, [userId])
-    .then(res => res.rows )
+    .then(res => res.rows)
   }
 
   const getMessages = function (userId) {
@@ -87,6 +102,22 @@ module.exports = (db) => {
     ORDER BY cat_id, id
     `, [userId])
     .then(res => res.rows )
+  }
+
+  const addToFavourites = function (userId, catId) {
+    console.log(`userId ${userId}, catId  ${catId}`);
+    return db
+      .query(
+        `
+    INSERT INTO favourites (user_id, cat_id)
+    VALUES ($1, $2)
+    RETURNING *;
+    `,
+        [userId, catId]
+      )
+      .then(res => {
+        console.log(res.rows);
+        res.rows});
   }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {
@@ -121,6 +152,17 @@ async function sendEmail(to, subject, text) {
   });
   console.log("Message sent: %s", info.messageId);
 }
-  return {getAllCats, getAllUsers, filterBySearch, getMessages, getMyCats, sendEmail, getFavourites, createMsgPost, login};
+  return {
+    getAllCats,
+    getAllUsers,
+    filterBySearch,
+    getMessages,
+    getMyCats,
+    sendEmail,
+    getFavourites,
+    createMsgPost,
+    login,
+    addToFavourites
+  };
 };
 
