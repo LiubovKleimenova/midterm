@@ -99,7 +99,8 @@ const loadFilteredCats = () => {
     //dataType: "JSON",
     data: $(".filters-form").serialize(),
     success: response => {
-      renderCats(response.cats);
+      //console.log(response);
+      renderCats(response);
     }
   });
 };
