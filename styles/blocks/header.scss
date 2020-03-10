@@ -8,6 +8,7 @@ header {
   background-position-y: 30%;
   color: $header-color;
   font-size: $text-size;
+  z-index:10;
 
   h1 {
     color: #ffffff;

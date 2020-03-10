@@ -97,6 +97,7 @@ let today = new Date();
 let date = today.getFullYear();
 
 const renderCats = cats => {
+  $("main").find(".cats-container").remove();
   const $catListings = $(`
   <section class="cats-container">
   </section>
