@@ -10,6 +10,7 @@ h2 {
 .filters-form {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 
@@ -74,13 +75,13 @@ article {
     .users-mail {
       font-size: $text-size;
       // font-size: 1.6em;
-      width: 45%;
+      width: 65%;
       margin: 1em 1.5em 1em 0;
     }
 
     .email-button-container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
 
