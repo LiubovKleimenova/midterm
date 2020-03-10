@@ -13,7 +13,7 @@
   <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
   <!-- material design icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <!-- Flickity carousel -->
+  <!-- flickity -->
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -30,7 +30,6 @@
     <section class="new-listing"></section>
   </header>
   <main class="wrapper">
-
     <form action="/users/filteredCats" method="get" class="filters-form">
       <h2>Filter Options</h2>
       <fieldset>
@@ -69,6 +68,25 @@
         Filter
       </button>
     </form>
+
+    <section>
+      <!-- featured cats carousel -->
+      <h2>Featured Cats</h2>
+      <div class="carousel">
+        <div class="carousel-cell">
+          <img src="./assets/tiger_cub.jpeg" alt="tiger cub">
+        </div>
+        <div class="carousel-cell lion-cub">
+          <img src="./assets/butters.jpg" alt="tiger cub">
+        </div>
+        <div class="carousel-cell">
+          <img src="./assets/cheetah_cubs.jpg" alt="cheetah cubs">
+        </div>
+        <div class="carousel-cell">
+          <img src="./assets/ocelot_cub.jpeg" alt="jaguar cub">
+        </div>
+      </div>
+    </section>
 
     <section class="cats-container">
 
@@ -116,9 +134,11 @@
   <script src="scripts/components/header.js"></script>
   <script src="scripts/components/new_cat_form.js"></script>
   <script src="scripts/components/cats_listing.js"></script>
-  <!-- flickity package -->
-  <script src="/path/to/flickity.pkgd.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <!-- flickity script -->
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <!-- <script src="scripts/components/cats_listing.js"></script> -->
+
 </body>
 
 </html>

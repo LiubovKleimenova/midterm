@@ -28,10 +28,4 @@ $(() => {
 
   const $main = $("main");
   $main.append($catListings);
-
-  $(".cats-container").flickity({
-    // options
-    cellAlign: 'left',
-    contain: true
-  });
 });
