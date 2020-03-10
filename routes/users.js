@@ -31,9 +31,25 @@ module.exports = (databaseHelperFunctions) => {
   // Only filtered cats are displayed
   router.get('/filteredCats', (req, res) => {
     console.log(req.query);
-    databaseHelperFunctions.filterBySearch(req.query)
-    .then(cats => res.send({cats}))
-    .catch(err => res.status(500).send(err))
+    databaseHelperFunctions
+      .filterBySearch(req.query)
+      .then(data => res.json(data))
+      .catch(err => res.status(500).send(err));
+  });
+
+   // Add cat to favourite cats
+  router.post('/addToFavourites', (req, res) => {
+    console.log('addToFavs invoked(server)')
+    //console.log(req.query);
+    console.log(req.body);
+    let catId = req.body.catId;
+    let userId= req.session.userId;
+
+    console.log('userId, users.js' + req.session.userId);
+    databaseHelperFunctions
+      .addToFavourites(userId, catId)
+      .then(data => res.json(data))
+      .catch(err => res.status(500).send(err));
   });
 
 

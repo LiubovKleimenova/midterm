@@ -39,12 +39,12 @@ module.exports = (db) => {
     whereClauses.push(`fee <= $${queryParams.length} `);
   }
   if (options.region) {
-    queryParams.push(`%${options.region}%`);
-    whereClauses.push(`region = $${queryParams.length} `);
+    queryParams.push(`${options.region}`);
+    whereClauses.push(`region IN ($${queryParams.length}) `);
   }
   if (options.size) {
     queryParams.push(options.size);
-    whereClauses.push(`size = $${queryParams.length} `);
+    whereClauses.push(`size IN ($${queryParams.length}) `);
   }
   // **** Uncomment if we want to filter by species ****
   // if (options.species) {
@@ -59,6 +59,8 @@ module.exports = (db) => {
     LIMIT 10;
     `;
     // 6
+    console.log(queryString);
+    console.log(queryParams);
     return db.query(queryString, queryParams)
     .then(res => res.rows);
   }
@@ -114,6 +116,22 @@ module.exports = (db) => {
     `, [userId])
     .then(res => res.rows )
   }
+
+  const addToFavourites = function (userId, catId) {
+    console.log(`userId ${userId}, catId  ${catId}`);
+    return db
+      .query(
+        `
+    INSERT INTO favourites (user_id, cat_id)
+    VALUES ($1, $2)
+    RETURNING *;
+    `,
+        [userId, catId]
+      )
+      .then(res => {
+        console.log(res.rows);
+        res.rows});
+  }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {
     return db.query(`
@@ -156,8 +174,13 @@ async function sendEmail(to, subject, text) {
     sendEmail,
     getFavourites,
     createMsgPost,
+<<<<<<< HEAD
     createNewCat,
     login
+=======
+    login,
+    addToFavourites
+>>>>>>> master
   };
 };
 
