@@ -36,11 +36,13 @@ window.Meowza.createListing = (cat) => {
       <form>
         <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
         <label for="users-mail">Or get contacted by email:</label>
-        <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
-        <button type="submit" class="mdc-button">
-          <div class="mdc-button__ripple"></div>
-          Send message
-        </button>
+        <div class="email-button-container">
+          <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
+          <button type="submit" class="mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Send message
+          </button>
+        </div>
       </form>
     </section>
   </article>

@@ -7,6 +7,8 @@ $primary-color: #daefb3;
 $secondary-color: #eef4d4;
 $background-color: #16302b;
 $accent-color: #ea9e8d;
+$text-size: 1.6em;
+$mb: 1em;
 
 body {
 
@@ -30,11 +32,17 @@ body {
   ul {
     list-style-type: none;
   }
+
+  .demo-width-class {
+    width: 400px;
+  }
+
 }
-
-@use "@material/button/mdc-button";
-
+// @import "./variables";
 @import "blocks/header.scss";
 @import "blocks/main.scss";
 @import "blocks/footer.scss";
-
+@use "@material/list/mdc-list";
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/menu/mdc-menu";
+@use "@material/select/mdc-select";

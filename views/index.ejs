@@ -59,16 +59,51 @@
           <option value="SouthAmerica" name="region">South America</option>
         </select>
       </fieldset>
-      <button type="submit" class="mdc-button">
+      <button type="submit" class="mdc-button mdc-button--raised">
         <div class="mdc-button__ripple"></div>
         Find cats
       </button>
     </form>
 
+    <!-- <label class="mdc-text-field mdc-text-field--textarea">
+      <textarea class="message mdc-text-field__input" placeholder="Interested? Leave a message directly for the owner!" aria-labelledby="my-label-id" rows="4" cols="20"></textarea>
+      <div class="mdc-notched-outline">
+        <div class="mdc-notched-outline__leading"></div>
+        <div class="mdc-notched-outline__notch">
+        </div>
+        <div class="mdc-notched-outline__trailing"></div>
+      </div>
+    </label> -->
+
+    <div class="mdc-select">
+      <div class="mdc-select__anchor">
+        <i class="mdc-select__dropdown-icon"></i>
+        <div id="demo-selected-text" class="mdc-select__selected-text" role="button" aria-haspopup="listbox" aria-labelledby="demo-label demo-selected-text">Vegetables</div>
+        <span id="demo-label" class="mdc-floating-label mdc-floating-label--float-above">Pick a Food Group</span>
+        <div class="mdc-line-ripple"></div>
+      </div>
+
+      <div class="mdc-select__menu mdc-menu mdc-menu-surface" role="listbox">
+        <ul class="mdc-list">
+          <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option"></li>
+          <li class="mdc-list-item" data-value="grains" role="option">
+            Bread, Cereal, Rice, and Pasta
+          </li>
+          <li class="mdc-list-item mdc-list-item--disabled" data-value="vegetables" aria-disabled="true" role="option">
+            Vegetables
+          </li>
+          <li class="mdc-list-item" data-value="fruit" role="option">
+            Fruit
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <section class="cats-container">
 
     </section>
   </main>
+
   <footer>
     <h3>Copyright &copy; 2020 Meowzza. By Ata, Luba & Steven. All rights reserved.</h3>
   </footer>

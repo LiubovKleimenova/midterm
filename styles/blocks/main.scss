@@ -48,6 +48,7 @@ article {
 
     textarea {
       font-family: inherit;
+      // font-size: $text-size;
       font-size: 1.6em;
       width: 30em;
       height: 6em;
@@ -56,12 +57,21 @@ article {
     }
 
     label {
+      // font-size: $text-size;
       font-size: 1.6em;
     }
+
     .users-mail {
+      // font-size: $text-size;
       font-size: 1.6em;
       width: 45%;
-      margin: 1em 0;
+      margin: 1em 1.5em 1em 0;
+    }
+
+    .email-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
