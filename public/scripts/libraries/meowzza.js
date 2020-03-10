@@ -50,6 +50,8 @@ $(document).ready(() => {
       }
     });
   });
+
+
   $(document).on("click", ".add-to-favourites",
     addToFavourites
   )

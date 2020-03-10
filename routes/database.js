@@ -174,13 +174,9 @@ async function sendEmail(to, subject, text) {
     sendEmail,
     getFavourites,
     createMsgPost,
-<<<<<<< HEAD
     createNewCat,
-    login
-=======
     login,
     addToFavourites
->>>>>>> master
   };
 };
 
