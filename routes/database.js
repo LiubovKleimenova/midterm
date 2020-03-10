@@ -90,7 +90,7 @@ module.exports = (db) => {
           newcat.description,
           newcat.cover_photo_url,
           Number(newcat.adoption_fee),
-          newcat.birthdate,
+          newcat["birth-date"],
           newcat.region,
           newcat.size,
           newcat.species,
