@@ -1,22 +1,28 @@
 window.Meowza = {};
 
-// window.Meowza.user1 = {
-//   isAdmin: true,
-//   name: "Luba"
-// };
+$(document).ready(() => {
+  Meowza.update(Meowza.user);
+  loadCats();
+  $(document).on("submit", ".login-form", e => {
+    e.preventDefault();
+    getUser();
+  });
+
+  $(document).on("click", ".add-to-favourites", addToFavourites);
+
+  $(document).on("submit", "#new-cat-form", e => {
+    e.preventDefault();
+    createNewCat();
+  });
+});
 
 const getUser = () => {
-  console.log("getUser invoked");
-  console.log($(".login-form").serialize());
-  //e.preventDefault();
   $.ajax({
     url: `/login`,
     type: "POST",
     data: $(".login-form").serialize(),
     success: response => {
-      //console.log(response);
       window.Meowza.user = response;
-      console.log(window.Meowza.user);
       Meowza.update(Meowza.user);
       Meowza.addNewCatForm(Meowza.user);
     }
@@ -30,7 +36,7 @@ const logOut = () => {
     // data:
     success: () => {
       Meowza.update(null)
-      $(".new-cat-form").remove();
+      // $(".new-cat-form").remove();
     }
   })
 }
@@ -53,7 +59,6 @@ $(document).ready(() => {
 //console.log({ meowza: window.Meowza })
 
 const loadCats = () => {
-  //console.log('loadcats invoked');
   $.ajax({
     url: `/users/`,
     type: "GET",
@@ -96,16 +101,13 @@ const renderCats = cats => {
   <section class="cats-container">
   </section>
   `);
-  //console.log(cats);
   window.Meowza.catListings = $catListings;
 
   cats.forEach(cat => {
-    console.log(cat)
     $catListings.append(Meowza.createListing(cat));
   });
   $("main").append($catListings);
 };
-
 
 // --------------FILTER CATS --------------
 const loadFilteredCats = () => {
@@ -123,8 +125,7 @@ const loadFilteredCats = () => {
   });
 };
 
-
-$(".filters-form").submit((e) => {
+$(".filters-form").submit(e => {
   //console.log(e);
   e.preventDefault();
   //console.log("filtered");
@@ -132,12 +133,11 @@ $(".filters-form").submit((e) => {
   loadFilteredCats();
 });
 
-
 // --------------ADD TO FAVOURITES --------------
-const addToFavourites = function ()  {
+const addToFavourites = function() {
   console.log("addToFAvs invoked");
   console.log(this);
-  const catId= $(this).data("catid");
+  const catId = $(this).data("catid");
   console.log(catId);
   $.ajax({
     url: `/users/addToFavourites`,
@@ -147,9 +147,30 @@ const addToFavourites = function ()  {
       console.log(response);
     }
   });
-}
+};
 
-// $(".add-to-favourites").click(() => {
-//   console.log("add-btn was cliked");
-//   addToFavourites();
-// });
+// ---------CREATE NEW CAT---------
+const createNewCat = function() {
+  console.log($(".new-cat-form").serialize());
+  console.log("create cat foem submitted");
+  $.ajax({
+    url: `/admin/newcat`,
+    type: "POST",
+    data: $(".new-cat-form").serialize(),
+    success: () => {
+      //console.log("data submitted to db succ");
+      $.ajax({
+        url: `/users/`,
+        type: "GET",
+        dataType: "JSON",
+        success: data => {
+          //console.log("data recieved from server");
+          $(".cats-container").empty();
+          renderCats(data);
+        }
+      });
+    }
+  });
+};
+
+//--------------

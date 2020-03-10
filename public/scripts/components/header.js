@@ -1,24 +1,25 @@
-
-
 window.header = {};
 
 const $pageHeader = $("header");
 const $newListing = $(".new-listing");
 
-
 function updateHeader(user) {
   $pageHeader.find(".user-nav").remove();
+  $pageHeader.find(".new-cat-form").remove();
+  // Meowza.addNewCatForm(user);
   let userNav;
   userNav = `
   <nav class="user-nav">
-  <ul class="user-links">
-  <li class="user-link home-button">
-  Home page
-  </li>
-  <li class="user-link favourites-button">
-  Favourites
-  </li>
-  </ul>
+    <ul>
+      <li class="hover user-link home-button">
+        <a href="#">Home page</a>
+      </li>
+      <li class="hover user-link favourites-button">
+        <a href="#">Favourites</a>
+      </li>
+    </ul>
+    <ul class="user-links">
+    </ul>
   </nav>`;
   $pageHeader.prepend(userNav);
 
@@ -27,29 +28,37 @@ function updateHeader(user) {
 
     let usersLinks;
     if (!user) {
-      usersLinks = `<li>
-      <form class="login-form" action="/login" method="POST">
-          <input name="userId" id="login" type="text" placeholder="userId"></input>
-          <button type="submit" id="login-btn">Log in</button>
-        </form>
-        </li>`;
+      usersLinks = `
+        <form class="login-form" action="/users/login" method="POST">
+          <input class="margin-right" name="userId" id="login" type="text" placeholder="Enter your account"></input>
+          <button class="padding-left mdc-button mdc-button--raised" type="submit" id="login-btn">
+            <div class="mdc-button__ripple"></div>
+            Log in
+          </button>
+        </form>`;
     } else {
       if (!user.is_admin) {
         usersLinks = `
-          <li>Hi, ${user.name}</li>
-          <li class="logout-button" >Log out</li>
-          `;
+          <li class="padding-left padding-right">Hi, ${user.name}!</li>
+          <button class="logout-button mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Log out
+          </button>
+        `;
       } else {
         usersLinks = `
-          <li class="user-link owner-button">
-          My cats
+          <li class="hover user-link owner-button">
+            <a>My cats</a>
           </li>
-          <li class="user-link create-button">
-          Create new
-          </li>
-          <li>Hi, ${user.name}</li>
-          <li class="logout-button">Log out</li>
-          `;
+          <button class="user-link create-button mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Add cat
+          </button>
+          <li class="padding-left padding-right">Hi, ${user.name}!</li>
+          <button class="logout-button mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            Log out
+          </button>`;
       }
     }
     //console.log(usersLinks)
