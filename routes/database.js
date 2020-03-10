@@ -44,7 +44,7 @@ module.exports = (db) => {
   }
   if (options.size) {
     queryParams.push(options.size);
-    whereClauses.push(`size = $${queryParams.length} `);
+    whereClauses.push(`size IN ($${queryParams.length}) `);
   }
   // **** Uncomment if we want to filter by species ****
   // if (options.species) {
