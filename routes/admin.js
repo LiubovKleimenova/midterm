@@ -43,6 +43,17 @@ module.exports = (databaseHelperFunctions) => {
     .catch(err => res.status(500).send(err))
   });
 
+  //create new cat
+  router.post("/newcat", (req, res) => {
+    console.log("cat WORKS");
+    userid = req.session.userId;
+    const newcat = req.body;
+    databaseHelperFunctions
+      .createNewCat(newcat, userid)
+      .then(data => res.json(data))
+      .catch(err => res.status(500).send(err));
+  });
+
   // route to handle email posts
   router.post('/send', (req, res) => {
     if (!req.body.text) {
@@ -71,4 +82,6 @@ router.get('/myMessages', (req, res) => {
   router.post('/sendMessage', (req, res) => {
     databaseHelperFunctions.createMsgPost(req.body)
   });
+
+
 
