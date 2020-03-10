@@ -8,12 +8,14 @@ header {
   background-repeat: no-repeat;
   background-position-y: 30%;
   color: #a89b9d;
+  font-size: $text-size;
 
   h1 {
     color: #ffffff;
-    font-size:6em;
+    font-size:4.8em;
     font-style: italic;
     margin-top: 0.5em;
+    margin-left: 0.5em;
   }
 
   nav {
@@ -24,6 +26,7 @@ header {
     text-transform: uppercase;
     height:10vh;
     margin: 0;
+    padding: 1em;
     // position: absolute;
     // top:0;
     // left:0;
@@ -33,6 +36,7 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height:100%;
       // margin-right: 2em;
       padding: 0;
     }
@@ -41,23 +45,38 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-right: 1em;
+      // margin-right: 1em;
       height: 100%;
-      font-size: $text-size;
+      // font-size: $text-size;
       a {
         color: inherit;
         text-decoration: inherit;
+        text-align: center;
+        padding: 0 1em;
       }
     }
 
+    .hover:hover,
+    .hover:focus {
+      background-color: rgba(218,239,179,0.35);
+      color: #ffffff;
+    }
+
+    .padding-left {
+      padding-left: 1em;
+    }
+
+    .padding-right {
+      padding-right: 1em;
+    }
+
+    .margin-right {
+      margin-right: 1em;
+    }
+
     .user-links {
-
-      input {
-        margin-right: 0.5em;
-      }
-
       li {
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
       }
     }
 
