@@ -1,10 +1,41 @@
-form {
-  width:40%;
+.wrapper {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.cats-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+}
+
+article {
+  // width:45%;
+  background-color: $primary-color;
+  color: #000000;
+  margin: 2em 0;
+
+  h3 {
+    font-size:3em;
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    li {
+      font-size: 1.8em;
+    }
+  }
+
+  textarea {
+    width: 300px;
+    height: 125px;
+  }
 }
 
 .cats-listing {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: center;
   align-items: center;
   outline: 2px solid green;
@@ -12,7 +43,7 @@ form {
 
 .cat_listing__interaction {
   display: flex;
-  justify-content:center;
+  justify-content:left;
   button {
     white-space: nowrap;
   }
@@ -20,17 +51,19 @@ form {
 
 .cat-details-container {
   display: flex;
+  flex-direction: column;
 
   .cats-listing__preview-image {
-    height: 24em;
-    width: 24em;
+    width: 20em;
+    height:20em;
     img {
       object-fit:cover;
       width:100%;
     }
   }
 
-  ul {
-    padding: 0;
+  section {
+    padding: 0 0 0 3em;
   }
+
 }
