@@ -14,6 +14,8 @@ $(document).ready(() => {
     e.preventDefault();
     createNewCat();
   });
+
+  $(document).on("click", ".logout-button", logOut);
 });
 
 const getUser = () => {
@@ -40,23 +42,6 @@ const logOut = () => {
     }
   })
 }
-
-$(document).ready(() => {
-  Meowza.update(Meowza.user);
-  loadCats();
-  $(document).on("submit", ".login-form", e => {
-    console.log(e);
-    e.preventDefault();
-    getUser();
-  });
-  $(document).on("click", ".add-to-favourites",
-    addToFavourites
-  )
-  $(document).on('click', '.logout-button',
-    logOut)
-
-});
-//console.log({ meowza: window.Meowza })
 
 const loadCats = () => {
   $.ajax({
