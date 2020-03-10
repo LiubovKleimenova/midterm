@@ -10,7 +10,7 @@ const getUser = () => {
   console.log($(".login-form").serialize());
   //e.preventDefault();
   $.ajax({
-    url: `/users/login`,
+    url: `/login`,
     type: "POST",
     data: $(".login-form").serialize(),
     success: response => {
@@ -23,6 +23,17 @@ const getUser = () => {
   });
 }
 
+const logOut = () => {
+  return $.ajax({
+    method: "POST",
+    url: "/logout",
+    // data:
+    success: () => {
+      Meowza.update(null)
+      $(".new-cat-form").remove();
+    }
+  })
+}
 
 $(document).ready(() => {
   Meowza.update(Meowza.user);
@@ -35,6 +46,9 @@ $(document).ready(() => {
   $(document).on("click", ".add-to-favourites",
     addToFavourites
   )
+  $(document).on('click', '.logout-button',
+    logOut)
+
 });
 //console.log({ meowza: window.Meowza })
 

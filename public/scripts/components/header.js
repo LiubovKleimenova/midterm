@@ -20,7 +20,7 @@ function updateHeader(user) {
   </li>
   </ul>
   </nav>`;
-  $pageHeader.append(userNav);
+  $pageHeader.prepend(userNav);
 
   function updateUserLinks(user) {
     //console.log("test");
@@ -28,7 +28,7 @@ function updateHeader(user) {
     let usersLinks;
     if (!user) {
       usersLinks = `<li>
-      <form class="login-form" action="/users/login" method="POST">
+      <form class="login-form" action="/login" method="POST">
           <input name="userId" id="login" type="text" placeholder="userId"></input>
           <button type="submit" id="login-btn">Log in</button>
         </form>
@@ -37,7 +37,7 @@ function updateHeader(user) {
       if (!user.is_admin) {
         usersLinks = `
           <li>Hi, ${user.name}</li>
-          <li>Log out</li>
+          <li class="logout-button" >Log out</li>
           `;
       } else {
         usersLinks = `
@@ -48,7 +48,7 @@ function updateHeader(user) {
           Create new
           </li>
           <li>Hi, ${user.name}</li>
-          <li>Log out</li>
+          <li class="logout-button">Log out</li>
           `;
       }
     }

@@ -67,7 +67,8 @@ function addNewCatForm(user) {
       </div>
 
     </form>`;
-  if (user.is_admin) {
+    window.Meowza.newCatForm = $newCatForm
+    if (user.is_admin) {
     $pageHeader.append($newCatForm);
   }
 }
