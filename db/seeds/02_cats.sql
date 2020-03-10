@@ -16,7 +16,7 @@ VALUES
   ),
   (2, 'Stinky', 'A breath of fresh air', '/assets/tiger_cub.jpeg', 900650, 'Asia', '2019-01-09', 'L', 'tiger', TRUE
   ),
-  (3, 'Berk', 'Prized fighter', '/assets/berk.png', 6, 'Europe', '1995-05-05', 'L', 'tiger', TRUE
+  (3, 'Berk', 'Pls halp', '/assets/berk.png', 6, 'Europe', '1995-05-05', 'L', 'tiger', TRUE
   ),
-  (2, 'Lebron', 'Likes tacos', '/assets/lion1.jpg', 154000000, 'North America', '1984-12-30', 'L', 'lion', FALSE
+  (2, 'James', 'Likes tacos', '/assets/lion1.jpg', 154000000, 'North America', '1984-12-30', 'L', 'lion', FALSE
   );
