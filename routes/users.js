@@ -46,6 +46,15 @@ module.exports = (databaseHelperFunctions) => {
     .catch(err => res.status(500).send(err))
   });
 
+   // Add cat to favourite cats
+  router.post('/addToFavourites', (req, res) => {
+    console.log(req.body);
+    databaseHelperFunctions
+      .addToFavourites(req.query)
+      .then(data => res.json(data))
+      .catch(err => res.status(500).send(err));
+  });
+
 
   // Allows user to post messages
 
