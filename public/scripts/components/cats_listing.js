@@ -1,6 +1,6 @@
 $(() => {
   const $catListings = $(`
-    <section class="cats-container carousel">
+    <section class="cats-container">
     </section>
   `);
 
