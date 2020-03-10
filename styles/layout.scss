@@ -6,13 +6,18 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 $primary-color: #daefb3;
 $secondary-color: #eef4d4;
 $background-color: #16302b;
+$accent-color: #ea9e8d;
 
 body {
 
-  background: linear-gradient(to bottom,#000000, $secondary-color);
+  background: linear-gradient(to bottom,#000000 15%, #daefb3, $background-color, #000000);
   color: $secondary-color;
   // font reset 62.5% - equivalent to 10px for simplified relative font sizing
   font-size: 62.5%;
+
+  .new-cat-form {
+    width: 40%;
+  }
 
   p {
     font-size: 2em;

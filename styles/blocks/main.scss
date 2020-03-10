@@ -5,9 +5,10 @@
 
 article {
   // width:45%;
-  background: linear-gradient(to bottom, $secondary-color, $primary-color);
+  background: linear-gradient(to bottom, #ffffff, $accent-color);
   color: $background-color;
-  margin: 2em 0;
+  box-shadow: 0.5em 0.5em 1em #000000;
+  margin: 2em;
   padding: 2em;
 
   .cat-details-container {
@@ -42,6 +43,8 @@ article {
   form {
     display: flex;
     flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
 
     textarea {
       font-family: inherit;
@@ -52,7 +55,12 @@ article {
       padding: 0.5em;
     }
 
+    label {
+      font-size: 1.6em;
+    }
     .users-mail {
+      font-size: 1.6em;
+      width: 45%;
       margin: 1em 0;
     }
   }
@@ -75,9 +83,9 @@ article {
 .cat_listing__interaction {
   display: flex;
   justify-content:center;
-  button {
-    white-space: nowrap;
-  }
+  // button {
+  //   white-space: nowrap;
+  // }
 }
 
 .cats-container {

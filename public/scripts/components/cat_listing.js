@@ -4,7 +4,7 @@ window.Meowza.createListing = (cat) => {
     avalMessage = 'ADOPTED';
   }
   return `
-  <article class="cats-listing mdc-card--outlined">
+  <article class="cats-listing mdc-card--outline">
     <div class="cat-details-container">
       <div class="cats-listing__preview-image">
         <img src="${cat.main_photo_url}" alt="cat's photo">
