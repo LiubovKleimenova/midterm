@@ -75,9 +75,4 @@ window.Meowza.createListing = (cat) => {
     </section>
   </article>
   `;
-  // removed as we will not need to display is available
-  // <div class="cat-listing__availability">
-  //   <div class="cat-listing__availability">${cat.isAvailable}
-  //   </div>
-  // </div>
 }

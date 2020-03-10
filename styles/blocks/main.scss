@@ -3,6 +3,16 @@
   margin: 0 auto;
 }
 
+h2 {
+  font-size: 2.8em;
+}
+
+.filters-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 article {
   // width:45%;
   background: linear-gradient(to bottom, #ffffff, $accent-color);
@@ -51,7 +61,7 @@ article {
       font-size: $text-size;
       // font-size: 1.6em;
       width: 30em;
-      height: 6em;
+      height: 7.7em;
       margin-bottom: 1em;
       padding: 0.5em;
     }
@@ -72,6 +82,10 @@ article {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .match-height {
+      height: 22em;
     }
   }
 

@@ -14,8 +14,8 @@ header {
     color: #ffffff;
     font-size:4.8em;
     font-style: italic;
-    margin-top: 0.5em;
-    margin-left: 0.5em;
+    padding-top: 1.5em;
+    padding-left: 0.5em;
   }
 
   nav {
@@ -27,10 +27,10 @@ header {
     height:10vh;
     margin: 0;
     padding: 1em;
-    // position: absolute;
-    // top:0;
-    // left:0;
-    // right:0;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
 
     ul {
       display: flex;
