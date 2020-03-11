@@ -19,4 +19,5 @@ VALUES
   (3, 'Berk', 'Pls halp', '/assets/berk.png', 6, 'Europe', '1995-05-05', 'L', 'tiger', TRUE
   ),
   (2, 'James', 'Likes tacos', '/assets/lion1.jpg', 154000000, 'North America', '1984-12-30', 'L', 'lion', FALSE
-  );
+  ),
+  (3, 'Maya', '', '/assets/maya.jpg', 75400, 'North America', '2012-06-21', 'S', 'black panther', TRUE);
