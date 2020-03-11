@@ -1,4 +1,5 @@
 function addNewCatForm(user) {
+  $(".new-cat-form-section").find(".new-cat-form").remove();
   const $catFormSection = $(".new-cat-form-section");
   const $newListing = $(".new-listing");
   let $newCatForm = `<form action="/admin/newcat" method="POST" id="new-cat-form" class="new-cat-form">
