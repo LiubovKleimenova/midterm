@@ -1,5 +1,5 @@
 window.Meowza.createListing = (cat, user) => {
-  console.log(user);
+
   let avalMessage = "";
   if (!cat.is_available) {
     avalMessage = "ADOPTED";
