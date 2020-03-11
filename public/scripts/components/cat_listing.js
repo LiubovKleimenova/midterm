@@ -79,7 +79,7 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
-        <button data-catId="${cat.id} id="delete-btn"> DELETE
+        <button data-catId="${cat.id}" id="delete-btn"> DELETE
         </button>
       </article>`;
     } else {
