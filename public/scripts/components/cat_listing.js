@@ -1,5 +1,5 @@
 window.Meowza.createListing = (cat, user) => {
-  //console.log(user);
+  console.log(user);
   let avalMessage = "";
   if (!cat.is_available) {
     avalMessage = "ADOPTED";
@@ -79,7 +79,7 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
-        <button data-catId="${cat.id}" id="delete-btn"> DELETE
+        <button data-catId="${cat.id} id="delete-btn"> DELETE
         </button>
       </article>`;
     } else {
