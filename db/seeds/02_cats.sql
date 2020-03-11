@@ -20,4 +20,4 @@ VALUES
   ),
   (2, 'James', 'Likes tacos', '/assets/lion1.jpg', 154000000, 'North America', '1984-12-30', 'L', 'lion', FALSE
   ),
-  (3, 'Maya', '', '/assets/maya.jpg', 75400, 'North America', '2012-06-21', 'S', 'black panther', TRUE);
+  (3, 'Maya', 'Will sit, stand, lie down and roll over for treats', '/assets/maya.jpg', 75400, 'North America', '2012-06-21', 'S', 'black panther', TRUE);
