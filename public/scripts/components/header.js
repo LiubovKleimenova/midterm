@@ -30,7 +30,7 @@ function updateHeader(user) {
     if (!user) {
       usersLinks = `
         <form class="login-form" action="/users/login" method="POST">
-          <input class="margin-right" name="userId" id="login" type="text" placeholder="Enter your account"></input>
+          <input class="login-input margin-right" name="userId" id="login" type="text" placeholder="Enter your account"></input>
           <button class="padding-left mdc-button mdc-button--raised" type="submit" id="login-btn">
             <div class="mdc-button__ripple"></div>
             Log in
@@ -50,7 +50,7 @@ function updateHeader(user) {
           <li class="hover user-link owner-button">
             <a>My cats</a>
           </li>
-          <button class="user-link create-button mdc-button mdc-button--raised">
+          <button class="user-link translucent create-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
             Add cat
           </button>

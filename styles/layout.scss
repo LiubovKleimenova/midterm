@@ -13,15 +13,15 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 body {
 
-  background: linear-gradient(to bottom,#000000 15%, #daefb3, $background-color, #000000);
+  background: linear-gradient(to bottom,#000000 3%, $background-color, #daefb3, $background-color, #000000);
   color: $secondary-color;
   // font reset 62.5% - equivalent to 10px for simplified relative font sizing
   font-size: 62.5%;
   font-family: $font-family;
 
-  .new-cat-form {
-    width: 40%;
-  }
+  // .new-cat-form {
+  //   width: 40%;
+  // }
 
   h1 {
     margin: 0;
@@ -37,5 +37,22 @@ body {
 
   ul {
     list-style-type: none;
+  }
+
+  input {
+    border: none;
+    border-radius: 0.2em;
+  }
+
+  textarea {
+    font-family: inherit;
+    font-size: $text-size;
+    width: 30em;
+    height: 7.7em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    resize: none;
+    border-radius: 0.4em;
+    border: 1px solid black;
   }
 }
