@@ -65,18 +65,19 @@ module.exports = (db) => {
     .then(res => res.rows);
   }
 
-  const createMsgPost = function (message) {
+  const createMsgPost = function (message, userId, catId, ownerId) {
+    console.log(message);
+    console.log(`${userId} is id`);
     return db.query(`
     INSERT INTO messages (receiver_id, cat_id, sender_id, message)
-    VALUES ($1, $2, $3)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
-    `, [message.receiver_id, message.cat_id, message.message])
-    .then(res => res.rows )
+    `, [ownerId, catId, userId, message.message])
+    .then(res => res.rows)
+    .catch(err => console.log(err));
   }
 
   const createNewCat = function(newcat, userId) {
-    console.log(newcat);
-    console.log(`${userId} id`);
     return db
       .query(
         `
