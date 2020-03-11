@@ -137,7 +137,7 @@ module.exports = (db) => {
   const getMyCats = function (userId) {
     return db.query(`
     SELECT * FROM cats
-    WHERE id = $1
+    WHERE owner_id = $1
     `, [userId])
     .then(res => res.rows )
 }
