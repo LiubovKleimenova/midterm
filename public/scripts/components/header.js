@@ -5,7 +5,9 @@ const $newListing = $(".new-listing");
 
 function updateHeader(user) {
   $pageHeader.find(".user-nav").remove();
-  $pageHeader.find(".new-cat-form").remove();
+  $(".new-cat-form-section")
+    .find(".new-cat-form")
+    .remove();
   // Meowza.addNewCatForm(user);
   let userNav;
   userNav = `
