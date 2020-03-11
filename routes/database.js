@@ -142,6 +142,21 @@ module.exports = (db) => {
     .then(res => res.rows )
 }
 
+const deleteCat = function(catId) {
+  return db
+    .query(
+      `
+  DELETE FROM cats
+  WHERE cats.id = $1;
+    `,
+      [catId]
+    )
+    .then(res => res.rows)
+    .catch(err => console.log(err));
+};
+
+
+
 // *********** HELPER FUNCTIONS FOR SENDING EMAILS ************
 
 // async..await is not allowed in global scope, must use a wrapper
@@ -177,7 +192,8 @@ async function sendEmail(to, subject, text) {
     createMsgPost,
     createNewCat,
     login,
-    addToFavourites
+    addToFavourites,
+    deleteCat
   };
 };
 

@@ -54,6 +54,14 @@ module.exports = (databaseHelperFunctions) => {
       .catch(err => res.status(500).send(err));
   });
 
+  //delete cat
+  router.delete("/deleteCat", (req, res) => {
+  catId = req.body.catId
+  databaseHelperFunctions.deleteCat(catId)
+  .then(data => res.json(data))
+  .catch(err => res.status(500).send(err))
+});
+
   // route to handle email posts
   router.post('/send', (req, res) => {
     if (!req.body.text) {

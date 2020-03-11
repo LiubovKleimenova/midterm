@@ -1,10 +1,9 @@
 window.Meowza.createListing = (cat, user) => {
-  console.log(user);
+  //console.log(user);
   let avalMessage = "";
   if (!cat.is_available) {
     avalMessage = "ADOPTED";
   }
-<<<<<<< HEAD
   if (user) {
     if (user.id === cat.owner_id) {
       return `
@@ -80,7 +79,7 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
-        <button data-catId="${cat.id}"> DELETE
+        <button data-catId="${cat.id}" id="delete-btn"> DELETE
         </button>
       </article>`;
     } else {
@@ -131,52 +130,6 @@ window.Meowza.createListing = (cat, user) => {
               <div class="mdc-button__touch"></div>
             </button>
           </div>
-=======
-  return `
-  <article class="cats-listing carousel-cell mdc-card--outline">
-    <div class="cat-details-container">
-      <div class="cats-listing__preview-image">
-        <img src="${cat.main_photo_url}" alt="cat's photo">
-      </div>
-      <div class="cat_listing__interaction">
-        <div class="mdc-card__actions">
-          <button data-catId="${cat.id} "class=" mdc-icon-button mdc-button--touch
-            mdc-card__action mdc-card__action--icon cat_listing__interaction-button add-to-favourites"
-            aria-pressed="false"
-            aria-label="Add to favorites"
-            title="Add to favorites">
-            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
-            <i class="material-icons mdc-icon-button__icon">favorite_border</i>
-            <div class="mdc-button__touch"></div>
-          </button>
-          <button class="mdc-icon-button mdc-button--touch
-            mdc-card__action mdc-card__action--icon
-            aria-pressed="false"
-            aria-label="Share to Facebook"
-            title="Share to Facebook">
-            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
-            <i class="fab fa-facebook material-icons mdc-icon-button__icon"></i>
-            <div class="mdc-button__touch"></div>
-          </button>
-          <button class="mdc-icon-button mdc-button--touch
-            mdc-card__action mdc-card__action--icon
-            aria-pressed="false"
-            aria-label="Share to Instagram"
-            title="Share to Instagram">
-            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
-            <i class="fab fa-instagram material-icons mdc-icon-button__icon"></i>
-            <div class="mdc-button__touch"></div>
-          </button>
-          <button class="mdc-icon-button mdc-button--touch
-            mdc-card__action mdc-card__action--icon
-            aria-pressed="false"
-            aria-label="Share to Twitter"
-            title="Share to Twitter">
-            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
-            <i class="fab fa-twitter material-icons mdc-icon-button__icon"></i>
-            <div class="mdc-button__touch"></div>
-          </button>
->>>>>>> master
         </div>
         <ul class="cat-listing__details">
           <li>Age: ${date - Number(cat.birthdate.slice(0, 4))} years</li>
