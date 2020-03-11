@@ -14,12 +14,15 @@ h2 {
 }
 
 .new-cat-form {
+  font-size: $text-size;
   width: 40%;
   border: 0.1em solid $primary-color;
   border-radius:0.4em;
   padding: 1em;
 
   .new-cat-form__field-wrapper {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1em;
   }
 
@@ -28,12 +31,15 @@ h2 {
   }
 
   label {
-    font-size: $text-size;
     margin-right: 1em;
   }
   fieldset {
     border: none;
     opacity: 0.7;
+  }
+
+  textarea {
+    font-size: $text-size;
   }
 
   input {
@@ -45,7 +51,11 @@ h2 {
   select {
     opacity: 0.7;
   }
-
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 select {
