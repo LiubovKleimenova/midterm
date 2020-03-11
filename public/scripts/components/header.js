@@ -84,12 +84,12 @@ function updateHeader(user) {
      loadFavouriteCats();
    })
 
-   $("header").on("click", ".home-button", function() {
+   $("header").on("click", ".home-button", function(user) {
      window.Meowza.catListings.empty();
      loadCats();
    });
 
-   $("header").on("click", ".owner-button", function() {
+   $("header").on("click", ".owner-button", function(user) {
      window.Meowza.catListings.empty();
      loadMyCats();
    });
