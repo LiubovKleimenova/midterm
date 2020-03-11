@@ -76,20 +76,6 @@ module.exports = (databaseHelperFunctions) => {
   return router;
 };
 
- // Renders Admin's message history
-
-router.get('/myMessages', (req, res) => {
-  userid =  req.session.userId
-  databaseHelperFunctions.getMessages(userid)
-  .then(data => res.json(data))
-  .catch(err => res.status(500).send(err))
-});
-
-  // Allows Admin to post messages
-
-  router.post('/sendMessage', (req, res) => {
-    databaseHelperFunctions.createMsgPost(req.body)
-  });
 
 
 

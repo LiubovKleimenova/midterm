@@ -65,18 +65,19 @@ module.exports = (db) => {
     .then(res => res.rows);
   }
 
-  const createMsgPost = function (message) {
+  const createMsgPost = function (message, userId, catId, ownerId) {
+    console.log(message);
+    console.log(`${userId} is id`);
     return db.query(`
     INSERT INTO messages (receiver_id, cat_id, sender_id, message)
-    VALUES ($1, $2, $3)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
-    `, [message.receiver_id, message.cat_id, message.message])
-    .then(res => res.rows )
+    `, [ownerId, catId, userId, message.message])
+    .then(res => res.rows)
+    .catch(err => console.log(err));
   }
 
   const createNewCat = function(newcat, userId) {
-    console.log(newcat);
-    console.log(`${userId} id`);
     return db
       .query(
         `
@@ -109,14 +110,23 @@ module.exports = (db) => {
     .then(res => res.rows)
   }
 
-  const getMessages = function (userId) {
-    return db.query(`
-    SELECT * FROM messages
-    WHERE receiver_id = $1 OR sender_id = $1
-    ORDER BY cat_id, id
-    `, [userId])
-    .then(res => res.rows )
-  }
+  const getMessages = function(userId) {
+    return db
+      .query(
+        `
+     SELECT users.name as sender_name, allMsgsNames.* from
+     (SELECT users.name as receiver_name, allMsgs.* from
+     (SELECT messages.* FROM messages
+     WHERE receiver_id = $1 OR sender_id = $1
+     ORDER BY cat_id, id) AS allMsgs
+     left outer JOIN users ON allMsgs.receiver_id=users.id) AS allMsgsNames
+     left outer JOIN users ON allMsgsNames.sender_id=users.id
+     order by allMsgsNames.id;
+     `,
+        [userId]
+      )
+      .then(res => res.rows);
+  };
 
   const addToFavourites = function (userId, catId) {
     console.log(`userId ${userId}, catId  ${catId}`);
