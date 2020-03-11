@@ -52,20 +52,5 @@ module.exports = (databaseHelperFunctions) => {
       .catch(err => res.status(500).send(err));
   });
 
-
-  // Allows user to post messages
-
-  router.post('/sendMessage', (req, res) => {
-    databaseHelperFunctions.createMsgPost(req.body)
-  });
- // Displays the user's messages
-
- router.get('/myMessages', (req, res) => {
-  userid =  req.session.userId
-  databaseHelperFunctions.getMessages(userid)
-  .then(data => res.json(data))
-  .catch(err => res.status(500).send(err))
-});
-
   return router;
 };

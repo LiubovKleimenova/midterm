@@ -1,5 +1,5 @@
 window.Meowza.createListing = (cat, user) => {
-  console.log(user);
+
   let avalMessage = "";
   if (!cat.is_available) {
     avalMessage = "ADOPTED";
@@ -67,7 +67,7 @@ window.Meowza.createListing = (cat, user) => {
         <section class="cat-listing__details">
           <h3 class="cat-listing__name">${cat.name}</h3>
           <p>${cat.description}</p>
-          <form>
+          <form class="message-form" data-catId="${cat.id}>
             <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
             <label for="users-mail">Or get contacted by email:</label>
             <div class="email-button-container">
@@ -79,7 +79,7 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
-        <button data-catId="${cat.id}" id="delete-btn"> DELETE
+        <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}" id="delete-btn"> DELETE
         </button>
       </article>`;
     } else {
