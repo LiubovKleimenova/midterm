@@ -38,12 +38,4 @@ body {
   ul {
     list-style-type: none;
   }
-
-  @mixin container-fill-color {
-    color: #a89b9d;
-  }
-
-  .red {
-    color: red;
-  }
 }
