@@ -10,12 +10,19 @@ header {
   font-size: $text-size;
   z-index:10;
 
+  .header-text {
+    margin-left:2em;
+  }
+
   h1 {
     color: #ffffff;
     font-size:4.8em;
     font-style: italic;
     padding-top: 1.5em;
-    padding-left: 0.5em;
+  }
+
+  p {
+    margin: 0;
   }
 
   nav {
