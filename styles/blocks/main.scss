@@ -4,7 +4,7 @@
 }
 
 .new-cat-form-section {
-  margin-top: 2em;
+  margin-top: 3.5em;
 }
 
 h2 {
@@ -14,10 +14,16 @@ h2 {
 }
 
 .new-cat-form {
-  width: 40%;
+  width: calc(25vw + 4em);
   border: 0.1em solid $primary-color;
   border-radius:0.4em;
-  padding: 1em;
+  padding: 2em;
+  background: black;
+
+  .add-form-container {
+    display: flex;
+    flex-direction: column;
+  }
 
   .new-cat-form__field-wrapper {
     display: flex;
@@ -26,8 +32,9 @@ h2 {
     margin-bottom: 1em;
   }
 
-  h2 {
-    font-size: $text-size;
+  h3 {
+    font-size: 2em;
+    text-align: center;
     margin: 0.5em 0;
   }
 
@@ -36,23 +43,26 @@ h2 {
   }
   fieldset {
     border: none;
+    padding: 0;
   }
 
   textarea {
     height: 10vh;
-    width: 100%;
+    width: 25vw;
     opacity: 0.7;
   }
 
   input {
-    height: 3vh;
+    height: 3.5vh;
     padding: 0.5em;
     opacity: 0.7;
+    width: 25vw;
   }
 
   select {
     opacity: 0.7;
     border-radius: 0.4em;
+    width: 25vw;
   }
 
   .form-buttons {
@@ -212,9 +222,7 @@ article {
   }
 
   section .cat-listing__details {
-
     padding: 0 0 0 3em;
-
   }
 }
 
