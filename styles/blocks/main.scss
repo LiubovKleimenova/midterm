@@ -6,21 +6,72 @@
 h2 {
   font-size: 2.8em;
   text-align: center;
+  margin: 1.5em 0 1em 0;
 }
 
 .filters-form {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  // flex-direction: row;
+  // justify-content: center;
+  // align-items: center;
+  font-size: $text-size;
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2em;
+
+    .form-border {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $primary-color;
+      padding: 1em;
+    }
+
+    fieldset {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      padding: 0;
+      margin-right:0.5em;
+
+      label {
+        margin-right:0.5em;
+      }
+
+      .min {
+        margin-right: 0.5em;
+      }
+    }
+
+    .fieldset-dimensions {
+      height: 3vh;
+      width: 13vh;
+      border: none;
+      border-radius: 0.2em;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    select {
+      -moz-appearance:none; /* Firefox */
+      -webkit-appearance:none; /* Safari and Chrome */
+      appearance:none;
+      // padding: .6em 1.4em .5em .8em;
+    }
+  }
 }
 
 .carousel {
-  height: 35vh;
-  margin: 2em 0 3em 0;
+  height: 30vh;
+  margin: 4em 0 4em 0;
   .carousel-cell {
-    width: 35vh;
-    height: 35vh; /* height of carousel */
+    width: 30vh;
+    height: 30vh; /* height of carousel */
     margin-right: 1em;
     img {
       display: block;
@@ -31,16 +82,13 @@ h2 {
   }
 }
 
-.flickity-page-dots {
-  bottom: 0px;
+.flickity-page-dots .dot {
+  display: none;
 }
 
-.flickity-page-dots .dot {
-  width: 12px;
-  height: 12px;
-  opacity: 1;
-  background: transparent;
-  border: 2px solid white;
+.flickity-page-dots {
+  bottom: 0px;
+  display: none;
 }
 
 article {
@@ -85,16 +133,7 @@ article {
     flex-direction: column;
 
     textarea {
-      font-family: inherit;
-      font-size: $text-size;
-      width: 30em;
-      height: 7.7em;
-      margin-bottom: 1em;
-      padding: 0.5em;
-      resize: none;
       background: transparent;
-      border: 1px solid black;
-      border-radius: 0.4em;
     }
 
     label {

@@ -1,18 +1,16 @@
 function addNewCatForm(user) {
-  const $pageHeader = $(".page-header");
+  const $catFormSection = $(".new-cat-form-section");
   const $newListing = $(".new-listing");
   let $newCatForm = `<form action="/admin/newcat" method="POST" id="new-cat-form" class="new-cat-form">
-      <p>Create new</p>
+      <p>Create your cat listing</p>
       <fieldset class="new-cat-form__field-wrapper">
-        <label for="new-name-form__name">Name</label>
+        <label for="new-name-form__name">Cat name</label>
         <input type="text" name="cat_name" placeholder="Fluffy" id="new-cat-form__name">
       </fieldset>
 
       <fieldset class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__description">Description</label>
         <textarea placeholder="Add your description here" name="description" id="cat-form__description" cols="50" rows="10"></textarea>
       </fieldset>
-
 
       <div class="new-cat-form__field-wrapper">
         <label for="new-cat-form__birth-date">Date of birth</label>
@@ -47,7 +45,7 @@ function addNewCatForm(user) {
 
       <div class="new-cat-form__field-wrapper">
         <label for="new-cat-form__cover">Cat's Image</label>
-        <input placeholder="Cover Image" type="text" name="cover_photo_url" id="new-cat-form__cover">
+        <input placeholder="Main Image" type="text" name="cover_photo_url" id="new-cat-form__cover">
       </div>
 
       <div class="new-cat-form__field-wrapper">
@@ -64,7 +62,7 @@ function addNewCatForm(user) {
     </form>`;
     window.Meowza.newCatForm = $newCatForm
     if (user.is_admin) {
-    $pageHeader.append($newCatForm);
+    $catFormSection.append($newCatForm);
   }
 }
 
