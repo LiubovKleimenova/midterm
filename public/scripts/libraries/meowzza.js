@@ -2,9 +2,9 @@ window.Meowza = {};
 
 $(document).ready(() => {
   Meowza.update(Meowza.user);
-  //loadCats(Meowza.user);
+  loadCats();
   $(document).on("submit", ".login-form", e => {
-    //console.log(getUser());
+
     e.preventDefault();
     getUser();
 

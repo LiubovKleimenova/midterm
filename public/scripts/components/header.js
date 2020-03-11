@@ -79,27 +79,27 @@ function updateHeader(user) {
   //   updateHeader(json.user);
   // });
 
-   $("header").on("click", ".favourites-button", function() {
-     window.Meowza.catListings.empty();
-     loadFavouriteCats();
-   })
+  //  $("header").on("click", ".favourites-button", function() {
+  //    window.Meowza.catListings.empty();
+  //    loadFavouriteCats();
+  //  })
 
-   $("header").on("click", ".home-button", function(user) {
-     window.Meowza.catListings.empty();
-     loadCats();
-   });
+  //  $("header").on("click", ".home-button", function() {
+  //    window.Meowza.catListings.empty();
+  //    loadCats();
+  //  });
 
-   $("header").on("click", ".owner-button", function(user) {
-     window.Meowza.catListings.empty();
-     loadMyCats();
-   });
+  //  $("header").on("click", ".owner-button", function() {
+  //    window.Meowza.catListings.empty();
+  //    loadMyCats();
+  //  });
 
-   $("header").on("click", ".create-button", function() {
-     $(".new-cat-form").toggle();
-    //  $("header").on("click", ".create-button", function() {
-    //    $(".new-cat-form").hide();
-    //  });
-   });
+  //  $("header").on("click", ".create-button", function() {
+  //    $(".new-cat-form").toggle();
+  //   //  $("header").on("click", ".create-button", function() {
+  //   //    $(".new-cat-form").hide();
+  //   //  });
+  //  });
 
 
   //   getAllReservations()
