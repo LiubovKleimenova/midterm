@@ -2,24 +2,26 @@ function addNewCatForm(user) {
   const $catFormSection = $(".new-cat-form-section");
   const $newListing = $(".new-listing");
   let $newCatForm = `<form action="/admin/newcat" method="POST" id="new-cat-form" class="new-cat-form">
-      <p>Create your cat listing</p>
+      <h2><i class="fas fa-paw"></i> Create your cat listing</h2>
       <fieldset class="new-cat-form__field-wrapper">
-        <label for="new-name-form__name">Cat name</label>
+        <label for="new-name-form__name">Your cat's name:</label>
         <input type="text" name="cat_name" placeholder="Fluffy" id="new-cat-form__name">
       </fieldset>
 
-      <fieldset class="new-cat-form__field-wrapper">
-        <textarea placeholder="Add your description here" name="description" id="cat-form__description" cols="50" rows="10"></textarea>
+      <fieldset>
+        <textarea placeholder="Add your description here" name="description" id="cat-form__description" cols="30" rows="4"></textarea>
       </fieldset>
 
       <div class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__birth-date">Date of birth</label>
+        <label for="new-cat-form__birth-date">Date of birth:</label>
         <input placeholder="2018-12-31" type="date" name="birth-date" id="new-cat-form__birth-date">
-
-        <label for="new-cat-form__species">Species</label>
+      </div>
+      <div class="new-cat-form__field-wrapper">
+        <label for="new-cat-form__species">Species:</label>
         <input placeholder="Puma" type="text" name="species" id="new-cat-form__species">
-
-        <label for="new-cat-form__size">Size</label>
+      </div>
+      <div class="new-cat-form__field-wrapper">
+        <label for="new-cat-form__size">Size:</label>
         <select id="new-cat-form__size" name="size">
           <option name="size" value="s">S</option>
           <option name="size" value="m">M</option>
@@ -28,7 +30,7 @@ function addNewCatForm(user) {
       </div>
 
       <div class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__region">Region</label>
+        <label for="new-cat-form__region">Region:</label>
         <select id="new-cat-form__region" name="region">
           <option name="region" value="asia">Asia</option>
           <option name="region" value="europe">Europe</option>
@@ -39,24 +41,25 @@ function addNewCatForm(user) {
       </div>
 
       <div class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__fee">Adoption fee</label>
+        <label for="new-cat-form__fee">Adoption fee:</label>
         <input placeholder="5000" type="number" name="adoption_fee" id="new-cat-form__fee">
       </div>
 
       <div class="new-cat-form__field-wrapper">
-        <label for="new-cat-form__cover">Cat's Image</label>
-        <input placeholder="Main Image" type="text" name="cover_photo_url" id="new-cat-form__cover">
+        <label for="new-cat-form__cover">Cat's Image URL</label>
+        <input placeholder="Image URL" type="text" name="cover_photo_url" id="new-cat-form__cover">
       </div>
-
-      <div class="new-cat-form__field-wrapper">
-        <button class="mdc-button mdc-button--raised" type="submit">
-          <div class="mdc-button__ripple"></div>
-          Create
-        </button>
-        <button class="mdc-button mdc-button--raised" type="reset">
-          <div class="mdc-button__ripple"></div>
-          Reset
-        </button>
+      <div class="form-buttons">
+        <div class="new-cat-form__field-wrapper">
+          <button class="mdc-button mdc-button--raised" type="submit">
+            <div class="mdc-button__ripple"></div>
+            Create
+          </button>
+          <button class="mdc-button mdc-button--raised" type="reset">
+            <div class="mdc-button__ripple"></div>
+            Reset
+          </button>
+        </div>
       </div>
 
     </form>`;
