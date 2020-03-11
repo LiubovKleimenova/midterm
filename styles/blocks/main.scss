@@ -5,7 +5,6 @@
 
 h2 {
   font-size: 2.8em;
-  text-align: center;
 }
 
 .filters-form {
@@ -17,28 +16,37 @@ h2 {
 
 .carousel {
   height: 35vh;
-  margin-bottom: 3em;
+  margin: 2em 0 3em 0;
   .carousel-cell {
     width: 35vh;
     height: 35vh; /* height of carousel */
-    margin-right: 2em;
+    margin-right: 1em;
+    img {
+      display: block;
+      object-fit:cover;
+      height: 100%;
+      width: 60vw;
+    }
   }
-}
-
-.lion-cub {
-  display: block;
-  object-fit:cover;
-  height: 100%;
 }
 
 .flickity-page-dots {
   bottom: 0px;
 }
 
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 2px solid white;
+}
+
 article {
   background: linear-gradient(to bottom, #ffffff, $accent-color);
   color: $background-color;
   box-shadow: 0.5em 0.5em 1em #000000;
+  border-radius: 1em;
   margin: 2em;
   padding: 2em;
 
@@ -82,6 +90,10 @@ article {
       height: 7.7em;
       margin-bottom: 1em;
       padding: 0.5em;
+      resize: none;
+      background: transparent;
+      border: 1px solid black;
+      border-radius: 0.4em;
     }
 
     label {
@@ -91,6 +103,9 @@ article {
     .users-mail {
       font-size: $text-size;
       width: 65%;
+      border: none;
+      border-bottom: 0.1em solid black;
+      background: transparent;
       margin: 1em 1.5em 1em 0;
     }
 
