@@ -42,11 +42,12 @@ const getUser = () => {
       });
 
       $("header").on("click", ".create-button", function() {
-        $(".new-cat-form").toggle();
+        $(".new-cat-form").slideToggle();
       });
 
       $("header").on("click", ".message-link", function() {
         showMsgList()
+        $(".messages-section").slideToggle();
       });
 
       $(document).on("click", ".add-to-favourites", addToFavourites);
@@ -225,7 +226,6 @@ const showMsgList = function () {
     success: data => {
       $(".messages-section").empty();
       window.Meowza.rendermessages(data)
-      $(".new-cat-form").slideToggle();
     }
   });
 }

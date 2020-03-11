@@ -1,9 +1,10 @@
 
 
 const rendermessages = function(messages) {
+  console.log('rendermessages');
     for (const message of messages) {
       let $message = window.Meowza.createMessage(message);
-      messagesSection.prepend($message);
+      $(".messages-section").prepend($message);
     }
 };
 
@@ -31,7 +32,7 @@ const createMessage = function(message) {
     `;
   return markup;
 };
-
+window.Meowza.createMessage = createMessage
 
 const messagesSection = `
 <section class="messages-section">
