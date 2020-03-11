@@ -42,12 +42,19 @@ const getUser = () => {
       });
 
       $("header").on("click", ".create-button", function() {
-        $(".new-cat-form").toggle();
+        $(".new-cat-form").slideToggle();
       });
+
+      $("header").on("click", ".message-link", function() {
+        showMsgList()
+        $(".messages-section").slideToggle();
+      });
+
       $(document).on("click", ".add-to-favourites", addToFavourites);
 
       $(document).on("submit", "#new-cat-form", e => {
         e.preventDefault();
+        console.log("form submitted");
         createNewCat(Meowza.user);
       });
 
@@ -76,7 +83,7 @@ const loadCats = user => {
     type: "GET",
     dataType: "JSON",
     success: response => {
-      console.log(response);
+      //console.log(response);
       renderCats(response, user);
     }
   });
@@ -85,7 +92,6 @@ const loadCats = user => {
 window.Meowza.loadCats = loadCats;
 
 const loadFavouriteCats = user => {
-  console.log("loadcats invoked");
   $.ajax({
     url: `/users/favourites`,
     type: "GET",
@@ -97,7 +103,6 @@ const loadFavouriteCats = user => {
 };
 
 const loadMyCats = user => {
-  console.log("loadcats invoked");
   $.ajax({
     url: `/admin/mycats`,
     type: "GET",
@@ -131,8 +136,6 @@ const renderCats = (cats, user) => {
 
 // --------------FILTER CATS --------------
 const loadFilteredCats = (user) => {
-  console.log("loadFilteredCats invoked");
-  console.log($(".filters-form").serialize());
   $.ajax({
     url: `/users/filteredCats`,
     type: "GET",
@@ -155,10 +158,10 @@ $(".filters-form").submit(e => {
 
 // --------------ADD TO FAVOURITES --------------
 const addToFavourites = function() {
-  console.log("addToFAvs invoked");
-  console.log(this);
+  // console.log("addToFAvs invoked");
+  // console.log(this);
   const catId = $(this).data("catid");
-  console.log(catId);
+  // console.log(catId);
   $.ajax({
     url: `/users/addToFavourites`,
     type: "POST",
@@ -171,8 +174,6 @@ const addToFavourites = function() {
 
 // ---------CREATE NEW CAT---------
 const createNewCat = function(user) {
-  console.log($(".new-cat-form").serialize());
-  console.log("create cat foem submitted");
   $.ajax({
     url: `/admin/newcat`,
     type: "POST",
@@ -195,10 +196,7 @@ const createNewCat = function(user) {
 
 //--------------DELETE CAT--------------
 const deleteCat = function() {
-  console.log("deleteCtas invoked");
-  //console.log(this);
   const catId = $(this).data("catid");
-  //console.log(catId);
   $.ajax({
     url: `/admin/deleteCat`,
     type: "DELETE",
@@ -209,17 +207,25 @@ const deleteCat = function() {
         type: "GET",
         dataType: "JSON",
         success: data => {
-          console.log("data recieved from server");
           $(".cats-container").empty();
-          //renderCats(data, user);
-          //let user=getUser();
-          // getUser();
-          console.log(`user at deleteCat ${JSON.stringify(window.Meowza.user)}`);
-          //console.log(`cats at deleteCat ${JSON.stringify(data)}`);
-          //window.Meowza.user = user;
+          //console.log(`user at deleteCat ${JSON.stringify(window.Meowza.user)}`);
           renderCats(data, window.Meowza.user);
         }
       });
     }
   });
 };
+
+//--------------SHOW MESSAGES--------------
+
+const showMsgList = function () {
+  $.ajax({
+    url: `/myMessages`,
+    type: "GET",
+    dataType: "JSON",
+    success: data => {
+      $(".messages-section").empty();
+      window.Meowza.rendermessages(data)
+    }
+  });
+}
