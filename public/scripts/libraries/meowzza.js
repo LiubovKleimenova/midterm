@@ -44,6 +44,11 @@ const getUser = () => {
       $("header").on("click", ".create-button", function() {
         $(".new-cat-form").toggle();
       });
+
+      $("header").on("click", ".message-link", function() {
+        showMsgList()
+      });
+
       $(document).on("click", ".add-to-favourites", addToFavourites);
 
       $(document).on("submit", "#new-cat-form", e => {
@@ -223,3 +228,18 @@ const deleteCat = function() {
     }
   });
 };
+
+//--------------SHOW MESSAGES--------------
+
+const showMsgList = function () {
+  $.ajax({
+    url: `/myMessages`,
+    type: "GET",
+    dataType: "JSON",
+    success: data => {
+      $(".messages-section").empty();
+      window.Meowza.rendermessages(data)
+      $(".new-cat-form").slideToggle();
+    }
+  });
+}
