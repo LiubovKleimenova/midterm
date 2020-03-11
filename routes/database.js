@@ -109,14 +109,23 @@ module.exports = (db) => {
     .then(res => res.rows)
   }
 
-  const getMessages = function (userId) {
-    return db.query(`
-    SELECT * FROM messages
-    WHERE receiver_id = $1 OR sender_id = $1
-    ORDER BY cat_id, id
-    `, [userId])
-    .then(res => res.rows )
-  }
+  const getMessages = function(userId) {
+    return db
+      .query(
+        `
+     SELECT users.name as sender_name, allMsgsNames.* from
+     (SELECT users.name as receiver_name, allMsgs.* from
+     (SELECT messages.* FROM messages
+     WHERE receiver_id = $1 OR sender_id = $1
+     ORDER BY cat_id, id) AS allMsgs
+     left outer JOIN users ON allMsgs.receiver_id=users.id) AS allMsgsNames
+     left outer JOIN users ON allMsgsNames.sender_id=users.id
+     order by allMsgsNames.id;
+     `,
+        [userId]
+      )
+      .then(res => res.rows);
+  };
 
   const addToFavourites = function (userId, catId) {
     console.log(`userId ${userId}, catId  ${catId}`);

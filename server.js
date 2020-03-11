@@ -109,6 +109,21 @@ app.post('/login', (req, res) => {
   .catch(e => res.send(e));
 });
 
+// returns message history for each user
+app.get("/myMessages", (req, res) => {
+  userid = req.session.userId;
+  databaseHelperFunctions
+    .getMessages(userid)
+    .then(data => res.json(data))
+    .catch(err => res.status(500).send(err));
+});
+
+// Allows Admin to post messages
+
+app.post("/sendMessage", (req, res) => {
+  databaseHelperFunctions.createMsgPost(req.body);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
