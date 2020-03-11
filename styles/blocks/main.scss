@@ -14,7 +14,6 @@ h2 {
 }
 
 .new-cat-form {
-  font-size: $text-size;
   width: 40%;
   border: 0.1em solid $primary-color;
   border-radius:0.4em;
@@ -23,23 +22,26 @@ h2 {
   .new-cat-form__field-wrapper {
     display: flex;
     flex-direction: column;
+    font-size: $text-size;
     margin-bottom: 1em;
   }
 
   h2 {
+    font-size: $text-size;
     margin: 0.5em 0;
   }
 
   label {
-    margin-right: 1em;
+    margin: 0 1em 1em 0;
   }
   fieldset {
     border: none;
-    opacity: 0.7;
   }
 
   textarea {
-    font-size: $text-size;
+    height: 10vh;
+    width: 100%;
+    opacity: 0.7;
   }
 
   input {
@@ -50,10 +52,12 @@ h2 {
 
   select {
     opacity: 0.7;
+    border-radius: 0.4em;
   }
+
   .form-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
   }
 }
