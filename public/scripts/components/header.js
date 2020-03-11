@@ -41,6 +41,7 @@ function updateHeader(user) {
     } else {
       if (!user.is_admin) {
         usersLinks = `
+          <li class="padding-left padding-right message-link">My Messages</li>
           <li class="padding-left padding-right">Hi, ${user.name}!</li>
           <button class="logout-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
@@ -49,6 +50,7 @@ function updateHeader(user) {
         `;
       } else {
         usersLinks = `
+          <li class="padding-left padding-right message-link">My Messages</li>
           <li class="hover user-link owner-button">
             <a>My cats</a>
           </li>
@@ -60,7 +62,7 @@ function updateHeader(user) {
           <button class="logout-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
             Log out
-          </button>`;
+          </button>`
       }
     }
     //console.log(usersLinks)
