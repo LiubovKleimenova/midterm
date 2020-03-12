@@ -19,7 +19,9 @@ module.exports = (db) => {
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
     WHERE favourites.user_id = $1
-     ORDER BY is_available DESC
+
+    ORDER BY is_available DESC
+
     `,
         [userId]
       )
@@ -203,8 +205,8 @@ const markCatUnavailable = function(catId) {
     )
     .then(res => res.rows)
     .catch(err => console.log(err));
-}
 
+};
 
 
 // *********** HELPER FUNCTIONS FOR SENDING EMAILS ************

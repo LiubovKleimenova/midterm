@@ -61,14 +61,14 @@ const getUser = () => {
 
       $(document).on("click", ".logout-button", logOut);
       $(document).on("click", "#delete-btn", deleteCat);
-      //$(document).on("click", "#sold-btn", markCatSold);
+
       $(document).on("click", "#sold-btn", e => {
         console.log(e.target);
         const card = $(e.target).closest(".cats-listing");
         console.log(card);
         markCatSold(card);
         e.preventDefault;
-        //$(".cats-listing").toggleClass("cat-adopted");
+
       });
     }
   });
