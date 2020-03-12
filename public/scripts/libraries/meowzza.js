@@ -120,29 +120,20 @@ const renderCats = (cats, user) => {
   $("main")
     .find(".cats-container")
     .remove();
-  // $("main")
-  //   .find(".carousel")
-  //   .empty();
   const $catListings = $(`
   <section class="cats-container">
   </section>
   `);
-  // const $featCats = $(`
-  //   <div class="carousel"></div>
-  // `);
-  window.Meowza.catListings = $catListings;
-  // window.Meowza.featCats = $featCats;
-  window.Meowza.user = user;
 
+  window.Meowza.catListings = $catListings;
+  window.Meowza.user = user;
 
   cats.forEach(cat => {
     $catListings.append(Meowza.createListing(cat, user));
-    // $featCats.append(Meowza.createFeatured(cat));
+    // add featured cats to carousel
+    $(".carousel").flickity('append', Meowza.createFeatured(cat));
   });
   $("main").append($catListings);
-  // $(".carousel").append($featCats);
-  // console.log($catListings);
-  // console.log($featCats);
 };
 
 // --------------FILTER CATS --------------
