@@ -217,7 +217,8 @@ async function sendEmail(to, subject, text) {
     createNewCat,
     login,
     addToFavourites,
-    deleteCat
+    deleteCat,
+    markCatUnavailable
   };
 };
 
