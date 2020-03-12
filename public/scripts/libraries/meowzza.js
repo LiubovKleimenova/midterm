@@ -60,19 +60,35 @@ const getUser = () => {
 
       $(document).on("click", ".logout-button", logOut);
       $(document).on("click", "#delete-btn", deleteCat);
+      //$(document).on("click", "#sold-btn", markCatSold);
+      $(document).on("click", "#sold-btn", e => {
+        console.log(e.target);
+        const card = $(e.target).closest(".cats-listing");
+        console.log(card);
+        markCatSold(card);
+        e.preventDefault;
+        //$(".cats-listing").toggleClass("cat-adopted");
+      });
     }
   });
   return Meowza.user;
 };
 
 const logOut = () => {
-  return $.ajax({
+  $.ajax({
     method: "POST",
     url: "/logout",
     // data:
     success: () => {
-      Meowza.update(null);
-      // $(".new-cat-form").remove();
+      $.ajax({
+        url: `/users/`,
+        type: "GET",
+        dataType: "JSON",
+        success: response => {
+          Meowza.update(null);
+          renderCats(response, null);
+        }
+      });
     }
   });
 };
@@ -120,9 +136,6 @@ const renderCats = (cats, user) => {
   $("main")
     .find(".cats-container")
     .remove();
-  // $("main")
-  //   .find(".carousel")
-  //   .empty();
   const $catListings = $(`
   <section class="cats-container">
   </section>
@@ -237,6 +250,32 @@ const showMsgList = function () {
     success: data => {
       $(".messages-section").empty();
       window.Meowza.rendermessages(data)
+    }
+  });
+}
+
+//-------------- MARK CAT AS UNAVAILABLE ---------
+const markCatSold = function (listing) {
+  //console.log(this);
+  //console.log(listing["0"].dataset.catid)
+  const catId = listing["0"].dataset.catid;
+  //console.log(catId);
+  listing.toggleClass("cat-adopted");
+  $.ajax({
+    url: `/admin/updateCat`,
+    type: "PUT",
+    data: `catId=${catId}`,
+    success: () => {
+     $.ajax({
+       url: `/users/`,
+       type: "GET",
+       dataType: "JSON",
+       success: data => {
+         //console.log("data recieved from server");
+         $(".cats-container").empty();
+         renderCats(data, window.Meowza.user);
+       }
+     });
     }
   });
 }

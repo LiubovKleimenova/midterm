@@ -76,6 +76,8 @@ module.exports = (databaseHelperFunctions) => {
   // route to mark cats as sold
   router.put("/updateCat", (req, res) => {
     catId = req.body.catId;
+    console.log('route /updatecat');
+    console.log(`${catId} is cat id`);
     databaseHelperFunctions
       .markCatUnavailable(catId)
       .then(data => res.json(data))

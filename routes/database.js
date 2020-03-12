@@ -2,9 +2,10 @@ const nodemailer = require('nodemailer');
 module.exports = (db) => {
 // *********** HELPER FUNCTIONS FOR USER ROUTES & ADMIN ROUTES ************
   const getAllCats = function () {
-    return db.query(`SELECT * FROM cats;`)
-    .then(res => res.rows)
-    .catch(err => console.error('query error', err.stack));
+    return db
+      .query(`SELECT * FROM cats ORDER BY is_available DESC;`)
+      .then(res => res.rows)
+      .catch(err => console.error("query error", err.stack));
   }
   const getAllUsers = function () {
     return db.query(`SELECT * FROM users;`)
@@ -12,12 +13,17 @@ module.exports = (db) => {
     // .catch(err => console.error('query error', err.stack));
   }
   const getFavourites = function (userId) {
-    return db.query(`
+    return db
+      .query(
+        `
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
     WHERE favourites.user_id = $1
-    `, [userId])
-    .then(res => res.rows )
+     ORDER BY is_available DESC
+    `,
+        [userId]
+      )
+      .then(res => res.rows);
   }
 
   const filterBySearch = function(options) {
@@ -145,11 +151,16 @@ module.exports = (db) => {
   }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {
-    return db.query(`
+    return db
+      .query(
+        `
     SELECT * FROM cats
     WHERE owner_id = $1
-    `, [userId])
-    .then(res => res.rows )
+    ORDER BY is_available DESC
+    `,
+        [userId]
+      )
+      .then(res => res.rows);
 }
 
 const deleteCat = function(catId) {

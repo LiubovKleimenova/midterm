@@ -1,13 +1,13 @@
 window.Meowza.createListing = (cat, user) => {
 
-  let avalMessage = "";
+  let avalClass = "";
   if (!cat.is_available) {
-    avalMessage = "ADOPTED";
+    avalClass = "cat-adopted";
   }
   if (user) {
     if (user.id === cat.owner_id) {
       return `
-      <article class="cats-listing carousel-cell mdc-card--outline">
+      <article data-catId="${cat.id}" class="cats-listing carousel-cell mdc-card--outline ${avalClass}">
         <div class="cat-details-container">
           <div class="cats-listing__preview-image">
             <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -65,6 +65,7 @@ window.Meowza.createListing = (cat, user) => {
 
         <section class="cat-listing__details">
           <h3 class="cat-listing__name">${cat.name}</h3>
+
           <p>${cat.description}</p>
           <form class="message-form" data-catId="${cat.id}">
             <textarea class="message" placeholder="That is your cat" disabled></textarea>
@@ -110,7 +111,7 @@ window.Meowza.createListing = (cat, user) => {
       </article>`;
     } else {
       return `
-    <article class="cats-listing mdc-card--outline">
+    <article class="cats-listing mdc-card--outline ${avalClass}">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -168,6 +169,7 @@ window.Meowza.createListing = (cat, user) => {
 
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
+
         <p>${cat.description}</p>
         <form>
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
@@ -186,7 +188,7 @@ window.Meowza.createListing = (cat, user) => {
     }
   } else {
     return `
-    <article class="cats-listing mdc-card--outline">
+    <article class="cats-listing mdc-card--outline ${avalClass}">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -244,6 +246,7 @@ window.Meowza.createListing = (cat, user) => {
 
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
+
         <p>${cat.description}</p>
         <form>
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
