@@ -31,6 +31,12 @@ const getUser = () => {
         loadFilteredCats(Meowza.user);
       });
 
+      $(document).on('click', ".message-form", e => {
+        console.log('invoking sendMsg')
+        e.preventDefault();
+        sendMsg();
+      });
+
       $("header").on("click", ".home-button", function() {
         window.Meowza.catListings.empty();
         loadCats(Meowza.user);
@@ -226,6 +232,33 @@ const showMsgList = function () {
     success: data => {
       $(".messages-section").empty();
       window.Meowza.rendermessages(data)
+    }
+  });
+}
+
+//--------------SEND MESSAGES--------------
+
+const sendMsg = function () {
+  console.log('getting info from user');
+  const catId = $(this).data("catId")
+  console.log(catId);
+  const ownerId = $(this).data("ownerID")
+  console.log(ownerId);
+  const userMessage = $(".userMessage").val()
+  let sendData = {};
+  sendData.catId = catId;
+  sendData.ownerId = ownerId;
+  sendData.message = userMessage;
+
+  $.ajax({
+    url: `/sendMessage`,
+    type: "POST",
+    data: sendData,
+    success: () => {
+      console.log('SUCCESS');
+    },
+    error: (error) => {
+      console.log('ERROR', error);
     }
   });
 }

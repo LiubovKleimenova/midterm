@@ -123,9 +123,9 @@ app.get("/myMessages", (req, res) => {
 app.post("/sendMessage", (req, res) => {
   console.log("msq sent");
   catid = req.body.catId;
-  ownerid = req.body.catId;
-  userid = req.session.ownerId;
-  newMsg =req.body;
+  ownerid = req.body.ownerId;
+  userid = req.session.userId;
+  newMsg =req.body.message;
   databaseHelperFunctions
     .createMsgPost(newMsg, userid, catid, ownerid)
     .then(data => res.json(data))
