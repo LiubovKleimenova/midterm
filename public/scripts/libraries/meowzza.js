@@ -83,7 +83,6 @@ const loadCats = user => {
     type: "GET",
     dataType: "JSON",
     success: response => {
-      //console.log(response);
       renderCats(response, user);
     }
   });
@@ -119,7 +118,9 @@ let date = today.getFullYear();
 const renderCats = (cats, user) => {
   $("main")
     .find(".cats-container")
+    // clear container before rendering
     .remove();
+  // section to add all cats to
   const $catListings = $(`
   <section class="cats-container">
   </section>
@@ -131,7 +132,7 @@ const renderCats = (cats, user) => {
   cats.forEach(cat => {
     $catListings.append(Meowza.createListing(cat, user));
     // add featured cats to carousel
-    $(".carousel").flickity('append', Meowza.createFeatured(cat));
+    $('.carousel').flickity( 'append', Meowza.createFeatured(cat));
   });
   $("main").append($catListings);
 };
