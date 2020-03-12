@@ -1,14 +1,16 @@
 window.Meowza.createListing = (cat, user) => {
 
-  let avalMessage = "";
+  let avalClass = "";
   if (!cat.is_available) {
-    avalMessage = "ADOPTED";
+    avalClass = "cat-adopted";
   }
   if (user) {
     if (user.id === cat.owner_id) {
       return `
-      <article class="cats-listing carousel-cell mdc-card--outline">
-      <p>TEST!!!!!</p>
+      <article data-catId="${
+        cat.id
+      }" class="cats-listing carousel-cell mdc-card--outline ${avalClass}">
+
         <div class="cat-details-container">
           <div class="cats-listing__preview-image">
             <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -79,12 +81,14 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
-        <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}" id="delete-btn"> DELETE
+        <button data-catId="${cat.id}" data-ownerId="${
+        cat.owner_id
+      }" id="delete-btn"> DELETE
         </button>
       </article>`;
     } else {
       return `
-    <article class="cats-listing carousel-cell mdc-card--outline">
+    <article class="cats-listing mdc-card--outline ${avalClass}">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -160,7 +164,7 @@ window.Meowza.createListing = (cat, user) => {
     }
   } else {
     return `
-    <article class="cats-listing carousel-cell mdc-card--outline">
+    <article class="cats-listing mdc-card--outline ${avalClass}">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
