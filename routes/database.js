@@ -165,6 +165,20 @@ const deleteCat = function(catId) {
     .catch(err => console.log(err));
 };
 
+const markCatUnavailable = function(catId) {
+  return db
+    .query(
+      `
+  UPDATE cats
+  SET is_available = false
+  WHERE cats.id = $1;
+    `,
+      [catId]
+    )
+    .then(res => res.rows)
+    .catch(err => console.log(err));
+}
+
 
 
 // *********** HELPER FUNCTIONS FOR SENDING EMAILS ************
