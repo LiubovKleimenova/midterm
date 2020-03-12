@@ -7,6 +7,7 @@ $(document).ready(() => {
     e.preventDefault();
     getUser();
   });
+  //$("body").scrollTop(0);
 });
 
 

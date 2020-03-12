@@ -4,6 +4,7 @@ const $pageHeader = $("header");
 const $newListing = $(".new-listing");
 
 function updateHeader(user) {
+  $(".focus-span").focus();
   $pageHeader.find(".user-nav").remove();
   $(".new-cat-form-section")
     .find(".new-cat-form")
