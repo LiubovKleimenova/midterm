@@ -141,7 +141,22 @@ module.exports = (db) => {
       )
       .then(res => {
         console.log(res.rows);
-        res.rows});
+        res.rows})
+      .catch(err => {
+        // if combination exists in favourites, delete from favourites db
+        if (err.code === '23505') {
+          return db
+            .query(
+            `
+              DELETE FROM favourites
+              WHERE
+              user_id = $1 AND cat_id = $2
+              RETURNING *;
+            `,
+            [userId, catId]
+          );
+        }
+      })
   }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {
