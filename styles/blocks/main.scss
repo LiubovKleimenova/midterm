@@ -19,6 +19,7 @@ h2 {
   border-radius:0.4em;
   padding: 2em;
   background: black;
+  margin: 0 auto;
 
   .add-form-container {
     display: flex;
@@ -230,6 +231,7 @@ article {
 .cats-listing {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .cat_listing__interaction {
@@ -250,4 +252,27 @@ article {
   button {
     white-space: nowrap;
   }
+}
+
+.x-delete-button {
+  border: none;
+  border-radius: 50%;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: inherit;
+  //color: red;
+
+}
+
+.x-delete-button:hover {
+  top: 25px;
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
