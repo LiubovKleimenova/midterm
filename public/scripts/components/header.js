@@ -50,7 +50,7 @@ function updateHeader(user) {
         `;
       } else {
         usersLinks = `
-          <li class="padding-left padding-right message-link">Inbox</li>
+          <li class="hover padding-left padding-right message-link">Inbox</li>
           <li class="hover user-link owner-button">
             <a>My cats</a>
           </li>
