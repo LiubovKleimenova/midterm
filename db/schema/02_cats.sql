@@ -10,5 +10,6 @@ CREATE TABLE cats (
   region VARCHAR(255),
   size VARCHAR(255),
   species VARCHAR(255),
-  is_available BOOLEAN DEFAULT TRUE
+  is_available BOOLEAN DEFAULT TRUE,
+  is_featured BOOLEAN DEFAULT FALSE
 );

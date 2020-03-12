@@ -96,7 +96,7 @@ window.Meowza.createListing = (cat, user) => {
       </article>`;
     } else {
       return `
-    <article class="cats-listing carousel-cell mdc-card--outline">
+    <article class="cats-listing mdc-card--outline">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -172,7 +172,7 @@ window.Meowza.createListing = (cat, user) => {
     }
   } else {
     return `
-    <article class="cats-listing carousel-cell mdc-card--outline">
+    <article class="cats-listing mdc-card--outline">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
