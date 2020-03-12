@@ -1,14 +1,13 @@
 window.Meowza.createListing = (cat, user) => {
 
-  let avalMessage = "";
+  let avalClass = "";
   if (!cat.is_available) {
-    avalMessage = "ADOPTED";
+    avalClass = "cat-adopted";
   }
   if (user) {
     if (user.id === cat.owner_id) {
       return `
-      <article class="cats-listing carousel-cell mdc-card--outline">
-      <p>TEST!!!!!</p>
+      <article data-catId="${cat.id}" class="cats-listing carousel-cell mdc-card--outline ${avalClass}">
         <div class="cat-details-container">
           <div class="cats-listing__preview-image">
             <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -66,6 +65,7 @@ window.Meowza.createListing = (cat, user) => {
 
         <section class="cat-listing__details">
           <h3 class="cat-listing__name">${cat.name}</h3>
+
           <p>${cat.description}</p>
           <form class="message-form" data-catId="${cat.id}>
             <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
@@ -79,12 +79,39 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
-        <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}" id="delete-btn"> DELETE
-        </button>
+
+            <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}"
+              class=" mdc-button--touch
+              mdc-card__action mdc-card__action--icon x-delete-button"
+              aria-pressed="false"
+              aria-label="Remove cat"
+              title="Remove cat"
+              id="delete-btn"
+            >
+              <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+              <i class="far fa-trash-alt material-icons mdc-icon-button__icon"></i>
+              <div class="mdc-button__touch"></div>
+            </button>
+
+            <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}"
+              class=" mdc-button--touch
+              mdc-card__action mdc-card__action--icon sold-button"
+              aria-pressed="false"
+              aria-label="cat is unavailable"
+              title="cat is unavailable"
+              id="sold-btn"
+            >
+
+              <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+              <i class="far fa-pause-circle material-icons mdc-icon-button__icon"></i>
+              <div class="mdc-button__touch"></div>
+            </button>
+
+
       </article>`;
     } else {
       return `
-    <article class="cats-listing carousel-cell mdc-card--outline">
+    <article class="cats-listing mdc-card--outline ${avalClass}">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -142,6 +169,7 @@ window.Meowza.createListing = (cat, user) => {
 
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
+
         <p>${cat.description}</p>
         <form>
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
@@ -160,7 +188,7 @@ window.Meowza.createListing = (cat, user) => {
     }
   } else {
     return `
-    <article class="cats-listing carousel-cell mdc-card--outline">
+    <article class="cats-listing mdc-card--outline ${avalClass}">
       <div class="cat-details-container">
         <div class="cats-listing__preview-image">
           <img src="${cat.main_photo_url}" alt="cat's photo">
@@ -218,6 +246,7 @@ window.Meowza.createListing = (cat, user) => {
 
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
+
         <p>${cat.description}</p>
         <form>
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
