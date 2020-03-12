@@ -37,6 +37,11 @@ const getUser = () => {
         sendMsg();
       });
 
+      $(document).on('submit', '.message-reply', function(e) {
+        e.preventDefault()
+        sendReply(this)
+      })
+
       $("header").on("click", ".home-button", function() {
         window.Meowza.catListings.empty();
         loadCats(Meowza.user);
@@ -256,6 +261,33 @@ const sendMsg = function () {
     data: sendData,
     success: () => {
       console.log('SUCCESS');
+    },
+    error: (error) => {
+      console.log('ERROR', error);
+    }
+  });
+}
+
+//--------------SEND REPLY--------------
+
+const sendReply = function (form) {
+  console.log('Reply initiated');
+
+  $.ajax({
+    url: `/sendMessage`,
+    type: "POST",
+    data: $(form).serialize(),
+    success: () => {
+      console.log('SUCCESS');
+      $.ajax({
+        url: `/myMessages`,
+        type: "GET",
+        dataType: "JSON",
+        success: data => {
+          $(".messages-section").empty();
+          window.Meowza.rendermessages(data)
+        }
+      });
     },
     error: (error) => {
       console.log('ERROR', error);
