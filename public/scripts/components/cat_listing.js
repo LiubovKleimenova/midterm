@@ -67,12 +67,14 @@ window.Meowza.createListing = (cat, user) => {
         <section class="cat-listing__details">
           <h3 class="cat-listing__name">${cat.name}</h3>
           <p>${cat.description}</p>
-          <form data-catId="${cat.id}" data-ownerId="${cat.owner_id}">
-            <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
+          <form action="/sendMessage" method="POST" class= "sending-message">
+          <input name="catId" value="${cat.id}" hidden="">
+          <input name="ownerId" value="${cat.owner_id}" hidden="">
+            <textarea name="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
             <label for="users-mail">Or get contacted by email:</label>
             <div class="email-button-container">
               <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
-              <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}" class=" mdc-button message-form mdc-button--raised">
+              <button type="submit" class=" mdc-button message-form mdc-button--raised">
                 <div class="mdc-button__ripple"></div>
                 Message
               </button>
@@ -143,12 +145,14 @@ window.Meowza.createListing = (cat, user) => {
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
         <p>${cat.description}</p>
-        <form data-catId="${cat.id}" data-ownerId="${cat.owner_id}">
-          <textarea class="message userMessage" placeholder="Interested? Leave a message directly for the owner!"></textarea>
+        <form action="/sendMessage" method="POST" class= "sending-message">
+        <input name="catId" value="${cat.id}" hidden="">
+        <input name="ownerId" value="${cat.owner_id}" hidden="">
+          <textarea name="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
           <label for="users-mail">Or get contacted by email:</label>
           <div class="email-button-container">
             <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
-            <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}" class="message-form mdc-button mdc-button--raised">
+            <button type="submit" class=" mdc-button message-form mdc-button--raised">
               <div class="mdc-button__ripple"></div>
               Message
             </button>
