@@ -254,7 +254,8 @@ article {
   }
 }
 
-.x-delete-button {
+.x-delete-button,
+.sold-button {
   border: none;
   border-radius: 50%;
   display: block;
@@ -264,11 +265,10 @@ article {
   top: 30px;
   right: 30px;
   background-color: inherit;
-  //color: red;
-
 }
 
-.x-delete-button:hover {
+.x-delete-button:hover,
+.sold-button:hover {
   top: 25px;
   right: 25px;
   width: 40px;
@@ -276,3 +276,12 @@ article {
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.sold-button {
+  right: 80px;
+}
+
+.sold-button:hover {
+  right: 75px;
+}
+

@@ -73,6 +73,9 @@ module.exports = (databaseHelperFunctions) => {
     databaseHelperFunctions.sendEmail(to, subject, text);
   });
 
+  // route to mark cats as sold
+
+
   return router;
 };
 

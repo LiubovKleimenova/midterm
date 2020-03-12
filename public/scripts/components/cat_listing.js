@@ -92,6 +92,20 @@ window.Meowza.createListing = (cat, user) => {
               <div class="mdc-button__touch"></div>
             </button>
 
+            <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}"
+              class=" mdc-button--touch
+              mdc-card__action mdc-card__action--icon sold-button"
+              aria-pressed="false"
+              aria-label="cat is unavailable"
+              title="cat is unavailable"
+              id="sold-btn"
+            >
+
+              <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
+              <i class="far fa-pause-circle material-icons mdc-icon-button__icon"></i>
+              <div class="mdc-button__touch"></div>
+            </button>
+
 
       </article>`;
     } else {
