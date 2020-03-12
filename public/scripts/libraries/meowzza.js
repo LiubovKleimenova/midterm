@@ -127,13 +127,12 @@ const renderCats = (cats, user) => {
   `);
 
   window.Meowza.catListings = $catListings;
-  // window.Meowza.featCats = $featCats;
   window.Meowza.user = user;
 
   cats.forEach(cat => {
     $catListings.append(Meowza.createListing(cat, user));
     // add featured cats to carousel
-    $('.carousel').flickity( 'append', (Meowza.createFeatured(cat)));
+    $('.carousel').flickity( 'append', Meowza.createFeatured(cat));
   });
   $("main").append($catListings);
 };
