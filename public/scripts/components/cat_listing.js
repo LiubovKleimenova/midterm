@@ -7,6 +7,7 @@ window.Meowza.createListing = (cat, user) => {
   if (user) {
     if (user.id === cat.owner_id) {
       return `
+
       <article data-catId="${
         cat.id
       }" class="cats-listing carousel-cell mdc-card--outline ${avalClass}">
@@ -68,6 +69,7 @@ window.Meowza.createListing = (cat, user) => {
 
         <section class="cat-listing__details">
           <h3 class="cat-listing__name">${cat.name}</h3>
+
           <p>${cat.description}</p>
           <form class="message-form" data-catId="${cat.id}">
             <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
@@ -81,7 +83,9 @@ window.Meowza.createListing = (cat, user) => {
             </div>
           </form>
         </section>
+
        <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}"
+
               class=" mdc-button--touch
               mdc-card__action mdc-card__action--icon x-delete-button"
               aria-pressed="false"
@@ -93,6 +97,7 @@ window.Meowza.createListing = (cat, user) => {
               <i class="far fa-trash-alt material-icons mdc-icon-button__icon"></i>
               <div class="mdc-button__touch"></div>
             </button>
+
             <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}"
               class=" mdc-button--touch
               mdc-card__action mdc-card__action--icon sold-button"
@@ -101,10 +106,12 @@ window.Meowza.createListing = (cat, user) => {
               title="cat is unavailable"
               id="sold-btn"
             >
+
               <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
               <i class="far fa-pause-circle material-icons mdc-icon-button__icon"></i>
               <div class="mdc-button__touch"></div>
             </button>
+
       </article>`;
     } else {
       return `
@@ -166,6 +173,7 @@ window.Meowza.createListing = (cat, user) => {
 
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
+
         <p>${cat.description}</p>
         <form>
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
@@ -242,6 +250,7 @@ window.Meowza.createListing = (cat, user) => {
 
       <section class="cat-listing__details">
         <h3 class="cat-listing__name">${cat.name}</h3>
+
         <p>${cat.description}</p>
         <form>
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>

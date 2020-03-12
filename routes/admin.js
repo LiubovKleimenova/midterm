@@ -73,7 +73,9 @@ module.exports = (databaseHelperFunctions) => {
     databaseHelperFunctions.sendEmail(to, subject, text);
   });
 
+
    // route to mark cats as sold
+
   router.put("/updateCat", (req, res) => {
     catId = req.body.catId;
     console.log('route /updatecat');

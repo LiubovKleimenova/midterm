@@ -7,6 +7,7 @@ $(document).ready(() => {
     e.preventDefault();
     getUser();
   });
+  //$("body").scrollTop(0);
 });
 
 
@@ -248,7 +249,6 @@ const showMsgList = function () {
     }
   });
 }
-
 
 //-------------- MARK CAT AS UNAVAILABLE ---------
 const markCatSold = function (listing) {
