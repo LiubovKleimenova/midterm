@@ -67,8 +67,8 @@ window.Meowza.createListing = (cat, user) => {
           <h3 class="cat-listing__name">${cat.name}</h3>
 
           <p>${cat.description}</p>
-          <form class="message-form" data-catId="${cat.id}">
-            <textarea class="message" placeholder="That is your cat" disabled></textarea>
+          <form class="message-form" data-catId="${cat.id}>
+            <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
             <label for="users-mail">Or get contacted by email:</label>
             <div class="email-button-container">
               <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
