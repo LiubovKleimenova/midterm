@@ -72,6 +72,7 @@ window.Meowza.createListing = (cat, user) => {
 
           <p>${cat.description}</p>
 
+
           <form action="/sendMessage" method="POST" class= "sending-message message-form">
           <input name="catId" value="${cat.id}" hidden="">
           <input name="ownerId" value="${cat.owner_id}" hidden="">
@@ -257,12 +258,12 @@ window.Meowza.createListing = (cat, user) => {
         <h3 class="cat-listing__name">${cat.name}</h3>
 
         <p>${cat.description}</p>
-        <form>
+        <form data-catId="${cat.id}" data-ownerId="${cat.owner_id}">
           <textarea class="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
           <label for="users-mail">Or get contacted by email:</label>
           <div class="email-button-container">
             <input type="email" class="users-mail" id="users-mail" placeholder="Your email">
-            <button type="submit" class="mdc-button mdc-button--raised">
+            <button data-catId="${cat.id}" data-ownerId="${cat.owner_id}" class="mdc-button message-form mdc-button--raised">
               <div class="mdc-button__ripple"></div>
               Message
             </button>

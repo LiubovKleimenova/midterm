@@ -75,7 +75,9 @@ module.exports = (db) => {
 
   const createMsgPost = function (message, userId, catId, ownerId) {
     console.log(message);
-    console.log(`${userId} is id`);
+    // console.log(`${userId} is userid`);
+    // console.log(`${catId} is catid`);
+    // console.log(`${ownerId} is ownerId`);
     return db.query(`
     INSERT INTO messages (receiver_id, cat_id, sender_id, message)
     VALUES ($1, $2, $3, $4)
