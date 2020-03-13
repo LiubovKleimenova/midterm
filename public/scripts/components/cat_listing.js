@@ -71,7 +71,9 @@ window.Meowza.createListing = (cat, user) => {
           <h3 class="cat-listing__name">${cat.name}</h3>
 
           <p>${cat.description}</p>
-          <form action="/sendMessage" method="POST" class= "sending-message">
+
+
+          <form action="/sendMessage" method="POST" class= "sending-message message-form">
           <input name="catId" value="${cat.id}" hidden="">
           <input name="ownerId" value="${cat.owner_id}" hidden="">
             <textarea name="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>
@@ -177,7 +179,7 @@ window.Meowza.createListing = (cat, user) => {
         <h3 class="cat-listing__name">${cat.name}</h3>
 
         <p>${cat.description}</p>
-        <form action="/sendMessage" method="POST" class= "sending-message">
+        <form action="/sendMessage" method="POST" class= "sending-message message-form">
         <input name="catId" value="${cat.id}" hidden="">
         <input name="ownerId" value="${cat.owner_id}" hidden="">
           <textarea name="message" placeholder="Interested? Leave a message directly for the owner!"></textarea>

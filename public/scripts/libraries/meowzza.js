@@ -64,6 +64,17 @@ const getUser = () => {
 
       $(document).on("click", ".add-to-favourites", addToFavourites);
 
+      $(document).on('submit', ".sending-message", function(e) {
+        console.log('invoking sendMsg')
+        e.preventDefault()
+        sendMsg(this);
+      })
+
+      $(document).on('submit', '.message-reply', function(e) {
+        e.preventDefault()
+        sendReply(this)
+      })
+
       $(document).on("submit", "#new-cat-form", e => {
         e.preventDefault();
         console.log("form submitted");
@@ -328,3 +339,48 @@ const markCatSold = function (listing) {
     }
   });
 }
+
+//--------------SEND MESSAGES--------------
+
+
+const sendMsg = function (form) {
+  console.log('getting info from user');
+
+  $.ajax({
+    url: `/sendMessage`,
+    type: "POST",
+    data: $(form).serialize(),
+    success: () => {
+      console.log('SUCCESS');
+      Meowza.loadCats(Meowza.user)
+    },
+    error: (error) => {
+      console.log('ERROR', error);
+    }
+  });
+}
+
+//--------------SEND REPLY--------------
+
+const sendReply = function (form) {
+  console.log('Reply initiated');
+
+  $.ajax({
+    url: `/sendMessage`,
+    type: "POST",
+    data: $(form).serialize(),
+    success: () => {
+      console.log('SUCCESS');
+      $.ajax({
+        url: `/myMessages`,
+        type: "GET",
+        dataType: "JSON",
+        success: data => {
+          $(".messages-section").empty();
+          window.Meowza.rendermessages(data)
+        }
+      })
+    }
+  })
+}
+
