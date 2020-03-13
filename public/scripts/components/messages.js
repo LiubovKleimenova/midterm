@@ -20,13 +20,24 @@ window.Meowza.rendermessages = rendermessages
 
 const createMessage = function(message) {
   const markup = `
-    <article>
-      <div class= message-header>
-        <h3 class= "sender">From:${message.sender_name}</h3>
-        <h3 class= "reciever">To:${message.receiver_name}</h3>
-      </div>
-      <div class= message-body>
-      ${message.message}
+    <article class= "message-card">
+      <div class = "message-content>
+          <div class= message-header>
+            <h3 class= "sender">From:${message.sender_name}</h3>
+            <h3 class= "reciever">To:${message.receiver_name}</h3>
+          </div>
+          <div class= message-body>
+            Message: ${message.message}
+          </div>
+          <div class= reply-form>
+          <form action="/sendMessage" method="POST" class= "message-reply">
+          <input name="catId" value="${message.cat_id}" hidden="">
+          <input name="ownerId" value="${message.sender_id}" hidden="">
+          <textarea name="message" placeholder="Your reply goes here :)"></textarea>
+          <button class=" mdc-button mdc-button--raised reply-button" type="submit">
+          <div class="mdc-button__ripple"></div>Reply</button>
+          </form>
+          </div>
       </div>
     </article>
     `;

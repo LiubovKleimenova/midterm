@@ -80,7 +80,7 @@ module.exports = (db) => {
     INSERT INTO messages (receiver_id, cat_id, sender_id, message)
     VALUES ($1, $2, $3, $4)
     RETURNING *;
-    `, [ownerId, catId, userId, message.message])
+    `, [ownerId, catId, userId, message])
     .then(res => res.rows)
     .catch(err => console.log(err));
   }
