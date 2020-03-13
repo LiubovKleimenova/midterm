@@ -4,6 +4,7 @@ const $pageHeader = $("header");
 const $newListing = $(".new-listing");
 
 function updateHeader(user) {
+  $(".focus-span").focus();
   $pageHeader.find(".user-nav").remove();
   $(".new-cat-form-section")
     .find(".new-cat-form")
@@ -41,7 +42,7 @@ function updateHeader(user) {
     } else {
       if (!user.is_admin) {
         usersLinks = `
-          <li class="padding-left padding-right message-link">My Messages</li>
+          <li class="hover padding-left padding-right message-link">Inbox</li>
           <li class="padding-left padding-right">Hi, ${user.name}!</li>
           <button class="logout-button mdc-button mdc-button--raised">
             <div class="mdc-button__ripple"></div>
@@ -50,7 +51,7 @@ function updateHeader(user) {
         `;
       } else {
         usersLinks = `
-          <li class="padding-left padding-right message-link">My Messages</li>
+          <li class="hover padding-left padding-right message-link">Inbox</li>
           <li class="hover user-link owner-button">
             <a>My cats</a>
           </li>

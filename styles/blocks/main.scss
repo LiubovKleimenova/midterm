@@ -14,11 +14,13 @@ h2 {
 }
 
 .new-cat-form {
+  display: none;
   width: calc(25vw + 4em);
   border: 0.1em solid $primary-color;
   border-radius:0.4em;
   padding: 2em;
   background: black;
+  margin: 0 auto;
 
   .add-form-container {
     display: flex;
@@ -230,6 +232,7 @@ article {
 .cats-listing {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .cat_listing__interaction {
@@ -251,3 +254,56 @@ article {
     white-space: nowrap;
   }
 }
+
+.x-delete-button,
+.sold-button {
+  border: none;
+  border-radius: 50%;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: inherit;
+}
+
+.x-delete-button:hover,
+.sold-button:hover {
+  top: 25px;
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sold-button {
+  right: 80px;
+}
+
+.sold-button:hover {
+  right: 75px;
+}
+
+.cat-adopted {
+  background: gray;
+
+  img {
+    filter: grayscale(100%);
+  }
+}
+
+.cat-adopted::before {
+  display: inline-block;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  content: "ADOPTED";
+  font-size: 18px;
+
+  position: absolute;
+  top: 20px;
+  right: 145px;
+}
+

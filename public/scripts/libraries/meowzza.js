@@ -7,6 +7,7 @@ $(document).ready(() => {
     e.preventDefault();
     getUser();
   });
+  //$("body").scrollTop(0);
 });
 
 
@@ -71,19 +72,35 @@ const getUser = () => {
 
       $(document).on("click", ".logout-button", logOut);
       $(document).on("click", "#delete-btn", deleteCat);
+
+      $(document).on("click", "#sold-btn", e => {
+        console.log(e.target);
+        const card = $(e.target).closest(".cats-listing");
+        console.log(card);
+        markCatSold(card);
+        e.preventDefault;
+
+      });
     }
   });
   return Meowza.user;
 };
 
 const logOut = () => {
-  return $.ajax({
+  $.ajax({
     method: "POST",
     url: "/logout",
     // data:
     success: () => {
-      Meowza.update(null);
-      // $(".new-cat-form").remove();
+      $.ajax({
+        url: `/users/`,
+        type: "GET",
+        dataType: "JSON",
+        success: response => {
+          Meowza.update(null);
+          renderCats(response, null);
+        }
+      });
     }
   });
 };
@@ -94,7 +111,6 @@ const loadCats = user => {
     type: "GET",
     dataType: "JSON",
     success: response => {
-      //console.log(response);
       renderCats(response, user);
     }
   });
@@ -130,17 +146,21 @@ let date = today.getFullYear();
 const renderCats = (cats, user) => {
   $("main")
     .find(".cats-container")
+    // clear container before rendering
     .remove();
+  // section to add all cats to
   const $catListings = $(`
   <section class="cats-container">
   </section>
   `);
+
   window.Meowza.catListings = $catListings;
   window.Meowza.user = user;
 
-
   cats.forEach(cat => {
     $catListings.append(Meowza.createListing(cat, user));
+    // add featured cats to carousel
+    $('.carousel').flickity( 'append', Meowza.createFeatured(cat));
   });
   $("main").append($catListings);
 };
@@ -283,6 +303,28 @@ const sendReply = function (form) {
     },
     error: (error) => {
       console.log('ERROR', error);
+//-------------- MARK CAT AS UNAVAILABLE ---------
+const markCatSold = function (listing) {
+  //console.log(this);
+  //console.log(listing["0"].dataset.catid)
+  const catId = listing["0"].dataset.catid;
+  //console.log(catId);
+  listing.toggleClass("cat-adopted");
+  $.ajax({
+    url: `/admin/updateCat`,
+    type: "PUT",
+    data: `catId=${catId}`,
+    success: () => {
+     $.ajax({
+       url: `/users/`,
+       type: "GET",
+       dataType: "JSON",
+       success: data => {
+         //console.log("data recieved from server");
+         $(".cats-container").empty();
+         renderCats(data, window.Meowza.user);
+       }
+     });
     }
   });
 }

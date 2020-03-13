@@ -26,7 +26,10 @@
 
 <body>
   <header class="page-header">
+    <span class="visually-hidden focus-span" tabindex="1"></span>
+
     <div class="header-text">
+
       <h1><i class="fas fa-paw"></i>Meowzza!</h1>
       <p>Adopt an exotic cat today</p>
     </div>
@@ -40,30 +43,9 @@
     <section class="new-cat-form-section">
 
     </section>
-    <section>
+    <section class="gallery">
       <!-- featured cats carousel -->
       <div class="carousel">
-        <div class="carousel-cell">
-          <img src="./assets/tiger_cub.jpeg" alt="tiger cub">
-        </div>
-        <div class="carousel-cell">
-          <img src="./assets/butters.jpg" alt="lion cub">
-        </div>
-        <div class="carousel-cell">
-          <img src="./assets/cheetah_cubs.jpg" alt="cheetah cubs">
-        </div>
-        <div class="carousel-cell">
-          <img src="./assets/ocelot_cub.jpeg" alt="ocelot cub">
-        </div>
-        <div class="carousel-cell">
-          <img src="./assets/maya.jpg" alt="black panther">
-        </div>
-        <div class="carousel-cell">
-          <img src="./assets/jaguar_cub.jpg" alt="jaguar cub">
-        </div>
-        <div class="carousel-cell">
-          <img src="./assets/klinton2.JPG" alt="tiger cub">
-        </div>
       </div>
     </section>
 
@@ -160,6 +142,7 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/libraries/meowzza.js"></script>
   <!-- <script src="scripts/views_manager.js"></script> -->
+  <script src="scripts/components/featured.js"></script>
   <script src="scripts/components/cat_listing.js"></script>
   <script src="scripts/components/header.js"></script>
   <script src="scripts/components/new_cat_form.js"></script>
@@ -169,7 +152,6 @@
   <!-- flickity script -->
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <!-- <script src="scripts/components/cats_listing.js"></script> -->
-
 </body>
 
 </html>

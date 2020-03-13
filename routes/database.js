@@ -2,9 +2,10 @@ const nodemailer = require('nodemailer');
 module.exports = (db) => {
 // *********** HELPER FUNCTIONS FOR USER ROUTES & ADMIN ROUTES ************
   const getAllCats = function () {
-    return db.query(`SELECT * FROM cats;`)
-    .then(res => res.rows)
-    .catch(err => console.error('query error', err.stack));
+    return db
+      .query(`SELECT * FROM cats ORDER BY is_available DESC;`)
+      .then(res => res.rows)
+      .catch(err => console.error("query error", err.stack));
   }
   const getAllUsers = function () {
     return db.query(`SELECT * FROM users;`)
@@ -12,12 +13,19 @@ module.exports = (db) => {
     // .catch(err => console.error('query error', err.stack));
   }
   const getFavourites = function (userId) {
-    return db.query(`
+    return db
+      .query(
+        `
     SELECT * FROM cats
     JOIN favourites ON cats.id = cat_id
     WHERE favourites.user_id = $1
-    `, [userId])
-    .then(res => res.rows )
+
+    ORDER BY is_available DESC
+
+    `,
+        [userId]
+      )
+      .then(res => res.rows);
   }
 
   const filterBySearch = function(options) {
@@ -143,15 +151,35 @@ module.exports = (db) => {
       )
       .then(res => {
         console.log(res.rows);
-        res.rows});
+        res.rows})
+      .catch(err => {
+        // if combination exists in favourites, delete from favourites db
+        if (err.code === '23505') {
+          return db
+            .query(
+            `
+              DELETE FROM favourites
+              WHERE
+              user_id = $1 AND cat_id = $2
+              RETURNING *;
+            `,
+            [userId, catId]
+          );
+        }
+      })
   }
 // *********** HELPER FUNCTIONS FOR ADMIN ROUTES ONLY************
   const getMyCats = function (userId) {
-    return db.query(`
+    return db
+      .query(
+        `
     SELECT * FROM cats
     WHERE owner_id = $1
-    `, [userId])
-    .then(res => res.rows )
+    ORDER BY is_available DESC
+    `,
+        [userId]
+      )
+      .then(res => res.rows);
 }
 
 const deleteCat = function(catId) {
@@ -167,6 +195,20 @@ const deleteCat = function(catId) {
     .catch(err => console.log(err));
 };
 
+const markCatUnavailable = function(catId) {
+  return db
+    .query(
+      `
+  UPDATE cats
+  SET is_available = false
+  WHERE cats.id = $1;
+    `,
+      [catId]
+    )
+    .then(res => res.rows)
+    .catch(err => console.log(err));
+
+};
 
 
 // *********** HELPER FUNCTIONS FOR SENDING EMAILS ************
@@ -185,7 +227,7 @@ async function sendEmail(to, subject, text) {
   });
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Meowzza 👻" <stevenspamlol@gmail.com>', // sender address
+    from: '"Meowzza 🐾" <stevenspamlol@gmail.com>', // sender address
     to: `${to}`, // list of receivers
     subject: `${subject}`, // Subject line
     text: `${text}` // plain text body
@@ -205,7 +247,8 @@ async function sendEmail(to, subject, text) {
     createNewCat,
     login,
     addToFavourites,
-    deleteCat
+    deleteCat,
+    markCatUnavailable
   };
 };
 
